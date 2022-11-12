@@ -5,10 +5,6 @@ import java.util.ArrayList;
 public class GerenciarEquipe {
     ArrayList<Equipe> listaDeEquipe = new ArrayList<Equipe>();
     
-    public void alterarDadosDaEquipe() {
-        
-    }
-    
     public void excluirEquipe() {
         
     }

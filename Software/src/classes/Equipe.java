@@ -12,6 +12,9 @@ public class Equipe {
      private String local;
      private String esporte;
      private int numeroDeAtletas;
+     private String linkInstagram;
+     private String linkTikTok;
+     private String linkWhatsapp;
      private ArrayList<Usuario> listaJogadores = new ArrayList<Usuario>();
      
      // Metódos
@@ -24,7 +27,6 @@ public class Equipe {
      }
      
      // Metódos Especiais
-
     public String getNome() {
         return nome;
     }
