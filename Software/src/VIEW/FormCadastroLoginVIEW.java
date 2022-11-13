@@ -26,16 +26,20 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel11 = new javax.swing.JLabel();
+        txtDataDeNascimento = new javax.swing.JTextField();
+        lblCidade = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        txtNome = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         btnLogar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        btnRecuperarSenha = new javax.swing.JButton();
-        esqueciSenha = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        btnCadastreSe = new javax.swing.JButton();
+        btnMudarParaLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         imgBarraLogin = new javax.swing.JLabel();
@@ -45,13 +49,55 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel11.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("Data De Nascimento");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 110, 10));
+
+        txtDataDeNascimento.setText("dd/mm/aaaa");
+        txtDataDeNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDataDeNascimentoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtDataDeNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 250, 30));
+
+        lblCidade.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        lblCidade.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade.setText("Cidade");
+        getContentPane().add(lblCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 320, 110, 10));
+
+        jComboBox1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 250, 30));
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 250, 30));
+
+        lblNome.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome.setText("Nome");
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 110, 10));
+
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 250, 30));
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 250, 30));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 250, 30));
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 250, 30));
 
         btnLogar.setBorderPainted(false);
         btnLogar.setContentAreaFilled(false);
@@ -60,66 +106,51 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
                 btnLogarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 250, 40));
+        getContentPane().add(btnLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 250, 40));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Logar");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 370, 150, -1));
-
-        btnRecuperarSenha.setBorderPainted(false);
-        btnRecuperarSenha.setContentAreaFilled(false);
-        btnRecuperarSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecuperarSenhaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnRecuperarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 110, 10));
-
-        esqueciSenha.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        esqueciSenha.setForeground(new java.awt.Color(116, 116, 116));
-        esqueciSenha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        esqueciSenha.setText("Esqueci minha senha");
-        getContentPane().add(esqueciSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 110, -1));
+        jLabel8.setText("Cadastra-se");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 150, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundoBotao.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(116, 116, 116));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Senha");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 110, 10));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 110, 10));
 
         jLabel9.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(116, 116, 116));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Email");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 110, 10));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 110, 10));
 
-        btnCadastreSe.setBorderPainted(false);
-        btnCadastreSe.setContentAreaFilled(false);
-        btnCadastreSe.addActionListener(new java.awt.event.ActionListener() {
+        btnMudarParaLogin.setBorderPainted(false);
+        btnMudarParaLogin.setContentAreaFilled(false);
+        btnMudarParaLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastreSeActionPerformed(evt);
+                btnMudarParaLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCadastreSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 140, 50));
+        getContentPane().add(btnMudarParaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 150, 50));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel3.setForeground(new java.awt.Color(244, 144, 53));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Cadastre-se");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(244, 144, 53));
+        jLabel2.setForeground(new java.awt.Color(116, 116, 116));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Login");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 150, -1));
 
-        imgBarraLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barra-Login.png"))); // NOI18N
+        imgBarraLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/barra-cadastro.png"))); // NOI18N
         getContentPane().add(imgBarraLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, 10));
 
         imgLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image-login.png"))); // NOI18N
@@ -131,13 +162,9 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastreSeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastreSeActionPerformed
+    private void btnMudarParaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMudarParaLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastreSeActionPerformed
-
-    private void btnRecuperarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRecuperarSenhaActionPerformed
+    }//GEN-LAST:event_btnMudarParaLoginActionPerformed
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         // TODO add your handling code here:
@@ -146,6 +173,18 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void txtDataDeNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataDeNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataDeNascimentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,20 +223,24 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastreSe;
     private javax.swing.JButton btnLogar;
-    private javax.swing.JButton btnRecuperarSenha;
-    private javax.swing.JLabel esqueciSenha;
+    private javax.swing.JButton btnMudarParaLogin;
     private javax.swing.JLabel imgBarraLogin;
     private javax.swing.JLabel imgLogin;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblCidade;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JTextField txtDataDeNascimento;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
