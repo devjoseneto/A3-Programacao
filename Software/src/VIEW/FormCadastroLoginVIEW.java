@@ -26,6 +26,9 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel12 = new javax.swing.JLabel();
+        checkFem = new javax.swing.JCheckBox();
+        checkMasc = new javax.swing.JCheckBox();
         jLabel11 = new javax.swing.JLabel();
         txtDataDeNascimento = new javax.swing.JTextField();
         lblCidade = new javax.swing.JLabel();
@@ -49,11 +52,39 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("Sexo");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 380, 110, 10));
+
+        checkFem.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkFem.setForeground(new java.awt.Color(116, 116, 116));
+        checkFem.setText("Fem");
+        checkFem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkFem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkFemActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkFem, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, 50, 30));
+
+        checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkMasc.setForeground(new java.awt.Color(116, 116, 116));
+        checkMasc.setText("Masc");
+        checkMasc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkMasc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkMascActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkMasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 60, 30));
+
+        jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(116, 116, 116));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Data De Nascimento");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 110, 10));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 120, 10));
 
         txtDataDeNascimento.setText("dd/mm/aaaa");
         txtDataDeNascimento.addActionListener(new java.awt.event.ActionListener() {
@@ -61,9 +92,9 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
                 txtDataDeNascimentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDataDeNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 250, 30));
+        getContentPane().add(txtDataDeNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 120, 30));
 
-        lblCidade.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        lblCidade.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade.setForeground(new java.awt.Color(116, 116, 116));
         lblCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCidade.setText("Cidade");
@@ -85,7 +116,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         });
         getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 250, 30));
 
-        lblNome.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblNome.setForeground(new java.awt.Color(116, 116, 116));
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNome.setText("Nome");
@@ -117,13 +148,13 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundoBotao.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(116, 116, 116));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Senha");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 110, 10));
 
-        jLabel9.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(116, 116, 116));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Email");
@@ -186,6 +217,14 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDataDeNascimentoActionPerformed
 
+    private void checkMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMascActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkMascActionPerformed
+
+    private void checkFemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkFemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,12 +264,15 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogar;
     private javax.swing.JButton btnMudarParaLogin;
+    private javax.swing.JCheckBox checkFem;
+    private javax.swing.JCheckBox checkMasc;
     private javax.swing.JLabel imgBarraLogin;
     private javax.swing.JLabel imgLogin;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
