@@ -27,7 +27,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        btnEditarPerfil = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         lblEsportes = new javax.swing.JLabel();
         lblIdade = new javax.swing.JLabel();
@@ -35,6 +35,8 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        lblCidade1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -55,19 +57,19 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
 
-        btnEditarPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnEditarPerfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarPerfil.setText("Editar");
-        btnEditarPerfil.setBorderPainted(false);
-        btnEditarPerfil.setContentAreaFilled(false);
-        btnEditarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Editar");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPerfilActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEditarPerfil);
-        btnEditarPerfil.setBounds(260, 210, 160, 20);
+        jPanel3.add(jButton1);
+        jButton1.setBounds(260, 210, 160, 20);
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
         jPanel3.add(jLabel14);
@@ -98,13 +100,25 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(116, 116, 116));
         jLabel11.setText("Idade:");
         jPanel3.add(jLabel11);
-        jLabel11.setBounds(232, 20, 40, 15);
+        jLabel11.setBounds(232, 20, 40, 20);
 
         jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(116, 116, 116));
         jLabel12.setText("Cidade:");
         jPanel3.add(jLabel12);
-        jLabel12.setBounds(30, 20, 50, 15);
+        jLabel12.setBounds(30, 20, 50, 20);
+
+        jLabel15.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel15.setText("ID");
+        jPanel3.add(jLabel15);
+        jLabel15.setBounds(30, 210, 20, 20);
+
+        lblCidade1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblCidade1.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade1.setText("00000000");
+        jPanel3.add(lblCidade1);
+        lblCidade1.setBounds(60, 210, 130, 20);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-dados-user.png"))); // NOI18N
         jPanel3.add(jLabel7);
@@ -179,9 +193,9 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarPerfilActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,13 +236,14 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditarPerfil;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -241,6 +256,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblCidade;
+    private javax.swing.JLabel lblCidade1;
     private javax.swing.JLabel lblEsportes;
     private javax.swing.JLabel lblIdade;
     private javax.swing.JPanel menuTopo;

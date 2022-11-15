@@ -29,18 +29,27 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         opcaoMenuPesquisa = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         iconPesquisar = new javax.swing.JLabel();
         fundoPesquisa = new javax.swing.JLabel();
         opcaoMenuCriaTime = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         iconAddEquipeMenu = new javax.swing.JLabel();
         fundoAddEquipe = new javax.swing.JLabel();
         opcaoMenuPerfil = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         iconPerfilMenu = new javax.swing.JLabel();
         fundoPerfilMenu = new javax.swing.JLabel();
         menuTopo = new javax.swing.JPanel();
+        btnPerfil = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        btnCriarEquipe = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -76,6 +85,13 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         opcaoMenuPesquisa.setOpaque(false);
         opcaoMenuPesquisa.setLayout(null);
 
+        jLabel9.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("<html><p style=\"text-align: center;\">Pesquise por equipes<br>que praticam esportes<br>perto de voce</p></html>");
+        opcaoMenuPesquisa.add(jLabel9);
+        jLabel9.setBounds(20, 220, 150, 50);
+
         jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,6 +112,13 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
         opcaoMenuCriaTime.setOpaque(false);
         opcaoMenuCriaTime.setLayout(null);
+
+        jLabel10.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("<html><p style=\"text-align: center;\">Crie sua propria equipe<br>para praticas de esportes<br>perto de voce</p></html>");
+        opcaoMenuCriaTime.add(jLabel10);
+        jLabel10.setBounds(20, 220, 150, 50);
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,6 +141,13 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         opcaoMenuPerfil.setOpaque(false);
         opcaoMenuPerfil.setLayout(null);
 
+        jLabel11.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("<html><p style=\"text-align: center;\">Vizualize e edite<br> as informações do<br>seu perfil</p></html>");
+        opcaoMenuPerfil.add(jLabel11);
+        jLabel11.setBounds(20, 220, 150, 50);
+
         jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -136,20 +166,62 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
         getContentPane().add(opcaoMenuPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 190, 280));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
+        menuTopo.setLayout(null);
 
-        javax.swing.GroupLayout menuTopoLayout = new javax.swing.GroupLayout(menuTopo);
-        menuTopo.setLayout(menuTopoLayout);
-        menuTopoLayout.setHorizontalGroup(
-            menuTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        menuTopoLayout.setVerticalGroup(
-            menuTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuTopoLayout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        btnPerfil.setBorderPainted(false);
+        btnPerfil.setContentAreaFilled(false);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnPerfil);
+        btnPerfil.setBounds(832, 10, 90, 30);
+
+        btnPesquisar.setBorderPainted(false);
+        btnPesquisar.setContentAreaFilled(false);
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnPesquisar);
+        btnPesquisar.setBounds(540, 10, 130, 30);
+
+        btnCriarEquipe.setBorderPainted(false);
+        btnCriarEquipe.setContentAreaFilled(false);
+        btnCriarEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarEquipeActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnCriarEquipe);
+        btnCriarEquipe.setBounds(680, 10, 140, 30);
+
+        jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Perfil");
+        menuTopo.add(jLabel8);
+        jLabel8.setBounds(820, 10, 120, 30);
+
+        jLabel7.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Criar Equipe");
+        menuTopo.add(jLabel7);
+        jLabel7.setBounds(690, 10, 120, 30);
+
+        jLabel6.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Pesquisar");
+        menuTopo.add(jLabel6);
+        jLabel6.setBounds(570, 10, 80, 30);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
+        menuTopo.add(jLabel2);
+        jLabel2.setBounds(0, 0, 960, 50);
 
         getContentPane().add(menuTopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 50));
 
@@ -166,6 +238,18 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnCriarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarEquipeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCriarEquipeActionPerformed
+
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPerfilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,6 +288,9 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCriarEquipe;
+    private javax.swing.JButton btnPerfil;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel fundoAddEquipe;
     private javax.swing.JLabel fundoPerfilMenu;
     private javax.swing.JLabel fundoPesquisa;
@@ -213,10 +300,16 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel menuTopo;
     private javax.swing.JPanel opcaoMenuCriaTime;
     private javax.swing.JPanel opcaoMenuPerfil;
