@@ -41,9 +41,9 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         checkMasc6 = new javax.swing.JCheckBox();
         checkMasc = new javax.swing.JCheckBox();
         lblCidade2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbEsporte = new javax.swing.JComboBox<>();
         lblCidade1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbCidade = new javax.swing.JComboBox<>();
         lblNome = new javax.swing.JLabel();
         txtLocal = new javax.swing.JTextField();
         txtIdAdm = new javax.swing.JTextField();
@@ -62,7 +62,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        addFoto = new javax.swing.JButton();
+        btnAddFoto = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -140,7 +140,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc1);
-        checkMasc1.setBounds(90, 90, 70, 19);
+        checkMasc1.setBounds(80, 90, 50, 19);
 
         checkMasc2.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc2.setForeground(new java.awt.Color(116, 116, 116));
@@ -152,7 +152,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc2);
-        checkMasc2.setBounds(150, 90, 70, 19);
+        checkMasc2.setBounds(130, 90, 50, 19);
 
         checkMasc3.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc3.setForeground(new java.awt.Color(116, 116, 116));
@@ -164,7 +164,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc3);
-        checkMasc3.setBounds(200, 90, 50, 19);
+        checkMasc3.setBounds(180, 90, 50, 19);
 
         checkMasc4.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc4.setForeground(new java.awt.Color(116, 116, 116));
@@ -176,7 +176,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc4);
-        checkMasc4.setBounds(20, 110, 70, 19);
+        checkMasc4.setBounds(20, 110, 60, 19);
 
         checkMasc5.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc5.setForeground(new java.awt.Color(116, 116, 116));
@@ -188,7 +188,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc5);
-        checkMasc5.setBounds(90, 110, 70, 19);
+        checkMasc5.setBounds(80, 110, 50, 19);
 
         checkMasc6.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc6.setForeground(new java.awt.Color(116, 116, 116));
@@ -200,7 +200,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc6);
-        checkMasc6.setBounds(150, 110, 70, 19);
+        checkMasc6.setBounds(130, 110, 70, 19);
 
         checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc.setForeground(new java.awt.Color(116, 116, 116));
@@ -212,7 +212,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc);
-        checkMasc.setBounds(20, 90, 70, 19);
+        checkMasc.setBounds(20, 90, 60, 19);
 
         lblCidade2.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade2.setForeground(new java.awt.Color(116, 116, 116));
@@ -221,15 +221,15 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel3.add(lblCidade2);
         lblCidade2.setBounds(260, 70, 50, 20);
 
-        jComboBox2.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Futebol", "Futsal", "FutVolei", "Volei", "Basquete" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        cbEsporte.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        cbEsporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Futebol", "Futsal", "FutVolei", "Volei", "Basquete" }));
+        cbEsporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                cbEsporteActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox2);
-        jComboBox2.setBounds(260, 90, 150, 30);
+        jPanel3.add(cbEsporte);
+        cbEsporte.setBounds(260, 90, 150, 30);
 
         lblCidade1.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade1.setForeground(new java.awt.Color(116, 116, 116));
@@ -238,15 +238,15 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel3.add(lblCidade1);
         lblCidade1.setBounds(260, 10, 50, 20);
 
-        jComboBox1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbCidade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        cbCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
+        cbCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbCidadeActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1);
-        jComboBox1.setBounds(260, 30, 150, 30);
+        jPanel3.add(cbCidade);
+        cbCidade.setBounds(260, 30, 150, 30);
 
         lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblNome.setForeground(new java.awt.Color(116, 116, 116));
@@ -373,14 +373,14 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(180, 60, 250, 100);
 
-        addFoto.setText("Adicionar Escudo");
-        addFoto.addActionListener(new java.awt.event.ActionListener() {
+        btnAddFoto.setText("Adicionar Escudo");
+        btnAddFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addFotoActionPerformed(evt);
+                btnAddFotoActionPerformed(evt);
             }
         });
-        jPanel1.add(addFoto);
-        addFoto.setBounds(180, 10, 250, 23);
+        jPanel1.add(btnAddFoto);
+        btnAddFoto.setBounds(180, 10, 250, 23);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escudo-placeholder150x150.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -430,21 +430,22 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPerfil3ActionPerformed
 
-    private void addFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addFotoActionPerformed
+    private void btnAddFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFotoActionPerformed
+        EscolherFotoVIEW j = new EscolherFotoVIEW();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnAddFotoActionPerformed
 
     private void txtLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocalActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
+        
+    }//GEN-LAST:event_cbCidadeActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void cbEsporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEsporteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_cbEsporteActionPerformed
 
     private void checkMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMascActionPerformed
         // TODO add your handling code here:
@@ -541,12 +542,14 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addFoto;
+    private javax.swing.JButton btnAddFoto;
     private javax.swing.JButton btnEditarPerfil1;
     private javax.swing.JButton btnEditarPerfil2;
     private javax.swing.JButton btnEditarPerfil3;
     private javax.swing.JButton btnEditarPerfil4;
     private javax.swing.JButton btnEditarPerfil5;
+    private javax.swing.JComboBox<String> cbCidade;
+    private javax.swing.JComboBox<String> cbEsporte;
     private javax.swing.JCheckBox checkMasc;
     private javax.swing.JCheckBox checkMasc1;
     private javax.swing.JCheckBox checkMasc2;
@@ -554,8 +557,6 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkMasc4;
     private javax.swing.JCheckBox checkMasc5;
     private javax.swing.JCheckBox checkMasc6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;

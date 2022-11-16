@@ -51,7 +51,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        addFoto = new javax.swing.JButton();
+        btnaddFoto = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -181,7 +181,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtDataDeNascimento);
-        txtDataDeNascimento.setBounds(260, 40, 85, 30);
+        txtDataDeNascimento.setBounds(260, 40, 67, 30);
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,14 +247,14 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(180, 60, 250, 100);
 
-        addFoto.setText("Adicionar Foto de Perfil");
-        addFoto.addActionListener(new java.awt.event.ActionListener() {
+        btnaddFoto.setText("Adicionar Foto de Perfil");
+        btnaddFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addFotoActionPerformed(evt);
+                btnaddFotoActionPerformed(evt);
             }
         });
-        jPanel1.add(addFoto);
-        addFoto.setBounds(180, 10, 250, 23);
+        jPanel1.add(btnaddFoto);
+        btnaddFoto.setBounds(180, 10, 250, 23);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boy-profile.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -336,9 +336,10 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkFem3ActionPerformed
 
-    private void addFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addFotoActionPerformed
+    private void btnaddFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddFotoActionPerformed
+        EscolherFotoVIEW j = new EscolherFotoVIEW();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnaddFotoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,8 +392,8 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addFoto;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnaddFoto;
     private javax.swing.JCheckBox checkFem;
     private javax.swing.JCheckBox checkFem1;
     private javax.swing.JCheckBox checkFem2;

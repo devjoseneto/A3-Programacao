@@ -324,7 +324,9 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPerfil2ActionPerformed
 
     private void btnEditarPerfil3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfil3ActionPerformed
-        // TODO add your handling code here:
+        FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+        j.setVisible(true);
+        
     }//GEN-LAST:event_btnEditarPerfil3ActionPerformed
 
     /**
