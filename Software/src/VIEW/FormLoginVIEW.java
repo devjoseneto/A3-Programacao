@@ -35,7 +35,7 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        btnCadastreSe = new javax.swing.JButton();
+        btnMudarParaCadastreSe = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         imgBarraLogin = new javax.swing.JLabel();
@@ -98,14 +98,15 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         jLabel9.setText("Email");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 110, 10));
 
-        btnCadastreSe.setBorderPainted(false);
-        btnCadastreSe.setContentAreaFilled(false);
-        btnCadastreSe.addActionListener(new java.awt.event.ActionListener() {
+        btnMudarParaCadastreSe.setBorderPainted(false);
+        btnMudarParaCadastreSe.setContentAreaFilled(false);
+        btnMudarParaCadastreSe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMudarParaCadastreSe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastreSeActionPerformed(evt);
+                btnMudarParaCadastreSeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCadastreSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 140, 50));
+        getContentPane().add(btnMudarParaCadastreSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 140, 50));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(116, 116, 116));
@@ -131,9 +132,11 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastreSeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastreSeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastreSeActionPerformed
+    private void btnMudarParaCadastreSeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMudarParaCadastreSeActionPerformed
+        FormCadastroLoginVIEW j = new FormCadastroLoginVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnMudarParaCadastreSeActionPerformed
 
     private void btnRecuperarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarSenhaActionPerformed
         // TODO add your handling code here:
@@ -183,8 +186,8 @@ public class FormLoginVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastreSe;
     private javax.swing.JButton btnLogar;
+    private javax.swing.JButton btnMudarParaCadastreSe;
     private javax.swing.JButton btnRecuperarSenha;
     private javax.swing.JLabel esqueciSenha;
     private javax.swing.JLabel imgBarraLogin;

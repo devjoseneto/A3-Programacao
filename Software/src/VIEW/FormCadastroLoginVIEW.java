@@ -37,7 +37,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         lblNome = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        btnLogar = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -130,14 +130,14 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 250, 30));
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 250, 30));
 
-        btnLogar.setBorderPainted(false);
-        btnLogar.setContentAreaFilled(false);
-        btnLogar.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setBorderPainted(false);
+        btnCadastrar.setContentAreaFilled(false);
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogarActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 250, 40));
+        getContentPane().add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 250, 40));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -162,6 +162,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
 
         btnMudarParaLogin.setBorderPainted(false);
         btnMudarParaLogin.setContentAreaFilled(false);
+        btnMudarParaLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMudarParaLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMudarParaLoginActionPerformed(evt);
@@ -194,12 +195,15 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMudarParaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMudarParaLoginActionPerformed
-        // TODO add your handling code here:
+      FormLoginVIEW j = new FormLoginVIEW();
+      this.dispose();
+      j.setVisible(true);
     }//GEN-LAST:event_btnMudarParaLoginActionPerformed
 
-    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogarActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+  
+       
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
@@ -262,7 +266,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogar;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnMudarParaLogin;
     private javax.swing.JCheckBox checkFem;
     private javax.swing.JCheckBox checkMasc;
