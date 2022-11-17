@@ -28,7 +28,7 @@ public class FormLoginVIEW extends javax.swing.JFrame {
 
         txtEmail = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        btnLogar = new javax.swing.JButton();
+        btnLogimTelaInicial = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         btnRecuperarSenha = new javax.swing.JButton();
         esqueciSenha = new javax.swing.JLabel();
@@ -53,14 +53,15 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 250, 30));
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 250, 30));
 
-        btnLogar.setBorderPainted(false);
-        btnLogar.setContentAreaFilled(false);
-        btnLogar.addActionListener(new java.awt.event.ActionListener() {
+        btnLogimTelaInicial.setBorderPainted(false);
+        btnLogimTelaInicial.setContentAreaFilled(false);
+        btnLogimTelaInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogimTelaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogarActionPerformed(evt);
+                btnLogimTelaInicialActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 250, 40));
+        getContentPane().add(btnLogimTelaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 250, 40));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,9 +143,11 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRecuperarSenhaActionPerformed
 
-    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogarActionPerformed
+    private void btnLogimTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogimTelaInicialActionPerformed
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnLogimTelaInicialActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
@@ -186,7 +189,7 @@ public class FormLoginVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogar;
+    private javax.swing.JButton btnLogimTelaInicial;
     private javax.swing.JButton btnMudarParaCadastreSe;
     private javax.swing.JButton btnRecuperarSenha;
     private javax.swing.JLabel esqueciSenha;

@@ -27,9 +27,9 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         menuTopo = new javax.swing.JPanel();
-        btnPerfil = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnCriarEquipe = new javax.swing.JButton();
+        btnPerfilEditarPerfil = new javax.swing.JButton();
+        btnPerfilPesquisar = new javax.swing.JButton();
+        btnPerfilEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -59,44 +59,47 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
 
         menuTopo.setLayout(null);
 
-        btnPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnPerfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnPerfil.setText("Perfil");
-        btnPerfil.setBorderPainted(false);
-        btnPerfil.setContentAreaFilled(false);
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+        btnPerfilEditarPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnPerfilEditarPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        btnPerfilEditarPerfil.setText("Editar Perfil");
+        btnPerfilEditarPerfil.setBorderPainted(false);
+        btnPerfilEditarPerfil.setContentAreaFilled(false);
+        btnPerfilEditarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPerfilEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
+                btnPerfilEditarPerfilActionPerformed(evt);
             }
         });
-        menuTopo.add(btnPerfil);
-        btnPerfil.setBounds(832, 10, 90, 30);
+        menuTopo.add(btnPerfilEditarPerfil);
+        btnPerfilEditarPerfil.setBounds(812, 10, 130, 30);
 
-        btnPesquisar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setBorderPainted(false);
-        btnPesquisar.setContentAreaFilled(false);
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btnPerfilPesquisar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnPerfilPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        btnPerfilPesquisar.setText("Pesquisar");
+        btnPerfilPesquisar.setBorderPainted(false);
+        btnPerfilPesquisar.setContentAreaFilled(false);
+        btnPerfilPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPerfilPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btnPerfilPesquisarActionPerformed(evt);
             }
         });
-        menuTopo.add(btnPesquisar);
-        btnPesquisar.setBounds(540, 10, 130, 30);
+        menuTopo.add(btnPerfilPesquisar);
+        btnPerfilPesquisar.setBounds(540, 10, 130, 30);
 
-        btnCriarEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnCriarEquipe.setForeground(new java.awt.Color(255, 255, 255));
-        btnCriarEquipe.setText("Criar Equipe");
-        btnCriarEquipe.setBorderPainted(false);
-        btnCriarEquipe.setContentAreaFilled(false);
-        btnCriarEquipe.addActionListener(new java.awt.event.ActionListener() {
+        btnPerfilEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnPerfilEquipe.setForeground(new java.awt.Color(255, 255, 255));
+        btnPerfilEquipe.setText("Equipe");
+        btnPerfilEquipe.setBorderPainted(false);
+        btnPerfilEquipe.setContentAreaFilled(false);
+        btnPerfilEquipe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPerfilEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarEquipeActionPerformed(evt);
+                btnPerfilEquipeActionPerformed(evt);
             }
         });
-        menuTopo.add(btnCriarEquipe);
-        btnCriarEquipe.setBounds(680, 10, 140, 30);
+        menuTopo.add(btnPerfilEquipe);
+        btnPerfilEquipe.setBounds(680, 10, 130, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
         menuTopo.add(jLabel2);
@@ -144,7 +147,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(116, 116, 116));
         jLabel13.setText("Esportes praticados:");
         jPanel3.add(jLabel13);
-        jLabel13.setBounds(30, 50, 130, 15);
+        jLabel13.setBounds(30, 50, 130, 16);
 
         jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(116, 116, 116));
@@ -183,7 +186,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Sem equipe");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(60, 380, 310, 25);
+        jLabel10.setBounds(60, 380, 310, 26);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escudo-placeholder.png"))); // NOI18N
         jPanel2.add(jLabel9);
@@ -206,13 +209,13 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(116, 116, 116));
         jLabel3.setText("Nome Completo");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(174, 16, 248, 15);
+        jLabel3.setBounds(174, 16, 248, 16);
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(116, 116, 116));
         jLabel5.setText("Sobre");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(174, 37, 248, 15);
+        jLabel5.setBounds(174, 37, 248, 16);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
         jPanel1.add(jLabel6);
@@ -230,17 +233,23 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPerfilActionPerformed
+    private void btnPerfilEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilEditarPerfilActionPerformed
+        FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnPerfilEditarPerfilActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    private void btnPerfilPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilPesquisarActionPerformed
+        TelaPesquisaVIEW j = new TelaPesquisaVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnPerfilPesquisarActionPerformed
 
-    private void btnCriarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarEquipeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCriarEquipeActionPerformed
+    private void btnPerfilEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilEquipeActionPerformed
+        TelaPerfilVIEW j = new TelaPerfilVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnPerfilEquipeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,9 +290,9 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCriarEquipe;
-    private javax.swing.JButton btnPerfil;
-    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnPerfilEditarPerfil;
+    private javax.swing.JButton btnPerfilEquipe;
+    private javax.swing.JButton btnPerfilPesquisar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

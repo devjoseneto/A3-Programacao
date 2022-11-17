@@ -27,9 +27,9 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         menuTopo = new javax.swing.JPanel();
-        btnPerfil = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnCriarEquipe = new javax.swing.JButton();
+        btnEditarPerfilPerfil = new javax.swing.JButton();
+        btnEditarPerfilPesquisar = new javax.swing.JButton();
+        btnEditarPerfilEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
@@ -67,44 +67,47 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
 
         menuTopo.setLayout(null);
 
-        btnPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnPerfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnPerfil.setText("Perfil");
-        btnPerfil.setBorderPainted(false);
-        btnPerfil.setContentAreaFilled(false);
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarPerfilPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnEditarPerfilPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPerfilPerfil.setText("Perfil");
+        btnEditarPerfilPerfil.setBorderPainted(false);
+        btnEditarPerfilPerfil.setContentAreaFilled(false);
+        btnEditarPerfilPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarPerfilPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
+                btnEditarPerfilPerfilActionPerformed(evt);
             }
         });
-        menuTopo.add(btnPerfil);
-        btnPerfil.setBounds(832, 10, 90, 30);
+        menuTopo.add(btnEditarPerfilPerfil);
+        btnEditarPerfilPerfil.setBounds(832, 10, 90, 30);
 
-        btnPesquisar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setBorderPainted(false);
-        btnPesquisar.setContentAreaFilled(false);
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarPerfilPesquisar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnEditarPerfilPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPerfilPesquisar.setText("Pesquisar");
+        btnEditarPerfilPesquisar.setBorderPainted(false);
+        btnEditarPerfilPesquisar.setContentAreaFilled(false);
+        btnEditarPerfilPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarPerfilPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btnEditarPerfilPesquisarActionPerformed(evt);
             }
         });
-        menuTopo.add(btnPesquisar);
-        btnPesquisar.setBounds(540, 10, 130, 30);
+        menuTopo.add(btnEditarPerfilPesquisar);
+        btnEditarPerfilPesquisar.setBounds(540, 10, 130, 30);
 
-        btnCriarEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnCriarEquipe.setForeground(new java.awt.Color(255, 255, 255));
-        btnCriarEquipe.setText("Criar Equipe");
-        btnCriarEquipe.setBorderPainted(false);
-        btnCriarEquipe.setContentAreaFilled(false);
-        btnCriarEquipe.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarPerfilEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnEditarPerfilEquipe.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPerfilEquipe.setText("Equipe");
+        btnEditarPerfilEquipe.setBorderPainted(false);
+        btnEditarPerfilEquipe.setContentAreaFilled(false);
+        btnEditarPerfilEquipe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarPerfilEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarEquipeActionPerformed(evt);
+                btnEditarPerfilEquipeActionPerformed(evt);
             }
         });
-        menuTopo.add(btnCriarEquipe);
-        btnCriarEquipe.setBounds(680, 10, 140, 30);
+        menuTopo.add(btnEditarPerfilEquipe);
+        btnEditarPerfilEquipe.setBounds(680, 10, 140, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
         menuTopo.add(jLabel2);
@@ -143,7 +146,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem1);
-        checkFem1.setBounds(170, 160, 70, 19);
+        checkFem1.setBounds(170, 160, 70, 20);
 
         checkFem2.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkFem2.setForeground(new java.awt.Color(116, 116, 116));
@@ -155,7 +158,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem2);
-        checkFem2.setBounds(250, 160, 70, 19);
+        checkFem2.setBounds(250, 160, 70, 20);
 
         checkFem3.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkFem3.setForeground(new java.awt.Color(116, 116, 116));
@@ -167,7 +170,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem3);
-        checkFem3.setBounds(320, 160, 90, 19);
+        checkFem3.setBounds(320, 160, 90, 20);
 
         checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc.setForeground(new java.awt.Color(116, 116, 116));
@@ -179,7 +182,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc);
-        checkMasc.setBounds(20, 160, 70, 19);
+        checkMasc.setBounds(20, 160, 70, 20);
 
         checkFem.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkFem.setForeground(new java.awt.Color(116, 116, 116));
@@ -191,21 +194,21 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem);
-        checkFem.setBounds(100, 160, 70, 19);
+        checkFem.setBounds(100, 160, 70, 20);
 
         jLabel15.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(116, 116, 116));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setText("Esportes praticados");
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(20, 140, 120, 14);
+        jLabel15.setBounds(20, 140, 120, 15);
 
         lblCidade.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade.setForeground(new java.awt.Color(116, 116, 116));
         lblCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCidade.setText("Cidade");
         jPanel3.add(lblCidade);
-        lblCidade.setBounds(260, 80, 50, 14);
+        lblCidade.setBounds(260, 80, 50, 15);
 
         jComboBox1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
@@ -222,7 +225,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Data De Nascimento");
         jPanel3.add(jLabel11);
-        jLabel11.setBounds(260, 20, 120, 14);
+        jLabel11.setBounds(260, 20, 120, 15);
 
         txtDataDeNascimento.setText("dd/mm/aaaa");
         txtDataDeNascimento.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +234,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtDataDeNascimento);
-        txtDataDeNascimento.setBounds(260, 40, 85, 30);
+        txtDataDeNascimento.setBounds(260, 40, 63, 30);
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,14 +249,14 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Email");
         jPanel3.add(jLabel14);
-        jLabel14.setBounds(20, 80, 32, 14);
+        jLabel14.setBounds(20, 80, 29, 15);
 
         lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblNome.setForeground(new java.awt.Color(116, 116, 116));
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNome.setText("Nome");
         jPanel3.add(lblNome);
-        lblNome.setBounds(20, 20, 40, 14);
+        lblNome.setBounds(20, 20, 40, 15);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +279,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Sem equipe");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(60, 380, 310, 25);
+        jLabel10.setBounds(60, 380, 310, 26);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escudo-placeholder.png"))); // NOI18N
         jPanel2.add(jLabel9);
@@ -304,7 +307,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnaddFoto);
-        btnaddFoto.setBounds(180, 10, 250, 23);
+        btnaddFoto.setBounds(180, 10, 250, 25);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boy-profile.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -315,7 +318,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(116, 116, 116));
         jLabel5.setText("Adicionar biografia");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(180, 40, 248, 15);
+        jLabel5.setBounds(180, 40, 248, 16);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
         jPanel1.add(jLabel6);
@@ -374,17 +377,23 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         j.setVisible(true);
     }//GEN-LAST:event_btnaddFotoActionPerformed
 
-    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPerfilActionPerformed
+    private void btnEditarPerfilPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilPerfilActionPerformed
+        TelaPerfilVIEW j = new TelaPerfilVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnEditarPerfilPerfilActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    private void btnEditarPerfilPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilPesquisarActionPerformed
+        TelaPesquisaVIEW j = new TelaPesquisaVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnEditarPerfilPesquisarActionPerformed
 
-    private void btnCriarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarEquipeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCriarEquipeActionPerformed
+    private void btnEditarPerfilEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilEquipeActionPerformed
+        TelaEquipeVIEW j = new TelaEquipeVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnEditarPerfilEquipeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -437,9 +446,9 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCriarEquipe;
-    private javax.swing.JButton btnPerfil;
-    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnEditarPerfilEquipe;
+    private javax.swing.JButton btnEditarPerfilPerfil;
+    private javax.swing.JButton btnEditarPerfilPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnaddFoto;
     private javax.swing.JCheckBox checkFem;

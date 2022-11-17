@@ -27,9 +27,9 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         menuTopo = new javax.swing.JPanel();
-        btnPerfil = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnCriarEquipe = new javax.swing.JButton();
+        btnEditarEquipePerfil = new javax.swing.JButton();
+        btnEditarPesquisar = new javax.swing.JButton();
+        btnEditarEquipeEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnEditarPerfil4 = new javax.swing.JButton();
@@ -79,44 +79,47 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
 
         menuTopo.setLayout(null);
 
-        btnPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnPerfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnPerfil.setText("Perfil");
-        btnPerfil.setBorderPainted(false);
-        btnPerfil.setContentAreaFilled(false);
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarEquipePerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnEditarEquipePerfil.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarEquipePerfil.setText("Perfil");
+        btnEditarEquipePerfil.setBorderPainted(false);
+        btnEditarEquipePerfil.setContentAreaFilled(false);
+        btnEditarEquipePerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarEquipePerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
+                btnEditarEquipePerfilActionPerformed(evt);
             }
         });
-        menuTopo.add(btnPerfil);
-        btnPerfil.setBounds(832, 10, 90, 30);
+        menuTopo.add(btnEditarEquipePerfil);
+        btnEditarEquipePerfil.setBounds(832, 10, 90, 30);
 
-        btnPesquisar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setBorderPainted(false);
-        btnPesquisar.setContentAreaFilled(false);
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarPesquisar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnEditarPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPesquisar.setText("Pesquisar");
+        btnEditarPesquisar.setBorderPainted(false);
+        btnEditarPesquisar.setContentAreaFilled(false);
+        btnEditarPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btnEditarPesquisarActionPerformed(evt);
             }
         });
-        menuTopo.add(btnPesquisar);
-        btnPesquisar.setBounds(540, 10, 130, 30);
+        menuTopo.add(btnEditarPesquisar);
+        btnEditarPesquisar.setBounds(540, 10, 130, 30);
 
-        btnCriarEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        btnCriarEquipe.setForeground(new java.awt.Color(255, 255, 255));
-        btnCriarEquipe.setText("Criar Equipe");
-        btnCriarEquipe.setBorderPainted(false);
-        btnCriarEquipe.setContentAreaFilled(false);
-        btnCriarEquipe.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarEquipeEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnEditarEquipeEquipe.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarEquipeEquipe.setText("Equipe");
+        btnEditarEquipeEquipe.setBorderPainted(false);
+        btnEditarEquipeEquipe.setContentAreaFilled(false);
+        btnEditarEquipeEquipe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarEquipeEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarEquipeActionPerformed(evt);
+                btnEditarEquipeEquipeActionPerformed(evt);
             }
         });
-        menuTopo.add(btnCriarEquipe);
-        btnCriarEquipe.setBounds(680, 10, 140, 30);
+        menuTopo.add(btnEditarEquipeEquipe);
+        btnEditarEquipeEquipe.setBounds(680, 10, 140, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
         menuTopo.add(jLabel2);
@@ -191,7 +194,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc1);
-        checkMasc1.setBounds(80, 90, 50, 19);
+        checkMasc1.setBounds(80, 90, 50, 20);
 
         checkMasc2.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc2.setForeground(new java.awt.Color(116, 116, 116));
@@ -203,7 +206,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc2);
-        checkMasc2.setBounds(130, 90, 50, 19);
+        checkMasc2.setBounds(130, 90, 50, 20);
 
         checkMasc3.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc3.setForeground(new java.awt.Color(116, 116, 116));
@@ -215,7 +218,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc3);
-        checkMasc3.setBounds(180, 90, 50, 19);
+        checkMasc3.setBounds(180, 90, 50, 20);
 
         checkMasc4.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc4.setForeground(new java.awt.Color(116, 116, 116));
@@ -227,7 +230,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc4);
-        checkMasc4.setBounds(20, 110, 60, 19);
+        checkMasc4.setBounds(20, 110, 60, 20);
 
         checkMasc5.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc5.setForeground(new java.awt.Color(116, 116, 116));
@@ -239,7 +242,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc5);
-        checkMasc5.setBounds(80, 110, 50, 19);
+        checkMasc5.setBounds(80, 110, 50, 20);
 
         checkMasc6.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc6.setForeground(new java.awt.Color(116, 116, 116));
@@ -251,7 +254,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc6);
-        checkMasc6.setBounds(130, 110, 70, 19);
+        checkMasc6.setBounds(130, 110, 70, 20);
 
         checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc.setForeground(new java.awt.Color(116, 116, 116));
@@ -263,7 +266,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc);
-        checkMasc.setBounds(20, 90, 60, 19);
+        checkMasc.setBounds(20, 90, 60, 20);
 
         lblCidade2.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade2.setForeground(new java.awt.Color(116, 116, 116));
@@ -326,7 +329,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(116, 116, 116));
         jLabel15.setText("Local");
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(20, 140, 130, 15);
+        jLabel15.setBounds(20, 140, 130, 16);
 
         lblIdade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblIdade.setForeground(new java.awt.Color(116, 116, 116));
@@ -435,7 +438,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddFoto);
-        btnAddFoto.setBounds(180, 10, 250, 23);
+        btnAddFoto.setBounds(180, 10, 250, 25);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escudo-placeholder150x150.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -446,7 +449,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(116, 116, 116));
         jLabel5.setText("Sobre");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(174, 37, 248, 15);
+        jLabel5.setBounds(174, 37, 248, 16);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
         jPanel1.add(jLabel6);
@@ -529,17 +532,23 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPerfil4ActionPerformed
 
-    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPerfilActionPerformed
+    private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed
+        TelaPerfilVIEW j = new TelaPerfilVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnEditarEquipePerfilActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    private void btnEditarPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPesquisarActionPerformed
+        TelaPesquisaVIEW j = new TelaPesquisaVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnEditarPesquisarActionPerformed
 
-    private void btnCriarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarEquipeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCriarEquipeActionPerformed
+    private void btnEditarEquipeEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipeEquipeActionPerformed
+        TelaEquipeVIEW j = new TelaEquipeVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }//GEN-LAST:event_btnEditarEquipeEquipeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -593,14 +602,14 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddFoto;
-    private javax.swing.JButton btnCriarEquipe;
+    private javax.swing.JButton btnEditarEquipeEquipe;
+    private javax.swing.JButton btnEditarEquipePerfil;
     private javax.swing.JButton btnEditarPerfil1;
     private javax.swing.JButton btnEditarPerfil2;
     private javax.swing.JButton btnEditarPerfil3;
     private javax.swing.JButton btnEditarPerfil4;
     private javax.swing.JButton btnEditarPerfil5;
-    private javax.swing.JButton btnPerfil;
-    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnEditarPesquisar;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JComboBox<String> cbEsporte;
     private javax.swing.JCheckBox checkMasc;
