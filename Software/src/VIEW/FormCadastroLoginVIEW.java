@@ -201,8 +201,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMudarParaLoginActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-  
-       
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed

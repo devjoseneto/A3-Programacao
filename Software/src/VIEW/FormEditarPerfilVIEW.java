@@ -26,6 +26,11 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menuTopo = new javax.swing.JPanel();
+        btnPerfil = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        btnCriarEquipe = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -55,12 +60,57 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        menuTopo = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        menuTopo.setLayout(null);
+
+        btnPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        btnPerfil.setText("Perfil");
+        btnPerfil.setBorderPainted(false);
+        btnPerfil.setContentAreaFilled(false);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnPerfil);
+        btnPerfil.setBounds(832, 10, 90, 30);
+
+        btnPesquisar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setBorderPainted(false);
+        btnPesquisar.setContentAreaFilled(false);
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnPesquisar);
+        btnPesquisar.setBounds(540, 10, 130, 30);
+
+        btnCriarEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnCriarEquipe.setForeground(new java.awt.Color(255, 255, 255));
+        btnCriarEquipe.setText("Criar Equipe");
+        btnCriarEquipe.setBorderPainted(false);
+        btnCriarEquipe.setContentAreaFilled(false);
+        btnCriarEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarEquipeActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnCriarEquipe);
+        btnCriarEquipe.setBounds(680, 10, 140, 30);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
+        menuTopo.add(jLabel2);
+        jLabel2.setBounds(0, 0, 960, 50);
+
+        getContentPane().add(menuTopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 50));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
@@ -181,7 +231,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtDataDeNascimento);
-        txtDataDeNascimento.setBounds(260, 40, 67, 30);
+        txtDataDeNascimento.setBounds(260, 40, 85, 30);
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,23 +323,6 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 440, 170));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
-
-        javax.swing.GroupLayout menuTopoLayout = new javax.swing.GroupLayout(menuTopo);
-        menuTopo.setLayout(menuTopoLayout);
-        menuTopoLayout.setHorizontalGroup(
-            menuTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        menuTopoLayout.setVerticalGroup(
-            menuTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuTopoLayout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(menuTopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 50));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-padrao.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -340,6 +373,18 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         EscolherFotoVIEW j = new EscolherFotoVIEW();
         j.setVisible(true);
     }//GEN-LAST:event_btnaddFotoActionPerformed
+
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPerfilActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnCriarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarEquipeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCriarEquipeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,6 +437,9 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCriarEquipe;
+    private javax.swing.JButton btnPerfil;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnaddFoto;
     private javax.swing.JCheckBox checkFem;

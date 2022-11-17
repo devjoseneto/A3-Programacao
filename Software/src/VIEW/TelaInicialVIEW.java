@@ -50,9 +50,6 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         btnPerfil = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
         btnCriarEquipe = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -111,7 +108,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Pesquisar");
         opcaoMenuPesquisa.add(jLabel3);
-        jLabel3.setBounds(0, 190, 190, 26);
+        jLabel3.setBounds(0, 190, 190, 25);
 
         iconPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pesquisar-icon.png"))); // NOI18N
         opcaoMenuPesquisa.add(iconPesquisar);
@@ -150,7 +147,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Criar Equipe");
         opcaoMenuCriaTime.add(jLabel4);
-        jLabel4.setBounds(0, 190, 190, 26);
+        jLabel4.setBounds(0, 190, 190, 25);
 
         iconAddEquipeMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adicionar-equipe.png"))); // NOI18N
         opcaoMenuCriaTime.add(iconAddEquipeMenu);
@@ -189,7 +186,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Perfil");
         opcaoMenuPerfil.add(jLabel5);
-        jLabel5.setBounds(0, 190, 190, 26);
+        jLabel5.setBounds(0, 190, 190, 25);
 
         iconPerfilMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario-icon.png"))); // NOI18N
         opcaoMenuPerfil.add(iconPerfilMenu);
@@ -204,6 +201,9 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
         menuTopo.setLayout(null);
 
+        btnPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        btnPerfil.setText("Perfil");
         btnPerfil.setBorderPainted(false);
         btnPerfil.setContentAreaFilled(false);
         btnPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +214,9 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         menuTopo.add(btnPerfil);
         btnPerfil.setBounds(832, 10, 90, 30);
 
+        btnPesquisar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesquisar.setText("Pesquisar");
         btnPesquisar.setBorderPainted(false);
         btnPesquisar.setContentAreaFilled(false);
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +227,9 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         menuTopo.add(btnPesquisar);
         btnPesquisar.setBounds(540, 10, 130, 30);
 
+        btnCriarEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnCriarEquipe.setForeground(new java.awt.Color(255, 255, 255));
+        btnCriarEquipe.setText("Criar Equipe");
         btnCriarEquipe.setBorderPainted(false);
         btnCriarEquipe.setContentAreaFilled(false);
         btnCriarEquipe.addActionListener(new java.awt.event.ActionListener() {
@@ -233,27 +239,6 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         });
         menuTopo.add(btnCriarEquipe);
         btnCriarEquipe.setBounds(680, 10, 140, 30);
-
-        jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Perfil");
-        menuTopo.add(jLabel8);
-        jLabel8.setBounds(820, 10, 120, 30);
-
-        jLabel7.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Criar Equipe");
-        menuTopo.add(jLabel7);
-        jLabel7.setBounds(690, 10, 120, 30);
-
-        jLabel6.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Pesquisar");
-        menuTopo.add(jLabel6);
-        jLabel6.setBounds(570, 10, 80, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
         menuTopo.add(jLabel2);
@@ -363,9 +348,6 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel menuTopo;
     private javax.swing.JPanel opcaoMenuCriaTime;
