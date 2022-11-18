@@ -3,28 +3,22 @@ package classes;
 import java.util.ArrayList;
 
 public class Equipe {
-     private String nome;
-     private Usuario dono;
-     private Usuario administrador;
-     private String sobre;
-     private String diasDePratica;
-     private String cidade;
-     private String local;
-     private String esporte;
-     private int numeroDeAtletas;
-     private ArrayList<Usuario> listaJogadores = new ArrayList<Usuario>();
-     
-     // Metódos
-     public void criarEquipe() {
-         
-     }
-     
-     public void vincularLinks() {
-         
-     }
-     
-     // Metódos Especiais
 
+    private String nome;
+    private Usuario dono;
+    private Usuario administrador;
+    private String sobre;
+    private String diasDePratica;
+    private String cidade;
+    private String local;
+    private String esporte;
+    private int numeroDeAtletas;
+    private String linkInstagram;
+    private String linkWhatsapp;
+    private Equipe equipeUser;
+    private ArrayList<Usuario> listaJogadores = new ArrayList<Usuario>();
+
+    // Metódos Especiais
     public String getNome() {
         return nome;
     }
@@ -96,5 +90,5 @@ public class Equipe {
     public void setNumeroDeAtletas(int numeroDeAtletas) {
         this.numeroDeAtletas = numeroDeAtletas;
     }
-     
+
 }
