@@ -1,20 +1,28 @@
 package REPOSITORY;
 
 import MODELS.UsuarioModel;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class UsuarioRepository {
-    ArrayList<UsuarioModel> listaDeUsuario = new ArrayList<UsuarioModel>();
 
     public void cadastrarUser(UsuarioModel usuario) {
-        listaDeUsuario.add(usuario);
+        usuario.setLogado(true);
+        BancoDeDados.listaDeUsuario.add(usuario);
     }
 
     public boolean efetuarLogin(String email_, char[] senha_) {
         
         return false;
         
+    }
+    
+    public UsuarioModel getUsuario() {
+        UsuarioModel usuario = null;
+        for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
+            if (BancoDeDados.listaDeUsuario.get(i).isLogado()) {
+                usuario = BancoDeDados.listaDeUsuario.get(i);
+            }
+        }
+        return usuario;
     }
 
     public void excluirUser(String email_, String senha_) {

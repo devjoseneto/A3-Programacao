@@ -4,6 +4,8 @@
  */
 package VIEW;
 
+import REPOSITORY.BancoDeDados;
+
 /**
  *
  * @author netoi

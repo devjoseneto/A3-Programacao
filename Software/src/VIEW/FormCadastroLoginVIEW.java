@@ -4,6 +4,7 @@
  */
 package VIEW;
 
+import REPOSITORY.BancoDeDados;
 import SERVICES.UsuarioService;
 import javax.swing.JOptionPane;
 

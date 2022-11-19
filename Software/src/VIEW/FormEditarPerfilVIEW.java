@@ -4,6 +4,9 @@
  */
 package VIEW;
 
+import MODELS.UsuarioModel;
+import REPOSITORY.UsuarioRepository;
+
 /**
  *
  * @author netoi
@@ -15,6 +18,15 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
      */
     public FormEditarPerfilVIEW() {
         initComponents();
+        
+        UsuarioModel usuario = null;
+        UsuarioRepository repository = new UsuarioRepository();
+        usuario = repository.getUsuario();
+        
+        txtNome.setText(usuario.getNome());
+        txtEmail.setText(usuario.getEmail());
+        txtDataDeNascimento.setText(usuario.getNascimento());
+        
     }
 
     /**
@@ -146,7 +158,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem1);
-        checkFem1.setBounds(170, 160, 70, 20);
+        checkFem1.setBounds(170, 160, 70, 19);
 
         checkFem2.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkFem2.setForeground(new java.awt.Color(116, 116, 116));
@@ -158,7 +170,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem2);
-        checkFem2.setBounds(250, 160, 70, 20);
+        checkFem2.setBounds(250, 160, 70, 19);
 
         checkFem3.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkFem3.setForeground(new java.awt.Color(116, 116, 116));
@@ -170,7 +182,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem3);
-        checkFem3.setBounds(320, 160, 90, 20);
+        checkFem3.setBounds(320, 160, 90, 19);
 
         checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc.setForeground(new java.awt.Color(116, 116, 116));
@@ -182,7 +194,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc);
-        checkMasc.setBounds(20, 160, 70, 20);
+        checkMasc.setBounds(20, 160, 70, 19);
 
         checkFem.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkFem.setForeground(new java.awt.Color(116, 116, 116));
@@ -194,21 +206,21 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem);
-        checkFem.setBounds(100, 160, 70, 20);
+        checkFem.setBounds(100, 160, 70, 19);
 
         jLabel15.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(116, 116, 116));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setText("Esportes praticados");
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(20, 140, 120, 15);
+        jLabel15.setBounds(20, 140, 120, 14);
 
         lblCidade.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade.setForeground(new java.awt.Color(116, 116, 116));
         lblCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCidade.setText("Cidade");
         jPanel3.add(lblCidade);
-        lblCidade.setBounds(260, 80, 50, 15);
+        lblCidade.setBounds(260, 80, 50, 14);
 
         jComboBox1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
@@ -225,16 +237,15 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Data De Nascimento");
         jPanel3.add(jLabel11);
-        jLabel11.setBounds(260, 20, 120, 15);
+        jLabel11.setBounds(260, 20, 120, 14);
 
-        txtDataDeNascimento.setText("dd/mm/aaaa");
         txtDataDeNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDataDeNascimentoActionPerformed(evt);
             }
         });
         jPanel3.add(txtDataDeNascimento);
-        txtDataDeNascimento.setBounds(260, 40, 63, 30);
+        txtDataDeNascimento.setBounds(260, 40, 130, 30);
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,14 +260,14 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Email");
         jPanel3.add(jLabel14);
-        jLabel14.setBounds(20, 80, 29, 15);
+        jLabel14.setBounds(20, 80, 32, 14);
 
         lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblNome.setForeground(new java.awt.Color(116, 116, 116));
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNome.setText("Nome");
         jPanel3.add(lblNome);
-        lblNome.setBounds(20, 20, 40, 15);
+        lblNome.setBounds(20, 20, 40, 14);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +290,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Sem equipe");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(60, 380, 310, 26);
+        jLabel10.setBounds(60, 380, 310, 25);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escudo-placeholder.png"))); // NOI18N
         jPanel2.add(jLabel9);
@@ -307,7 +318,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnaddFoto);
-        btnaddFoto.setBounds(180, 10, 250, 25);
+        btnaddFoto.setBounds(180, 10, 250, 23);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boy-profile.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -318,7 +329,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(116, 116, 116));
         jLabel5.setText("Adicionar biografia");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(180, 40, 248, 16);
+        jLabel5.setBounds(180, 40, 248, 15);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
         jPanel1.add(jLabel6);

@@ -15,9 +15,12 @@ public class UsuarioModel {
     private int numeroCamisa;
     private boolean logado;
     private char sexo;
-
+    private boolean primeiroAcesso;
+    private static int SEQUENCIAL = 100_000;
     // Metódos Especiais
 
+    public UsuarioModel() {}
+    
     public UsuarioModel(String nome, String email, char[] senha, String cidade, String nascimento, char sexo) {
         this.nome = nome;
         this.email = email;
@@ -25,6 +28,7 @@ public class UsuarioModel {
         this.cidade = cidade;
         this.nascimento = nascimento;
         this.sexo = sexo;
+        this.SEQUENCIAL++;
     }
 
     public String getNome() {
@@ -71,6 +75,10 @@ public class UsuarioModel {
         return logado;
     }
 
+    public boolean isPrimeiroAcesso() {
+        return primeiroAcesso;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -101,6 +109,23 @@ public class UsuarioModel {
 
     public void setNumeroCamisa(int numeroCamisa) {
         this.numeroCamisa = numeroCamisa;
+    }
+
+    public void setLogado(boolean logado) {
+        this.logado = logado;
+    }
+
+    public void setPrimeiroAcesso(boolean primeiroAcesso) {
+        this.primeiroAcesso = primeiroAcesso;
+    }
+
+    public static int getSEQUENCIAL() {
+        return SEQUENCIAL;
+    }
+
+    @Override
+    public String toString() {
+        return "UsuarioModel{" + "nome=" + nome + ", email=" + email + ", senha=" + senha + ", cidade=" + cidade + ", nascimento=" + nascimento + ", sobre=" + sobre + ", posicaoEsporte=" + posicaoEsporte + ", numeroCamisa=" + numeroCamisa + ", logado=" + logado + ", sexo=" + sexo + ", primeiroAcesso=" + primeiroAcesso + '}';
     }
     
 }
