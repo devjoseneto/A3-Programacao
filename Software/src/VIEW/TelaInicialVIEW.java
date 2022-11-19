@@ -94,7 +94,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
             }
         });
         opcaoMenuPesquisa.add(btnPesquisarPrincipal);
-        btnPesquisarPrincipal.setBounds(0, 0, 190, 280);
+        btnPesquisarPrincipal.setBounds(0, 0, 200, 280);
 
         jLabel9.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(116, 116, 116));
@@ -108,7 +108,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Pesquisar");
         opcaoMenuPesquisa.add(jLabel3);
-        jLabel3.setBounds(0, 190, 190, 26);
+        jLabel3.setBounds(0, 190, 190, 25);
 
         iconPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pesquisar-icon.png"))); // NOI18N
         opcaoMenuPesquisa.add(iconPesquisar);
@@ -147,7 +147,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Criar Equipe");
         opcaoMenuCriaTime.add(jLabel4);
-        jLabel4.setBounds(0, 190, 190, 26);
+        jLabel4.setBounds(0, 190, 190, 25);
 
         iconAddEquipeMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adicionar-equipe.png"))); // NOI18N
         opcaoMenuCriaTime.add(iconAddEquipeMenu);
@@ -186,7 +186,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Editar Perfil");
         opcaoMenuPerfil.add(jLabel5);
-        jLabel5.setBounds(0, 190, 190, 26);
+        jLabel5.setBounds(0, 190, 190, 25);
 
         iconPerfilMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario-icon.png"))); // NOI18N
         opcaoMenuPerfil.add(iconPerfilMenu);
@@ -288,6 +288,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarPrincipalActionPerformed
 
     private void btnCriarTimePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTimePrincipalActionPerformed
+        
         FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
         this.dispose();
         j.setVisible(true);
