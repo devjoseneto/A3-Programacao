@@ -1,12 +1,13 @@
-package classes;
+package MODELS;
 
+import MODELS.UsuarioModel;
 import java.util.ArrayList;
 
-public class Equipe {
+public class EquipeModel {
 
     private String nome;
-    private Usuario dono;
-    private Usuario administrador;
+    private UsuarioModel dono;
+    private UsuarioModel administrador;
     private String sobre;
     private String diasDePratica;
     private String cidade;
@@ -15,8 +16,8 @@ public class Equipe {
     private int numeroDeAtletas;
     private String linkInstagram;
     private String linkWhatsapp;
-    private Equipe equipeUser;
-    private ArrayList<Usuario> listaJogadores = new ArrayList<Usuario>();
+    private EquipeModel equipeUser;
+    private ArrayList<UsuarioModel> listaJogadores = new ArrayList<UsuarioModel>();
 
     // Metódos Especiais
     public String getNome() {
@@ -27,19 +28,19 @@ public class Equipe {
         this.nome = nome;
     }
 
-    public Usuario getDono() {
+    public UsuarioModel getDono() {
         return dono;
     }
 
-    public void setDono(Usuario dono) {
+    public void setDono(UsuarioModel dono) {
         this.dono = dono;
     }
 
-    public Usuario getAdministrador() {
+    public UsuarioModel getAdministrador() {
         return administrador;
     }
 
-    public void setAdministrador(Usuario administrador) {
+    public void setAdministrador(UsuarioModel administrador) {
         this.administrador = administrador;
     }
 

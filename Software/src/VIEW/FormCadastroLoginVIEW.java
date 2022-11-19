@@ -4,6 +4,9 @@
  */
 package VIEW;
 
+import SERVICES.UsuarioService;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author netoi
@@ -32,11 +35,11 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtDataDeNascimento = new javax.swing.JTextField();
         lblCidade = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbCidade = new javax.swing.JComboBox<>();
         txtNome = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         btnCadastrarLogin = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -87,6 +90,11 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 120, 10));
 
         txtDataDeNascimento.setText("dd/mm/aaaa");
+        txtDataDeNascimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDataDeNascimentoMouseClicked(evt);
+            }
+        });
         txtDataDeNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDataDeNascimentoActionPerformed(evt);
@@ -100,18 +108,37 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         lblCidade.setText("Cidade");
         getContentPane().add(lblCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 320, 110, 10));
 
-        jComboBox1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbCidade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        cbCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
+        cbCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbCidadeActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 250, 30));
+        getContentPane().add(cbCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 250, 30));
 
+        txtNome.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                txtNomeAncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        txtNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtNomeMouseExited(evt);
+            }
+        });
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
+            }
+        });
+        txtNome.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtNomePropertyChange(evt);
             }
         });
         getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 250, 30));
@@ -128,7 +155,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 250, 30));
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 250, 30));
+        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 250, 30));
 
         btnCadastrarLogin.setBorderPainted(false);
         btnCadastrarLogin.setContentAreaFilled(false);
@@ -202,9 +229,32 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMudarParaLoginActionPerformed
 
     private void btnCadastrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarLoginActionPerformed
-        FormLoginVIEW j = new FormLoginVIEW();
-        this.dispose();
-        j.setVisible(true);    
+        String nome = txtNome.getText();
+        String email = txtEmail.getText();
+        char[] senha = txtSenha.getPassword();
+        String cidade = cbCidade.getSelectedItem().toString();
+        String nascimento = txtDataDeNascimento.getText();
+        char sexo = 0;
+        boolean verificar = false;
+
+        if (checkMasc.isSelected()) {
+            sexo = 'M';
+            verificar = true;
+        } else if (checkFem.isSelected()) {
+            sexo = 'F';
+            verificar = true;
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione o sexo");
+        }
+
+        UsuarioService service = new UsuarioService();
+        service.cadastrarUsuario(nome, email, senha, cidade, nascimento, sexo);
+
+        if (verificar) {
+            FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnCadastrarLoginActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -212,24 +262,43 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbCidadeActionPerformed
 
     private void txtDataDeNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataDeNascimentoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtDataDeNascimentoActionPerformed
 
     private void checkMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMascActionPerformed
-        // TODO add your handling code here:
+        checkFem.setSelected(false);
     }//GEN-LAST:event_checkMascActionPerformed
 
     private void checkFemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFemActionPerformed
-        // TODO add your handling code here:
+        checkMasc.setSelected(false);
     }//GEN-LAST:event_checkFemActionPerformed
+
+    private void txtDataDeNascimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDataDeNascimentoMouseClicked
+        if (txtDataDeNascimento.getText().equals("dd/mm/aaaa")) {
+            txtDataDeNascimento.setText("");
+            System.out.println("teste");
+        }
+    }//GEN-LAST:event_txtDataDeNascimentoMouseClicked
+
+    private void txtNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNomeMouseExited
+
+    }//GEN-LAST:event_txtNomeMouseExited
+
+    private void txtNomePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtNomePropertyChange
+
+    }//GEN-LAST:event_txtNomePropertyChange
+
+    private void txtNomeAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNomeAncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeAncestorMoved
 
     /**
      * @param args the command line arguments
@@ -270,11 +339,11 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarLogin;
     private javax.swing.JButton btnMudarParaLogin;
+    private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JCheckBox checkFem;
     private javax.swing.JCheckBox checkMasc;
     private javax.swing.JLabel imgBarraLogin;
     private javax.swing.JLabel imgLogin;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -289,6 +358,6 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtDataDeNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

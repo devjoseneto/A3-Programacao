@@ -4,6 +4,9 @@
  */
 package VIEW;
 
+import MODELS.UsuarioModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author netoi
@@ -28,7 +31,7 @@ public class FormLoginVIEW extends javax.swing.JFrame {
 
         txtEmail = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        btnLogimTelaInicial = new javax.swing.JButton();
+        btnLoginTelaInicial = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         btnRecuperarSenha = new javax.swing.JButton();
         esqueciSenha = new javax.swing.JLabel();
@@ -53,15 +56,15 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 250, 30));
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 250, 30));
 
-        btnLogimTelaInicial.setBorderPainted(false);
-        btnLogimTelaInicial.setContentAreaFilled(false);
-        btnLogimTelaInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogimTelaInicial.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginTelaInicial.setBorderPainted(false);
+        btnLoginTelaInicial.setContentAreaFilled(false);
+        btnLoginTelaInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoginTelaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogimTelaInicialActionPerformed(evt);
+                btnLoginTelaInicialActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogimTelaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 250, 40));
+        getContentPane().add(btnLoginTelaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 250, 40));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,11 +146,11 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRecuperarSenhaActionPerformed
 
-    private void btnLogimTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogimTelaInicialActionPerformed
-        TelaInicialVIEW j = new TelaInicialVIEW();
-        this.dispose();
-        j.setVisible(true);
-    }//GEN-LAST:event_btnLogimTelaInicialActionPerformed
+    private void btnLoginTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginTelaInicialActionPerformed
+        String email = txtEmail.getText();
+        char[] senha = txtPassword.getPassword();
+
+    }//GEN-LAST:event_btnLoginTelaInicialActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
@@ -189,7 +192,7 @@ public class FormLoginVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogimTelaInicial;
+    private javax.swing.JButton btnLoginTelaInicial;
     private javax.swing.JButton btnMudarParaCadastreSe;
     private javax.swing.JButton btnRecuperarSenha;
     private javax.swing.JLabel esqueciSenha;

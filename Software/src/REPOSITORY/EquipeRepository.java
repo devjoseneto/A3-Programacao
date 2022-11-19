@@ -1,9 +1,10 @@
-package classes;
+package REPOSITORY;
 
+import MODELS.EquipeModel;
 import java.util.ArrayList;
 
-public class GerenciarEquipe {
-    ArrayList<Equipe> listaDeEquipe = new ArrayList<Equipe>();
+public class EquipeRepository {
+    ArrayList<EquipeModel> listaDeEquipe = new ArrayList<EquipeModel>();
     
      public void criarEquipe() {
          
