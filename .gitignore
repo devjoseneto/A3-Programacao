@@ -1,3 +1,7 @@
-/New Folder/Software/nbproject/private/
-/New Folder/Software/build/
-/Software/dist/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml

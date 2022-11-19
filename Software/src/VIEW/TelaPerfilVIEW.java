@@ -4,6 +4,9 @@
  */
 package VIEW;
 
+import MODELS.UsuarioModel;
+import REPOSITORY.UsuarioRepository;
+
 /**
  *
  * @author netoi
@@ -15,6 +18,14 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
      */
     public TelaPerfilVIEW() {
         initComponents();
+        
+        UsuarioModel usuario = null;
+        UsuarioRepository repository = new UsuarioRepository();
+        usuario = repository.getUsuario();
+        
+        lblNome.setText(usuario.getNome());
+        lblCidade.setText(usuario.getEmail());
+        lblIdUsuario.setText(usuario.getNascimento());
     }
 
     /**
@@ -41,7 +52,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        lblCidade1 = new javax.swing.JLabel();
+        lblIdUsuario = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -49,7 +60,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -167,11 +178,11 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jPanel3.add(jLabel15);
         jLabel15.setBounds(30, 210, 20, 20);
 
-        lblCidade1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblCidade1.setForeground(new java.awt.Color(116, 116, 116));
-        lblCidade1.setText("00000000");
-        jPanel3.add(lblCidade1);
-        lblCidade1.setBounds(60, 210, 130, 20);
+        lblIdUsuario.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblIdUsuario.setForeground(new java.awt.Color(116, 116, 116));
+        lblIdUsuario.setText("00000000");
+        jPanel3.add(lblIdUsuario);
+        lblIdUsuario.setBounds(60, 210, 130, 20);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-dados-user.png"))); // NOI18N
         jPanel3.add(jLabel7);
@@ -205,11 +216,11 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(10, 10, 154, 154);
 
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel3.setText("Nome Completo");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(174, 16, 248, 15);
+        lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome.setText("Nome Completo");
+        jPanel1.add(lblNome);
+        lblNome.setBounds(174, 16, 248, 15);
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(116, 116, 116));
@@ -304,7 +315,6 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -315,9 +325,10 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblCidade;
-    private javax.swing.JLabel lblCidade1;
     private javax.swing.JLabel lblEsportes;
+    private javax.swing.JLabel lblIdUsuario;
     private javax.swing.JLabel lblIdade;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JPanel menuTopo;
     // End of variables declaration//GEN-END:variables
 }
