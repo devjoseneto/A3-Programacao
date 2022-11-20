@@ -143,7 +143,9 @@ public class FormLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMudarParaCadastreSeActionPerformed
 
     private void btnRecuperarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarSenhaActionPerformed
-        // TODO add your handling code here:
+        String email = txtEmail.getText();
+        JOptionPane.showInputDialog(rootPane, "Digite seu email:", "Recuperar Senha", JOptionPane.INFORMATION_MESSAGE, null, null, email);
+        
     }//GEN-LAST:event_btnRecuperarSenhaActionPerformed
 
     private void btnLoginTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginTelaInicialActionPerformed
