@@ -252,7 +252,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         service.cadastrarUsuario(nome, email, senha, cidade, nascimento, sexo);
 
         if (verificar) {
-            FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
+            FormLoginVIEW j = new FormLoginVIEW();
             this.dispose();
             j.setVisible(true);
         }

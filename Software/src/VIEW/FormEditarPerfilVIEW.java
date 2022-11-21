@@ -5,6 +5,7 @@
 package VIEW;
 
 import MODELS.UsuarioModel;
+import REPOSITORY.BancoDeDados;
 import REPOSITORY.UsuarioRepository;
 
 /**
@@ -19,13 +20,9 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     public FormEditarPerfilVIEW() {
         initComponents();
         
-        UsuarioModel usuario = null;
-        UsuarioRepository repository = new UsuarioRepository();
-        usuario = repository.getUsuario();
-        
-        txtNome.setText(usuario.getNome());
-        txtEmail.setText(usuario.getEmail());
-        txtDataDeNascimento.setText(usuario.getNascimento());
+        txtNome.setText(BancoDeDados.usuarioLogado.getNome());
+        txtEmail.setText(BancoDeDados.usuarioLogado.getEmail());
+        txtDataDeNascimento.setText(BancoDeDados.usuarioLogado.getNascimento());
         
     }
 

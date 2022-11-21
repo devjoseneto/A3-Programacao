@@ -5,7 +5,9 @@
 package VIEW;
 
 import MODELS.UsuarioModel;
+import REPOSITORY.BancoDeDados;
 import REPOSITORY.UsuarioRepository;
+import SERVICES.UsuarioService;
 
 /**
  *
@@ -19,13 +21,16 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     public TelaPerfilVIEW() {
         initComponents();
         
-        UsuarioModel usuario = null;
-        UsuarioRepository repository = new UsuarioRepository();
-        usuario = repository.getUsuario();
+        if (!BancoDeDados.usuarioLogado.isLogado()) {
+            lblSair.setVisible(false);
+            lblEditar.setVisible(false);
+            btnSair.setVisible(false);
+            btnEditar.setVisible(false);
+        }
         
-        lblNome.setText(usuario.getNome());
-        lblCidade.setText(usuario.getEmail());
-        lblIdUsuario.setText(usuario.getNascimento());
+        lblNome.setText(BancoDeDados.usuarioLogado.getNome());
+        lblCidade.setText(BancoDeDados.usuarioLogado.getEmail());
+        lblIdUsuario.setText(BancoDeDados.usuarioLogado.getNascimento());
     }
 
     /**
@@ -43,8 +48,10 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         btnPerfilEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        btnSair = new javax.swing.JButton();
+        lblSair = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
+        lblEditar = new javax.swing.JLabel();
         lblEsportes = new javax.swing.JLabel();
         lblIdade = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
@@ -121,6 +128,24 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
 
+        btnSair.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setText("Sair");
+        btnSair.setBorderPainted(false);
+        btnSair.setContentAreaFilled(false);
+        btnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSair);
+        btnSair.setBounds(30, 210, 160, 20);
+
+        lblSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
+        jPanel3.add(lblSair);
+        lblSair.setBounds(30, 200, 160, 40);
+
         btnEditar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
@@ -135,9 +160,9 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jPanel3.add(btnEditar);
         btnEditar.setBounds(260, 210, 160, 20);
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
-        jPanel3.add(jLabel14);
-        jLabel14.setBounds(260, 200, 160, 40);
+        lblEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
+        jPanel3.add(lblEditar);
+        lblEditar.setBounds(260, 200, 160, 40);
 
         lblEsportes.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblEsportes.setForeground(new java.awt.Color(116, 116, 116));
@@ -176,13 +201,13 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(116, 116, 116));
         jLabel15.setText("ID");
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(30, 210, 20, 20);
+        jLabel15.setBounds(30, 180, 20, 20);
 
         lblIdUsuario.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblIdUsuario.setForeground(new java.awt.Color(116, 116, 116));
         lblIdUsuario.setText("00000000");
         jPanel3.add(lblIdUsuario);
-        lblIdUsuario.setBounds(60, 210, 130, 20);
+        lblIdUsuario.setBounds(60, 180, 130, 20);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-dados-user.png"))); // NOI18N
         jPanel3.add(jLabel7);
@@ -264,6 +289,16 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         j.setVisible(true);
     }//GEN-LAST:event_btnPerfilEquipeActionPerformed
 
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+
+        UsuarioService service = new UsuarioService();
+        service.sair(BancoDeDados.usuarioLogado);
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        this.dispose();
+        j.setVisible(true);
+        
+    }//GEN-LAST:event_btnSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -307,12 +342,12 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnPerfilEditarPerfil;
     private javax.swing.JButton btnPerfilEquipe;
     private javax.swing.JButton btnPerfilPesquisar;
+    private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -325,10 +360,12 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblCidade;
+    private javax.swing.JLabel lblEditar;
     private javax.swing.JLabel lblEsportes;
     private javax.swing.JLabel lblIdUsuario;
     private javax.swing.JLabel lblIdade;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblSair;
     private javax.swing.JPanel menuTopo;
     // End of variables declaration//GEN-END:variables
 }

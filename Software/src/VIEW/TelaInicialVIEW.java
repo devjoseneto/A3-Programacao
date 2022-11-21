@@ -4,9 +4,7 @@
  */
 package VIEW;
 
-import MODELS.UsuarioModel;
 import REPOSITORY.BancoDeDados;
-import REPOSITORY.UsuarioRepository;
 
 /**
  *
@@ -280,10 +278,16 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEquipeSecundarioActionPerformed
 
     private void btnPerfilSecundarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilSecundarioActionPerformed
-        
-        FormLoginVIEW j = new FormLoginVIEW();
-        this.dispose();
-        j.setVisible(true);
+
+        if (BancoDeDados.usuarioLogado.isLogado()) {
+            TelaPerfilVIEW j = new TelaPerfilVIEW();
+            this.dispose();
+            j.setVisible(true);
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnPerfilSecundarioActionPerformed
 
     private void btnPesquisarPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPrincipalActionPerformed
@@ -294,19 +298,18 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
     private void btnCriarTimePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTimePrincipalActionPerformed
 
-        UsuarioModel usuario = new UsuarioModel();
-        UsuarioRepository repository = new UsuarioRepository();
-        usuario = repository.getUsuario();
+        if (BancoDeDados.usuarioLogado.isLogado()) {
 
-        if (usuario.isLogado()) {
-           
             FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
             this.dispose();
             j.setVisible(true);
+
         } else {
+
             FormLoginVIEW j = new FormLoginVIEW();
             this.dispose();
             j.setVisible(true);
+
         }
 
 

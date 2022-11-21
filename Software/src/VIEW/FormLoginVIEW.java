@@ -5,6 +5,8 @@
 package VIEW;
 
 import MODELS.UsuarioModel;
+import REPOSITORY.UsuarioRepository;
+import SERVICES.UsuarioService;
 import javax.swing.JOptionPane;
 
 /**
@@ -151,7 +153,15 @@ public class FormLoginVIEW extends javax.swing.JFrame {
     private void btnLoginTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginTelaInicialActionPerformed
         String email = txtEmail.getText();
         char[] senha = txtPassword.getPassword();
-
+        
+        UsuarioService service = new UsuarioService();
+        boolean login = service.efetuarLogin(email, senha);
+        
+        if (login) {
+            TelaInicialVIEW j = new TelaInicialVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnLoginTelaInicialActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
