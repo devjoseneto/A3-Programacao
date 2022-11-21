@@ -4,9 +4,8 @@
  */
 package VIEW;
 
-import MODELS.UsuarioModel;
 import REPOSITORY.BancoDeDados;
-import REPOSITORY.UsuarioRepository;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -20,9 +19,11 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     public FormEditarPerfilVIEW() {
         initComponents();
         
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+        
         txtNome.setText(BancoDeDados.usuarioLogado.getNome());
         txtEmail.setText(BancoDeDados.usuarioLogado.getEmail());
-        txtDataDeNascimento.setText(BancoDeDados.usuarioLogado.getNascimento());
+        txtDataDeNascimento.setText(formato.format(BancoDeDados.usuarioLogado.getNascimento()));
         
     }
 

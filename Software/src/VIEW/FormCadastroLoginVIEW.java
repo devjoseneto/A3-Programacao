@@ -4,8 +4,12 @@
  */
 package VIEW;
 
-import REPOSITORY.BancoDeDados;
 import SERVICES.UsuarioService;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -230,11 +234,21 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMudarParaLoginActionPerformed
 
     private void btnCadastrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarLoginActionPerformed
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+        
         String nome = txtNome.getText();
         String email = txtEmail.getText();
         char[] senha = txtSenha.getPassword();
         String cidade = cbCidade.getSelectedItem().toString();
-        String nascimento = txtDataDeNascimento.getText();
+        
+        Date nascimento = null;
+        try {
+            nascimento = formato.parse(txtDataDeNascimento.getText());
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Data de nascimento invalida!");
+            Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         char sexo = 0;
         boolean verificar = false;
 
@@ -285,7 +299,6 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     private void txtDataDeNascimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDataDeNascimentoMouseClicked
         if (txtDataDeNascimento.getText().equals("dd/mm/aaaa")) {
             txtDataDeNascimento.setText("");
-            System.out.println("teste");
         }
     }//GEN-LAST:event_txtDataDeNascimentoMouseClicked
 

@@ -7,5 +7,6 @@ public class BancoDeDados {
     
     public static ArrayList<UsuarioModel> listaDeUsuario = new ArrayList<UsuarioModel>();
     public static UsuarioModel usuarioLogado = new UsuarioModel();
+    public static int SEQUENCIAL = 100_000;
    
 }

@@ -1,7 +1,7 @@
 package MODELS;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import REPOSITORY.BancoDeDados;
+import java.util.Date;
 
 public class UsuarioModel {
 
@@ -9,26 +9,28 @@ public class UsuarioModel {
     private String email;
     private char[] senha;
     private String cidade;
-    private String nascimento;
+    private Date nascimento;
     private String sobre;
     private String posicaoEsporte;
     private int numeroCamisa;
     private boolean logado;
     private char sexo;
-    private boolean primeiroAcesso;
-    private static int SEQUENCIAL = 100_000;
+    private int id;
+    
+    
     // Metódos Especiais
 
     public UsuarioModel() {}
     
-    public UsuarioModel(String nome, String email, char[] senha, String cidade, String nascimento, char sexo) {
+    public UsuarioModel(String nome, String email, char[] senha, String cidade, Date nascimento, char sexo) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.cidade = cidade;
         this.nascimento = nascimento;
         this.sexo = sexo;
-        this.SEQUENCIAL++;
+        this.id = BancoDeDados.SEQUENCIAL;
+        BancoDeDados.SEQUENCIAL += 1;
     }
 
     public String getNome() {
@@ -47,7 +49,7 @@ public class UsuarioModel {
         return cidade;
     }
 
-    public String getNascimento() {
+    public Date getNascimento() {
         return nascimento;
     }
 
@@ -67,16 +69,16 @@ public class UsuarioModel {
         return sexo;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
 
     public boolean isLogado() {
         return logado;
-    }
-
-    public boolean isPrimeiroAcesso() {
-        return primeiroAcesso;
     }
 
     public void setNome(String nome) {
@@ -95,7 +97,7 @@ public class UsuarioModel {
         this.cidade = cidade;
     }
 
-    public void setNascimento(String nascimento) {
+    public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
     }
 
@@ -115,17 +117,9 @@ public class UsuarioModel {
         this.logado = logado;
     }
 
-    public void setPrimeiroAcesso(boolean primeiroAcesso) {
-        this.primeiroAcesso = primeiroAcesso;
+    public void setId(int id) {
+        this.id = id;
     }
-
-    public static int getSEQUENCIAL() {
-        return SEQUENCIAL;
-    }
-
-    @Override
-    public String toString() {
-        return "UsuarioModel{" + "nome=" + nome + ", email=" + email + ", senha=" + senha + ", cidade=" + cidade + ", nascimento=" + nascimento + ", sobre=" + sobre + ", posicaoEsporte=" + posicaoEsporte + ", numeroCamisa=" + numeroCamisa + ", logado=" + logado + ", sexo=" + sexo + ", primeiroAcesso=" + primeiroAcesso + '}';
-    }
+    
     
 }

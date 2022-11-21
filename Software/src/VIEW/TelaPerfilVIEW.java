@@ -4,10 +4,10 @@
  */
 package VIEW;
 
-import MODELS.UsuarioModel;
 import REPOSITORY.BancoDeDados;
 import REPOSITORY.UsuarioRepository;
 import SERVICES.UsuarioService;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,17 +20,22 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
      */
     public TelaPerfilVIEW() {
         initComponents();
+        UsuarioRepository repository = new UsuarioRepository();
         
         if (!BancoDeDados.usuarioLogado.isLogado()) {
             lblSair.setVisible(false);
             lblEditar.setVisible(false);
+            lblExcluir.setVisible(false);
             btnSair.setVisible(false);
             btnEditar.setVisible(false);
+            btnExcluir.setVisible(false);
         }
         
         lblNome.setText(BancoDeDados.usuarioLogado.getNome());
-        lblCidade.setText(BancoDeDados.usuarioLogado.getEmail());
-        lblIdUsuario.setText(BancoDeDados.usuarioLogado.getNascimento());
+        lblCidade.setText(BancoDeDados.usuarioLogado.getCidade());
+        lblIdUsuario.setText(String.valueOf(BancoDeDados.usuarioLogado.getId()));
+        lblIdade.setText(String.valueOf(repository.getIdade()));
+        
     }
 
     /**
@@ -48,6 +53,8 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         btnPerfilEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        btnExcluir = new javax.swing.JButton();
+        lblExcluir = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
         lblSair = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
@@ -79,7 +86,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
 
         btnPerfilEditarPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         btnPerfilEditarPerfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnPerfilEditarPerfil.setText("Editar Perfil");
+        btnPerfilEditarPerfil.setText("Perfil");
         btnPerfilEditarPerfil.setBorderPainted(false);
         btnPerfilEditarPerfil.setContentAreaFilled(false);
         btnPerfilEditarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -128,6 +135,24 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
 
+        btnExcluir.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("Excluir");
+        btnExcluir.setBorderPainted(false);
+        btnExcluir.setContentAreaFilled(false);
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnExcluir);
+        btnExcluir.setBounds(300, 170, 120, 20);
+
+        lblExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
+        jPanel3.add(lblExcluir);
+        lblExcluir.setBounds(300, 160, 120, 40);
+
         btnSair.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnSair.setForeground(new java.awt.Color(255, 255, 255));
         btnSair.setText("Sair");
@@ -140,11 +165,11 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnSair);
-        btnSair.setBounds(30, 210, 160, 20);
+        btnSair.setBounds(30, 210, 120, 20);
 
-        lblSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
+        lblSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(lblSair);
-        lblSair.setBounds(30, 200, 160, 40);
+        lblSair.setBounds(30, 200, 120, 40);
 
         btnEditar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,11 +183,11 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnEditar);
-        btnEditar.setBounds(260, 210, 160, 20);
+        btnEditar.setBounds(300, 210, 120, 20);
 
-        lblEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
+        lblEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(lblEditar);
-        lblEditar.setBounds(260, 200, 160, 40);
+        lblEditar.setBounds(300, 200, 120, 40);
 
         lblEsportes.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblEsportes.setForeground(new java.awt.Color(116, 116, 116));
@@ -299,6 +324,20 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        
+        int confirmar = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir sua conta?", "Confirmar Exclusão",JOptionPane.YES_NO_OPTION);
+        if (confirmar == JOptionPane.YES_OPTION) {
+            UsuarioService service = new UsuarioService();
+            service.excluir(BancoDeDados.usuarioLogado);
+            JOptionPane.showMessageDialog(rootPane, "Sua conta foi deletada");
+            TelaInicialVIEW j = new TelaInicialVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
+            
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,6 +378,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPerfilEditarPerfil;
     private javax.swing.JButton btnPerfilEquipe;
     private javax.swing.JButton btnPerfilPesquisar;
@@ -362,6 +402,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblEditar;
     private javax.swing.JLabel lblEsportes;
+    private javax.swing.JLabel lblExcluir;
     private javax.swing.JLabel lblIdUsuario;
     private javax.swing.JLabel lblIdade;
     private javax.swing.JLabel lblNome;
