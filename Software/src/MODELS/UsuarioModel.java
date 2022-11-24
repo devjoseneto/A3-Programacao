@@ -16,6 +16,7 @@ public class UsuarioModel {
     private boolean logado;
     private char sexo;
     private int id;
+    private String[] esporte = new String[5];
     
     
     // Metódos Especiais
@@ -72,13 +73,17 @@ public class UsuarioModel {
     public int getId() {
         return id;
     }
+    
+    public boolean isLogado() {
+        return logado;
+    }
+
+    public String[] getEsporte() {
+        return esporte;
+    }
 
     public void setSexo(char sexo) {
         this.sexo = sexo;
-    }
-
-    public boolean isLogado() {
-        return logado;
     }
 
     public void setNome(String nome) {
@@ -120,6 +125,8 @@ public class UsuarioModel {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
+    public void setEsporte(String[] esporte) {
+        this.esporte = esporte;
+    }
 }

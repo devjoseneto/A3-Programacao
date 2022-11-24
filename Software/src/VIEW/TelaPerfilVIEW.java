@@ -35,7 +35,13 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         lblCidade.setText(BancoDeDados.usuarioLogado.getCidade());
         lblIdUsuario.setText(String.valueOf(BancoDeDados.usuarioLogado.getId()));
         lblIdade.setText(String.valueOf(repository.getIdade()));
-        
+        lblBiografia.setText(BancoDeDados.usuarioLogado.getSobre());
+        String[] esportes = BancoDeDados.usuarioLogado.getEsporte();
+        lblFutsal.setText(esportes[0]);
+        lblFutebol.setText(esportes[1]);
+        lblFutVolei.setText(esportes[2]);
+        lblVolei.setText(esportes[3]);
+        lblBasquete.setText(esportes[4]);
     }
 
     /**
@@ -59,7 +65,11 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         lblSair = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
         lblEditar = new javax.swing.JLabel();
-        lblEsportes = new javax.swing.JLabel();
+        lblVolei = new javax.swing.JLabel();
+        lblBasquete = new javax.swing.JLabel();
+        lblFutVolei = new javax.swing.JLabel();
+        lblFutebol = new javax.swing.JLabel();
+        lblFutsal = new javax.swing.JLabel();
         lblIdade = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -73,6 +83,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        lblBiografia = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -189,10 +200,35 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jPanel3.add(lblEditar);
         lblEditar.setBounds(300, 200, 120, 40);
 
-        lblEsportes.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblEsportes.setForeground(new java.awt.Color(116, 116, 116));
-        jPanel3.add(lblEsportes);
-        lblEsportes.setBounds(30, 70, 390, 20);
+        lblVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblVolei.setForeground(new java.awt.Color(116, 116, 116));
+        lblVolei.setText("Volei");
+        jPanel3.add(lblVolei);
+        lblVolei.setBounds(30, 130, 190, 20);
+
+        lblBasquete.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblBasquete.setForeground(new java.awt.Color(116, 116, 116));
+        lblBasquete.setText("Basquete");
+        jPanel3.add(lblBasquete);
+        lblBasquete.setBounds(30, 150, 190, 20);
+
+        lblFutVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblFutVolei.setForeground(new java.awt.Color(116, 116, 116));
+        lblFutVolei.setText("FutVolei");
+        jPanel3.add(lblFutVolei);
+        lblFutVolei.setBounds(30, 110, 190, 20);
+
+        lblFutebol.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblFutebol.setForeground(new java.awt.Color(116, 116, 116));
+        lblFutebol.setText("Futebol");
+        jPanel3.add(lblFutebol);
+        lblFutebol.setBounds(30, 90, 190, 20);
+
+        lblFutsal.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblFutsal.setForeground(new java.awt.Color(116, 116, 116));
+        lblFutsal.setText("Futsal");
+        jPanel3.add(lblFutsal);
+        lblFutsal.setBounds(30, 70, 190, 20);
 
         lblIdade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblIdade.setForeground(new java.awt.Color(116, 116, 116));
@@ -260,6 +296,14 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 420, 440));
 
         jPanel1.setLayout(null);
+
+        lblBiografia.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblBiografia.setForeground(new java.awt.Color(116, 116, 116));
+        lblBiografia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBiografia.setText("a");
+        lblBiografia.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.add(lblBiografia);
+        lblBiografia.setBounds(180, 60, 250, 100);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boy-profile.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -399,14 +443,19 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblBasquete;
+    private javax.swing.JLabel lblBiografia;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblEditar;
-    private javax.swing.JLabel lblEsportes;
     private javax.swing.JLabel lblExcluir;
+    private javax.swing.JLabel lblFutVolei;
+    private javax.swing.JLabel lblFutebol;
+    private javax.swing.JLabel lblFutsal;
     private javax.swing.JLabel lblIdUsuario;
     private javax.swing.JLabel lblIdade;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSair;
+    private javax.swing.JLabel lblVolei;
     private javax.swing.JPanel menuTopo;
     // End of variables declaration//GEN-END:variables
 }

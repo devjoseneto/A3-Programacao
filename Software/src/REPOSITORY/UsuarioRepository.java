@@ -1,13 +1,18 @@
 package REPOSITORY;
 
 import MODELS.UsuarioModel;
-import VIEW.TelaInicialVIEW;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class UsuarioRepository {
 
     public void cadastrarUser(UsuarioModel usuario) {
+        String[] esporte = new String[5];
+        for (int i = 0; i < 5; i++) {
+            esporte[i] = "";
+        }
+        usuario.setEsporte(esporte);
         usuario.setLogado(true);
         BancoDeDados.listaDeUsuario.add(usuario);
         BancoDeDados.usuarioLogado = usuario;
@@ -26,21 +31,26 @@ public class UsuarioRepository {
         return login;
     }
 
-    public UsuarioModel getUsuario() {
-        UsuarioModel usuario = null;
-        for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
-            if (BancoDeDados.listaDeUsuario.get(i).isLogado()) {
-                usuario = BancoDeDados.listaDeUsuario.get(i);
-            }
-        }
-        return usuario;
-    }
-
     public void excluirUsuario(UsuarioModel usuario) {
         for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
             if (BancoDeDados.listaDeUsuario.get(i).isLogado()) {
                 BancoDeDados.listaDeUsuario.remove(i);
                 BancoDeDados.usuarioLogado = new UsuarioModel();
+            }
+        }
+    }
+    
+    public void alterarDados(String nome, String email, String cidade, Date nascimento, char sexo, String sobre, String[] esportes) {
+        for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
+            if (BancoDeDados.listaDeUsuario.get(i).getId() == BancoDeDados.usuarioLogado.getId()) {
+                BancoDeDados.usuarioLogado.setNome(nome);
+                BancoDeDados.usuarioLogado.setEmail(email);
+                BancoDeDados.usuarioLogado.setCidade(cidade);
+                BancoDeDados.usuarioLogado.setNascimento(nascimento);
+                BancoDeDados.usuarioLogado.setSexo(sexo);
+                BancoDeDados.usuarioLogado.setSobre(sobre);
+                BancoDeDados.usuarioLogado.setEsporte(esportes);
+                BancoDeDados.listaDeUsuario.set(i, BancoDeDados.usuarioLogado);
             }
         }
     }
@@ -58,8 +68,7 @@ public class UsuarioRepository {
 
         // Data do nascimento.
         GregorianCalendar nascimento = new GregorianCalendar();
-        int anoNasc = 0,
-                mesNasc = 0, diaNasc = 0;
+        int anoNasc = 0, mesNasc = 0, diaNasc = 0;
 
         // Idade.
         int idade = 0;
@@ -67,13 +76,13 @@ public class UsuarioRepository {
         if (BancoDeDados.usuarioLogado.getNascimento() != null) {
             nascimento.setTime(BancoDeDados.usuarioLogado.getNascimento());
 
-            ano = calendar.get(calendar.YEAR);
-            mes = calendar.get(calendar.MONTH) + 1;
-            dia = calendar.get(calendar.DAY_OF_MONTH);
+            ano = calendar.get(GregorianCalendar.YEAR);
+            mes = calendar.get(GregorianCalendar.MONTH) + 1;
+            dia = calendar.get(GregorianCalendar.DAY_OF_MONTH);
 
-            anoNasc = nascimento.get(calendar.YEAR);
-            mesNasc = nascimento.get(calendar.MONTH) + 1;
-            diaNasc = nascimento.get(calendar.DAY_OF_MONTH);
+            anoNasc = nascimento.get(GregorianCalendar.YEAR);
+            mesNasc = nascimento.get(GregorianCalendar.MONTH) + 1;
+            diaNasc = nascimento.get(GregorianCalendar.DAY_OF_MONTH);
 
             idade = ano - anoNasc;
 

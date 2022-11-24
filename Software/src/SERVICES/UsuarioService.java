@@ -18,6 +18,11 @@ public class UsuarioService {
         return login;
     }
     
+    public void alterarDados(String nome, String email, String cidade, Date nascimento, char sexo, String sobre, String[] esportes) {
+        UsuarioRepository repository = new UsuarioRepository();
+        repository.alterarDados(nome, email, cidade, nascimento, sexo, sobre, esportes);
+    }
+    
     public void excluir(UsuarioModel usuario) {
         UsuarioRepository repository = new UsuarioRepository();
         repository.excluirUsuario(usuario);
