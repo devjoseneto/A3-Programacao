@@ -4,8 +4,6 @@
  */
 package VIEW;
 
-import REPOSITORY.BancoDeDados;
-import REPOSITORY.UsuarioRepository;
 import SERVICES.UsuarioService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -236,7 +234,8 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMudarParaLoginActionPerformed
 
     private void btnCadastrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarLoginActionPerformed
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
+        SimpleDateFormat formatoBR = new SimpleDateFormat("dd/MM/yyyy"); 
+        SimpleDateFormat formatoEUA = new SimpleDateFormat("yyyy/MM/dd"); 
         
         String nome = txtNome.getText();
         String email = txtEmail.getText();
@@ -245,13 +244,14 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         
         Date nascimento_ = null;
         try {
-            nascimento_ = formato.parse(txtDataDeNascimento.getText());
+            nascimento_ = formatoBR.parse(txtDataDeNascimento.getText());
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(rootPane, "Data de nascimento invalida!");
             Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        String nascimento = formato.format(nascimento_);
+        String nascimento = formatoEUA.format(nascimento_);
+        System.out.println(nascimento);
         
         char sexo = 0;
         boolean verificar = false;

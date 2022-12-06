@@ -12,7 +12,6 @@ public class UsuarioModel {
     private String nascimento;
     private String descricao;
     private String posicaoEsporte;
-    private int numeroCamisa;
     private boolean logado;
     private char sexo;
     private String[] esporte = new String[5];
@@ -63,10 +62,6 @@ public class UsuarioModel {
         return posicaoEsporte;
     }
 
-    public int getNumeroCamisa() {
-        return numeroCamisa;
-    }
-
     public boolean isLogado() {
         return logado;
     }
@@ -109,10 +104,6 @@ public class UsuarioModel {
 
     public void setPosicaoEsporte(String posicaoEsporte) {
         this.posicaoEsporte = posicaoEsporte;
-    }
-
-    public void setNumeroCamisa(int numeroCamisa) {
-        this.numeroCamisa = numeroCamisa;
     }
 
     public void setLogado(boolean logado) {

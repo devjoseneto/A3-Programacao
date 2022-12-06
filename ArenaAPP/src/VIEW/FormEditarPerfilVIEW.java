@@ -447,7 +447,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         String esportes[] = {futsal, futebol, futvolei, volei, basquete};
         
         UsuarioService service = new UsuarioService();
-        service.alterarDados(nome, email, cidade, nascimento, sexo, sobre, esportes);
+        //service.alterarDados(nome, email, cidade, nascimento, sexo, sobre, esportes);
         
         TelaPerfilVIEW j = new TelaPerfilVIEW();
         this.dispose();

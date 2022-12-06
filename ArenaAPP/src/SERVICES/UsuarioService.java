@@ -4,10 +4,7 @@ import java.sql.ResultSet;
 import MODELS.UsuarioModel;
 import REPOSITORY.BancoDeDados;
 import REPOSITORY.UsuarioRepository;
-import VIEW.FormLoginVIEW;
-import VIEW.TelaInicialVIEW;
 import java.sql.SQLException;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class UsuarioService {

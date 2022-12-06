@@ -32,7 +32,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         btnEditarEquipeEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnEditarPerfil4 = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         btnEditarPerfil1 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
@@ -130,19 +130,19 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
 
-        btnEditarPerfil4.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnEditarPerfil4.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarPerfil4.setText("Salvar");
-        btnEditarPerfil4.setBorderPainted(false);
-        btnEditarPerfil4.setContentAreaFilled(false);
-        btnEditarPerfil4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditarPerfil4.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvar.setText("Salvar");
+        btnSalvar.setBorderPainted(false);
+        btnSalvar.setContentAreaFilled(false);
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPerfil4ActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEditarPerfil4);
-        btnEditarPerfil4.setBounds(50, 210, 120, 20);
+        jPanel3.add(btnSalvar);
+        btnSalvar.setBounds(50, 210, 120, 20);
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel24);
@@ -178,7 +178,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnEditarPerfil5);
-        btnEditarPerfil5.setBounds(180, 210, 122, 20);
+        btnEditarPerfil5.setBounds(180, 210, 121, 20);
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel25);
@@ -500,9 +500,13 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPerfil5ActionPerformed
 
-    private void btnEditarPerfil4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfil4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarPerfil4ActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String nome = txtNome.getText();
+        String cidade = String.valueOf(cbCidade.getSelectedItem());
+        String esporte = String.valueOf(cbEsporte.getSelectedItem());
+        
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed
         TelaPerfilVIEW j = new TelaPerfilVIEW();
@@ -577,9 +581,9 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarEquipeEquipe;
     private javax.swing.JButton btnEditarEquipePerfil;
     private javax.swing.JButton btnEditarPerfil1;
-    private javax.swing.JButton btnEditarPerfil4;
     private javax.swing.JButton btnEditarPerfil5;
     private javax.swing.JButton btnEditarPesquisar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JComboBox<String> cbEsporte;
     private javax.swing.JCheckBox checkMasc;

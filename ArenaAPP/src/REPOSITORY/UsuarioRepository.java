@@ -145,10 +145,4 @@ public class UsuarioRepository {
         }
         return (idade);
     }
-    
-    public Date convertToDate(String receivedDate) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = formatter.parse(receivedDate);
-        return date;
-    }
 }

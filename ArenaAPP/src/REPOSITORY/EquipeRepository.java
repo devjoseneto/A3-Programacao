@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class EquipeRepository {
     ArrayList<EquipeModel> listaDeEquipe = new ArrayList<EquipeModel>();
     
-     public void criarEquipe() {
+     public void cadastrarEquipe() {
          
      }
      
