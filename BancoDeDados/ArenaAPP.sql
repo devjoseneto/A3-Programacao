@@ -5,6 +5,7 @@ CREATE TABLE usuario (
   id_usuario int NOT NULL AUTO_INCREMENT,
   email varchar(255) NOT NULL,
   nome varchar(255) NOT NULL,
+<<<<<<< Updated upstream
   dataDeNascimento date NOT NULL,
   senha varchar(255) NOT NULL,
   sexo enum('M', 'F') NOT NULL,
@@ -14,6 +15,11 @@ CREATE TABLE usuario (
   numero_camisa TINYINT UNIQUE NOT NULL,
   logado TINYINT(1) NOT NULL,
   cod_recuperarSenha int NOT NULL,
+=======
+  dataDeNascimento datetime NOT NULL,
+  senha varchar(255) NOT NULL,
+   cod_recuperarSenha int NOT NULL,
+>>>>>>> Stashed changes
   horaGerarCodigo datetime NOT NULL,
   PRIMARY KEY (id_usuario)
 );
@@ -57,4 +63,8 @@ CREATE TABLE listadejogadores (
   KEY id_equipe (id_equipe),
   CONSTRAINT listadejogadores_ibfk_1 FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
   CONSTRAINT listadejogadores_ibfk_2 FOREIGN KEY (id_equipe) REFERENCES equipe (id_equipe)
+<<<<<<< Updated upstream
 )
+=======
+);
+>>>>>>> Stashed changes
