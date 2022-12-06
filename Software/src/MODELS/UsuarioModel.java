@@ -1,6 +1,7 @@
 package MODELS;
 
 import REPOSITORY.BancoDeDados;
+import java.io.Reader;
 import java.util.Date;
 
 public class UsuarioModel {
@@ -50,7 +51,7 @@ public class UsuarioModel {
         return cidade;
     }
 
-    public Date getNascimento() {
+    public Date getDataDeNascimento() {
         return nascimento;
     }
 
@@ -102,7 +103,7 @@ public class UsuarioModel {
         this.cidade = cidade;
     }
 
-    public void setNascimento(Date nascimento) {
+    public void setDataDeNascimento(Date nascimento) {
         this.nascimento = nascimento;
     }
 
@@ -128,5 +129,13 @@ public class UsuarioModel {
 
     public void setEsporte(String[] esporte) {
         this.esporte = esporte;
+    }
+
+    public Reader setSenha() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Reader setSexo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

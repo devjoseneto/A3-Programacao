@@ -1,21 +1,52 @@
 package REPOSITORY;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import MODELS.UsuarioModel;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class UsuarioRepository {
-
-    public void cadastrarUser(UsuarioModel usuario) {
-        String[] esporte = new String[5];
-        for (int i = 0; i < 5; i++) {
+    
+    Connection conn;
+    
+    public void cadastrarUsuario(UsuarioModel usuario) {
+       
+        try {
+            String sql = "insert into usuario (email, nome, dataDeNascimento, senha, sexo, cidade) values(?,?,?,?,?,?)";
+            
+            conn = new ConexaoBD().conectaDB();
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            stmt.setString(1, usuario.getEmail());
+            stmt.setString(2, usuario.getNome());
+            stmt.setDate(3, (java.sql.Date) usuario.getDataDeNascimento());
+            stmt.setCharacterStream(4, usuario.setSenha());
+            stmt.setCharacterStream(5, usuario.setSexo());
+            stmt.setString(6, usuario.getCidade());
+            
+            stmt.execute();
+            stmt.close();
+            
+            
+            /*String[] esporte = new String[5];
+            for (int i = 0; i < 5; i++) {
             esporte[i] = "";
+            }
+            usuario.setEsporte(esporte);
+            usuario.setLogado(true);
+            BancoDeDados.listaDeUsuario.add(usuario);
+            BancoDeDados.usuarioLogado = usuario;*/
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex);
+            Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
-        usuario.setEsporte(esporte);
-        usuario.setLogado(true);
-        BancoDeDados.listaDeUsuario.add(usuario);
-        BancoDeDados.usuarioLogado = usuario;
     }
 
     public boolean efetuarLogin(String email, char[] senha) {
@@ -46,7 +77,7 @@ public class UsuarioRepository {
                 BancoDeDados.usuarioLogado.setNome(nome);
                 BancoDeDados.usuarioLogado.setEmail(email);
                 BancoDeDados.usuarioLogado.setCidade(cidade);
-                BancoDeDados.usuarioLogado.setNascimento(nascimento);
+                BancoDeDados.usuarioLogado.setDataDeNascimento(nascimento);
                 BancoDeDados.usuarioLogado.setSexo(sexo);
                 BancoDeDados.usuarioLogado.setSobre(sobre);
                 BancoDeDados.usuarioLogado.setEsporte(esportes);
@@ -73,8 +104,8 @@ public class UsuarioRepository {
         // Idade.
         int idade = 0;
 
-        if (BancoDeDados.usuarioLogado.getNascimento() != null) {
-            nascimento.setTime(BancoDeDados.usuarioLogado.getNascimento());
+        if (BancoDeDados.usuarioLogado.getDataDeNascimento() != null) {
+            nascimento.setTime(BancoDeDados.usuarioLogado.getDataDeNascimento());
 
             ano = calendar.get(GregorianCalendar.YEAR);
             mes = calendar.get(GregorianCalendar.MONTH) + 1;

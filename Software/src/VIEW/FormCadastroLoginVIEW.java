@@ -270,6 +270,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
             this.dispose();
             j.setVisible(true);
         }
+        
     }//GEN-LAST:event_btnCadastrarLoginActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -277,7 +278,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-
+        
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed

@@ -31,7 +31,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         
         txtNome.setText(BancoDeDados.usuarioLogado.getNome());
         txtEmail.setText(BancoDeDados.usuarioLogado.getEmail());
-        txtDataDeNascimento.setText(formato.format(BancoDeDados.usuarioLogado.getNascimento()));
+        txtDataDeNascimento.setText(formato.format(BancoDeDados.usuarioLogado.getDataDeNascimento()));
         cbCidade.setSelectedItem(BancoDeDados.usuarioLogado.getCidade());
         txtBiografia.setText(BancoDeDados.usuarioLogado.getSobre());
         String esportes[] = BancoDeDados.usuarioLogado.getEsporte();
