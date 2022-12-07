@@ -4,6 +4,9 @@
  */
 package VIEW;
 
+import MODELS.EquipeModel;
+import MODELS.UsuarioModel;
+
 /**
  *
  * @author netoi
@@ -548,7 +551,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         String descricao = txtDesc.getText();
         String rua = txtRua.getText();
         String bairro = txtBairro.getText();
-        String numero = txtNum.getText();
+        String num = txtNum.getText();
         String cidade = String.valueOf(cbCidade.getSelectedItem());
         String dom, seg, ter, qua, qui, sex, sab;
         if (checkDom.isSelected()) dom = "1";
@@ -565,6 +568,8 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         else sex = "0";
         if (checkSab.isSelected()) sab = "1";
         else dom = "0";
+        
+        EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, cidade, rua, bairro, num, esporte);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed

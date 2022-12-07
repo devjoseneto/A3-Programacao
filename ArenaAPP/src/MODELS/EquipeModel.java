@@ -26,7 +26,7 @@ public class EquipeModel {
     private String linkWhatsapp;
     private ArrayList<UsuarioModel> Jogadores = new ArrayList<UsuarioModel>();
 
-    public EquipeModel(String nome, UsuarioModel dono, String descricao, String dom, String seg, String ter, String qua, String qui, String sex, String cidade, String rua, String bairro, String num, String esporte) {
+    public EquipeModel(String nome, String descricao, String dom, String seg, String ter, String qua, String qui, String sex, String cidade, String rua, String bairro, String num, String esporte) {
         this.nome = nome;
         this.dono = dono;
         this.descricao = descricao;

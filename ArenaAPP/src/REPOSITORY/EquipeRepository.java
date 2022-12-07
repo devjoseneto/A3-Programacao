@@ -27,7 +27,7 @@ public class EquipeRepository {
                 pstm.execute();
                 pstm.close();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar equipe");
+                JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar equipe");
                 Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -56,7 +56,7 @@ public class EquipeRepository {
             ResultSet rs = pstm.executeQuery();
             return rs;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
+            JOptionPane.showMessageDialog(null, "EquipeRepository: " + ex);
             return null;
         }
     }
