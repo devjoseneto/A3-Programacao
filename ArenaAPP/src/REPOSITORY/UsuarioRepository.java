@@ -17,7 +17,8 @@ import javax.swing.JOptionPane;
 public class UsuarioRepository {
 
     Connection conn;
-
+    public static UsuarioModel usuarioLogado = new UsuarioModel();
+    
     public void cadastrarUsuario(UsuarioModel usuario) throws SQLException {
         ResultSet rsEfetuarLogin = this.verificarSeExiste(usuario);
 
@@ -38,6 +39,8 @@ public class UsuarioRepository {
 
                 pstm.execute();
                 pstm.close();
+                usuarioLogado = usuario;
+                
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar usuario");
                 Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,6 +58,7 @@ public class UsuarioRepository {
             pstm.setString(2, usuario.getSenha());
 
             ResultSet rs = pstm.executeQuery();
+            usuarioLogado = usuario;
             return rs;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
@@ -63,31 +67,20 @@ public class UsuarioRepository {
     }
 
     public void excluirUsuario(UsuarioModel usuario) {
-        for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
-            if (BancoDeDados.listaDeUsuario.get(i).isLogado()) {
-                BancoDeDados.listaDeUsuario.remove(i);
-                BancoDeDados.usuarioLogado = new UsuarioModel();
-            }
+        /*for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
+        if (BancoDeDados.listaDeUsuario.get(i).isLogado()) {
+        BancoDeDados.listaDeUsuario.remove(i);
+        BancoDeDados.usuarioLogado = new UsuarioModel();
         }
+        }*/
     }
 
     public void alterarDados(String nome, String email, String cidade, String nascimento, char sexo, String descricao, String[] esportes) {
-        for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
-            if (BancoDeDados.listaDeUsuario.get(i).getIdUsuario() == BancoDeDados.usuarioLogado.getIdUsuario()) {
-                BancoDeDados.usuarioLogado.setNome(nome);
-                BancoDeDados.usuarioLogado.setEmail(email);
-                BancoDeDados.usuarioLogado.setCidade(cidade);
-                BancoDeDados.usuarioLogado.setNascimento(nascimento);
-                BancoDeDados.usuarioLogado.setSexo(sexo);
-                BancoDeDados.usuarioLogado.setDescricao(descricao);
-                BancoDeDados.usuarioLogado.setEsporte(esportes);
-                BancoDeDados.listaDeUsuario.set(i, BancoDeDados.usuarioLogado);
-            }
-        }
+        
     }
 
     public void sair(UsuarioModel usuario) {
-        BancoDeDados.usuarioLogado = new UsuarioModel();
+        usuarioLogado = new UsuarioModel();
     }
 
     public ResultSet verificarSeExiste(UsuarioModel usuario) {
@@ -110,7 +103,7 @@ public class UsuarioRepository {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date nascimento_ = null;
         try {
-            nascimento_ = formato.parse(BancoDeDados.usuarioLogado.getNascimento());
+            nascimento_ = formato.parse(usuarioLogado.getNascimento());
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Data de nascimento invalida!");
             Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);

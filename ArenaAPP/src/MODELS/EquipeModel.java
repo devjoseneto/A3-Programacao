@@ -9,17 +9,39 @@ public class EquipeModel {
     private UsuarioModel dono;
     private UsuarioModel administrador;
     private String descricao;
-    private String diasDePratica;
+    private String dom;
+    private String seg;
+    private String ter;
+    private String qua;
+    private String qui;
+    private String sex;
+    private String sab;
     private String cidade;
-    private String endereco;
+    private String rua;
+    private String bairro;
+    private String num;
     private String esporte;
     private int numeroDeAtletas;
     private String linkInstagram;
     private String linkWhatsapp;
-    private EquipeModel equipeUser;
     private ArrayList<UsuarioModel> Jogadores = new ArrayList<UsuarioModel>();
 
-    // Metódos Especiais
+    public EquipeModel(String nome, UsuarioModel dono, String descricao, String dom, String seg, String ter, String qua, String qui, String sex, String cidade, String rua, String bairro, String num, String esporte) {
+        this.nome = nome;
+        this.dono = dono;
+        this.descricao = descricao;
+        this.dom = dom;
+        this.seg = seg;
+        this.ter = ter;
+        this.qua = qua;
+        this.qui = qui;
+        this.sex = sex;
+        this.cidade = cidade;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.num = num;
+        this.esporte = esporte;
+    }
 
     public int getIdEquipe() {
         return idEquipe;
@@ -41,16 +63,48 @@ public class EquipeModel {
         return descricao;
     }
 
-    public String getDiasDePratica() {
-        return diasDePratica;
+    public String getDom() {
+        return dom;
+    }
+
+    public String getSeg() {
+        return seg;
+    }
+
+    public String getTer() {
+        return ter;
+    }
+
+    public String getQua() {
+        return qua;
+    }
+
+    public String getQui() {
+        return qui;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getSab() {
+        return sab;
     }
 
     public String getCidade() {
         return cidade;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getRua() {
+        return rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getNum() {
+        return num;
     }
 
     public String getEsporte() {
@@ -69,16 +123,8 @@ public class EquipeModel {
         return linkWhatsapp;
     }
 
-    public EquipeModel getEquipeUser() {
-        return equipeUser;
-    }
-
     public ArrayList<UsuarioModel> getJogadores() {
         return Jogadores;
-    }
-
-    public void setIdEquipe(int idEquipe) {
-        this.idEquipe = idEquipe;
     }
 
     public void setNome(String nome) {
@@ -97,16 +143,48 @@ public class EquipeModel {
         this.descricao = descricao;
     }
 
-    public void setDiasDePratica(String diasDePratica) {
-        this.diasDePratica = diasDePratica;
+    public void setDom(String dom) {
+        this.dom = dom;
+    }
+
+    public void setSeg(String seg) {
+        this.seg = seg;
+    }
+
+    public void setTer(String ter) {
+        this.ter = ter;
+    }
+
+    public void setQua(String qua) {
+        this.qua = qua;
+    }
+
+    public void setQui(String qui) {
+        this.qui = qui;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setSab(String sab) {
+        this.sab = sab;
     }
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
     }
 
     public void setEsporte(String esporte) {
@@ -125,14 +203,8 @@ public class EquipeModel {
         this.linkWhatsapp = linkWhatsapp;
     }
 
-    public void setEquipeUser(EquipeModel equipeUser) {
-        this.equipeUser = equipeUser;
-    }
-
     public void setJogadores(ArrayList<UsuarioModel> Jogadores) {
         this.Jogadores = Jogadores;
     }
-    
-    
 
 }

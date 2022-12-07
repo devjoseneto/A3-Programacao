@@ -5,6 +5,7 @@
 package VIEW;
 
 import SERVICES.UsuarioService;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -267,7 +268,12 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
         }
 
         UsuarioService service = new UsuarioService();
-        service.cadastrarUsuario(nome, email, senha, cidade, nascimento, sexo);
+        try {
+            service.cadastrarUsuario(nome, email, senha, cidade, nascimento, sexo);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "FormCadastroLoginVIEW: " + ex);
+            Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
             FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
             this.dispose();

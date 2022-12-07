@@ -22,7 +22,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         initComponents();
         UsuarioRepository repository = new UsuarioRepository();
         
-        if (!BancoDeDados.usuarioLogado.isLogado()) {
+        if (!UsuarioRepository.usuarioLogado.isLogado()) {
             lblSair.setVisible(false);
             lblEditar.setVisible(false);
             lblExcluir.setVisible(false);
@@ -31,12 +31,12 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
             btnExcluir.setVisible(false);
         }
         
-        lblNome.setText(BancoDeDados.usuarioLogado.getNome());
-        lblCidade.setText(BancoDeDados.usuarioLogado.getCidade());
-        lblIdUsuario.setText(String.valueOf(BancoDeDados.usuarioLogado.getIdUsuario()));
+        lblNome.setText(UsuarioRepository.usuarioLogado.getNome());
+        lblCidade.setText(UsuarioRepository.usuarioLogado.getCidade());
+        lblIdUsuario.setText(String.valueOf(UsuarioRepository.usuarioLogado.getIdUsuario()));
         lblIdade.setText(String.valueOf(repository.getIdade()));
-        lblBiografia.setText(BancoDeDados.usuarioLogado.getDescricao());
-        String[] esportes = BancoDeDados.usuarioLogado.getEsporte();
+        lblBiografia.setText(UsuarioRepository.usuarioLogado.getDescricao());
+        String[] esportes = UsuarioRepository.usuarioLogado.getEsporte();
         lblFutsal.setText(esportes[0]);
         lblFutebol.setText(esportes[1]);
         lblFutVolei.setText(esportes[2]);
@@ -54,6 +54,8 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         menuTopo = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        Logo = new javax.swing.JLabel();
         btnPerfilEditarPerfil = new javax.swing.JButton();
         btnPerfilPesquisar = new javax.swing.JButton();
         btnPerfilEquipe = new javax.swing.JButton();
@@ -94,6 +96,26 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menuTopo.setLayout(null);
+
+        btnHome.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnHome);
+        btnHome.setBounds(30, 10, 100, 30);
+
+        Logo.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        Logo.setForeground(new java.awt.Color(255, 255, 255));
+        Logo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Logo.setText("ArenaAPP");
+        menuTopo.add(Logo);
+        Logo.setBounds(40, 10, 110, 30);
 
         btnPerfilEditarPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         btnPerfilEditarPerfil.setForeground(new java.awt.Color(255, 255, 255));
@@ -361,7 +383,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
 
         UsuarioService service = new UsuarioService();
-        service.sair(BancoDeDados.usuarioLogado);
+        service.sair(UsuarioRepository.usuarioLogado);
         TelaInicialVIEW j = new TelaInicialVIEW();
         this.dispose();
         j.setVisible(true);
@@ -373,7 +395,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         int confirmar = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir sua conta?", "Confirmar Exclusão",JOptionPane.YES_NO_OPTION);
         if (confirmar == JOptionPane.YES_OPTION) {
             UsuarioService service = new UsuarioService();
-            service.excluir(BancoDeDados.usuarioLogado);
+            service.excluir(UsuarioRepository.usuarioLogado);
             JOptionPane.showMessageDialog(rootPane, "Sua conta foi deletada");
             TelaInicialVIEW j = new TelaInicialVIEW();
             this.dispose();
@@ -381,6 +403,10 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,8 +447,10 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Logo;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPerfilEditarPerfil;
     private javax.swing.JButton btnPerfilEquipe;
     private javax.swing.JButton btnPerfilPesquisar;

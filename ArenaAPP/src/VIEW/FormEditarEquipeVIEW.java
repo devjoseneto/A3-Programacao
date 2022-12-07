@@ -27,6 +27,9 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         menuTopo = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        Logo = new javax.swing.JLabel();
+        btnEditarPesquisar1 = new javax.swing.JButton();
         btnEditarEquipePerfil = new javax.swing.JButton();
         btnEditarPesquisar = new javax.swing.JButton();
         btnEditarEquipeEquipe = new javax.swing.JButton();
@@ -38,25 +41,31 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         btnEditarPerfil5 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
-        checkMasc1 = new javax.swing.JCheckBox();
-        checkMasc2 = new javax.swing.JCheckBox();
-        checkMasc3 = new javax.swing.JCheckBox();
-        checkMasc4 = new javax.swing.JCheckBox();
-        checkMasc5 = new javax.swing.JCheckBox();
-        checkMasc6 = new javax.swing.JCheckBox();
-        checkMasc = new javax.swing.JCheckBox();
+        checkSeg = new javax.swing.JCheckBox();
+        checkTer = new javax.swing.JCheckBox();
+        checkQua = new javax.swing.JCheckBox();
+        checkQui = new javax.swing.JCheckBox();
+        checkSex = new javax.swing.JCheckBox();
+        checkSab = new javax.swing.JCheckBox();
+        checkDom = new javax.swing.JCheckBox();
+        lblCidade5 = new javax.swing.JLabel();
+        lblCidade6 = new javax.swing.JLabel();
+        txtNum = new javax.swing.JTextField();
+        txtBairro = new javax.swing.JTextField();
         lblCidade2 = new javax.swing.JLabel();
         cbEsporte = new javax.swing.JComboBox<>();
         lblCidade1 = new javax.swing.JLabel();
         cbCidade = new javax.swing.JComboBox<>();
         lblNome = new javax.swing.JLabel();
-        txtLocal = new javax.swing.JTextField();
+        txtRua = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
         lblIdade = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblNome1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDesc = new javax.swing.JTextArea();
+        lblNome2 = new javax.swing.JLabel();
+        lblCidade3 = new javax.swing.JLabel();
+        lblCidade4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -65,19 +74,46 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        btnAddFoto = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menuTopo.setLayout(null);
+
+        btnHome.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnHome);
+        btnHome.setBounds(30, 10, 100, 30);
+
+        Logo.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        Logo.setForeground(new java.awt.Color(255, 255, 255));
+        Logo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Logo.setText("ArenaAPP");
+        menuTopo.add(Logo);
+        Logo.setBounds(40, 10, 110, 30);
+
+        btnEditarPesquisar1.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnEditarPesquisar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPesquisar1.setText("Pesquisar");
+        btnEditarPesquisar1.setBorderPainted(false);
+        btnEditarPesquisar1.setContentAreaFilled(false);
+        btnEditarPesquisar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarPesquisar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPesquisar1ActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnEditarPesquisar1);
+        btnEditarPesquisar1.setBounds(540, 10, 130, 30);
 
         btnEditarEquipePerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         btnEditarEquipePerfil.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,6 +164,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         getContentPane().add(menuTopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 50));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setForeground(new java.awt.Color(180, 180, 180));
         jPanel3.setLayout(null);
 
         btnSalvar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
@@ -142,11 +179,11 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnSalvar);
-        btnSalvar.setBounds(50, 210, 120, 20);
+        btnSalvar.setBounds(50, 400, 120, 20);
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel24);
-        jLabel24.setBounds(50, 200, 120, 40);
+        jLabel24.setBounds(50, 390, 120, 40);
 
         btnEditarPerfil1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnEditarPerfil1.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,11 +197,11 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnEditarPerfil1);
-        btnEditarPerfil1.setBounds(310, 210, 120, 20);
+        btnEditarPerfil1.setBounds(310, 400, 120, 20);
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel21);
-        jLabel21.setBounds(310, 200, 120, 40);
+        jLabel21.setBounds(310, 390, 120, 40);
 
         btnEditarPerfil5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnEditarPerfil5.setForeground(new java.awt.Color(255, 255, 255));
@@ -178,102 +215,132 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnEditarPerfil5);
-        btnEditarPerfil5.setBounds(180, 210, 121, 20);
+        btnEditarPerfil5.setBounds(180, 400, 124, 20);
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel25);
-        jLabel25.setBounds(180, 200, 120, 40);
+        jLabel25.setBounds(180, 390, 120, 40);
 
-        checkMasc1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc1.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc1.setText("Seg");
-        checkMasc1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc1.addActionListener(new java.awt.event.ActionListener() {
+        checkSeg.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkSeg.setForeground(new java.awt.Color(116, 116, 116));
+        checkSeg.setText("Seg");
+        checkSeg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkSeg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc1ActionPerformed(evt);
+                checkSegActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc1);
-        checkMasc1.setBounds(80, 90, 50, 19);
+        jPanel3.add(checkSeg);
+        checkSeg.setBounds(80, 200, 50, 19);
 
-        checkMasc2.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc2.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc2.setText("Ter");
-        checkMasc2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc2.addActionListener(new java.awt.event.ActionListener() {
+        checkTer.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkTer.setForeground(new java.awt.Color(116, 116, 116));
+        checkTer.setText("Ter");
+        checkTer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkTer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc2ActionPerformed(evt);
+                checkTerActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc2);
-        checkMasc2.setBounds(130, 90, 50, 19);
+        jPanel3.add(checkTer);
+        checkTer.setBounds(130, 200, 50, 19);
 
-        checkMasc3.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc3.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc3.setText("Qua");
-        checkMasc3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc3.addActionListener(new java.awt.event.ActionListener() {
+        checkQua.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkQua.setForeground(new java.awt.Color(116, 116, 116));
+        checkQua.setText("Qua");
+        checkQua.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkQua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc3ActionPerformed(evt);
+                checkQuaActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc3);
-        checkMasc3.setBounds(180, 90, 50, 19);
+        jPanel3.add(checkQua);
+        checkQua.setBounds(180, 200, 50, 19);
 
-        checkMasc4.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc4.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc4.setText("Qui");
-        checkMasc4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc4.addActionListener(new java.awt.event.ActionListener() {
+        checkQui.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkQui.setForeground(new java.awt.Color(116, 116, 116));
+        checkQui.setText("Qui");
+        checkQui.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkQui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc4ActionPerformed(evt);
+                checkQuiActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc4);
-        checkMasc4.setBounds(20, 110, 60, 19);
+        jPanel3.add(checkQui);
+        checkQui.setBounds(230, 200, 50, 19);
 
-        checkMasc5.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc5.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc5.setText("Sex");
-        checkMasc5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc5.addActionListener(new java.awt.event.ActionListener() {
+        checkSex.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkSex.setForeground(new java.awt.Color(116, 116, 116));
+        checkSex.setText("Sex");
+        checkSex.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkSex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc5ActionPerformed(evt);
+                checkSexActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc5);
-        checkMasc5.setBounds(80, 110, 50, 19);
+        jPanel3.add(checkSex);
+        checkSex.setBounds(280, 200, 50, 19);
 
-        checkMasc6.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc6.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc6.setText("Sab");
-        checkMasc6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc6.addActionListener(new java.awt.event.ActionListener() {
+        checkSab.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkSab.setForeground(new java.awt.Color(116, 116, 116));
+        checkSab.setText("Sab");
+        checkSab.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkSab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc6ActionPerformed(evt);
+                checkSabActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc6);
-        checkMasc6.setBounds(130, 110, 70, 19);
+        jPanel3.add(checkSab);
+        checkSab.setBounds(330, 200, 70, 19);
 
-        checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc.setText("Dom");
-        checkMasc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc.addActionListener(new java.awt.event.ActionListener() {
+        checkDom.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkDom.setForeground(new java.awt.Color(116, 116, 116));
+        checkDom.setText("Dom");
+        checkDom.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkDom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMascActionPerformed(evt);
+                checkDomActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc);
-        checkMasc.setBounds(20, 90, 60, 19);
+        jPanel3.add(checkDom);
+        checkDom.setBounds(20, 200, 60, 19);
 
-        lblCidade2.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblCidade5.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblCidade5.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade5.setText("Número:");
+        jPanel3.add(lblCidade5);
+        lblCidade5.setBounds(340, 260, 50, 20);
+
+        lblCidade6.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblCidade6.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade6.setText("Bairro:");
+        jPanel3.add(lblCidade6);
+        lblCidade6.setBounds(20, 320, 60, 20);
+
+        txtNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtNum);
+        txtNum.setBounds(340, 280, 64, 30);
+
+        txtBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBairroActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtBairro);
+        txtBairro.setBounds(20, 340, 230, 30);
+
+        lblCidade2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         lblCidade2.setForeground(new java.awt.Color(116, 116, 116));
         lblCidade2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCidade2.setText("Esporte");
+        lblCidade2.setText("Endereço");
         jPanel3.add(lblCidade2);
-        lblCidade2.setBounds(260, 70, 50, 20);
+        lblCidade2.setBounds(20, 240, 70, 20);
 
         cbEsporte.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         cbEsporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Futebol", "Futsal", "FutVolei", "Volei", "Basquete" }));
@@ -283,14 +350,14 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(cbEsporte);
-        cbEsporte.setBounds(260, 90, 150, 30);
+        cbEsporte.setBounds(260, 30, 150, 30);
 
         lblCidade1.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade1.setForeground(new java.awt.Color(116, 116, 116));
         lblCidade1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCidade1.setText("Cidade");
         jPanel3.add(lblCidade1);
-        lblCidade1.setBounds(260, 10, 50, 20);
+        lblCidade1.setBounds(260, 320, 50, 20);
 
         cbCidade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         cbCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
@@ -300,22 +367,22 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(cbCidade);
-        cbCidade.setBounds(260, 30, 150, 30);
+        cbCidade.setBounds(260, 340, 150, 30);
 
         lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblNome.setForeground(new java.awt.Color(116, 116, 116));
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNome.setText("Nome");
+        lblNome.setText("Dias de pratica");
         jPanel3.add(lblNome);
-        lblNome.setBounds(20, 10, 100, 20);
+        lblNome.setBounds(20, 180, 100, 20);
 
-        txtLocal.addActionListener(new java.awt.event.ActionListener() {
+        txtRua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLocalActionPerformed(evt);
+                txtRuaActionPerformed(evt);
             }
         });
-        jPanel3.add(txtLocal);
-        txtLocal.setBounds(20, 160, 390, 30);
+        jPanel3.add(txtRua);
+        txtRua.setBounds(20, 280, 310, 30);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,32 +392,47 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel3.add(txtNome);
         txtNome.setBounds(20, 30, 220, 30);
 
-        jLabel15.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel15.setText("Local");
-        jPanel3.add(jLabel15);
-        jLabel15.setBounds(20, 140, 130, 15);
-
         lblIdade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblIdade.setForeground(new java.awt.Color(116, 116, 116));
         jPanel3.add(lblIdade);
-        lblIdade.setBounds(290, 80, 130, 20);
+        lblIdade.setBounds(290, 270, 130, 20);
 
-        jLabel13.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel13.setText("Dias de pratica");
-        jPanel3.add(jLabel13);
-        jLabel13.setBounds(20, 70, 130, 20);
+        lblNome1.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblNome1.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome1.setText("Nome");
+        jPanel3.add(lblNome1);
+        lblNome1.setBounds(20, 10, 100, 20);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-dados-user.png"))); // NOI18N
-        jPanel3.add(jLabel7);
-        jLabel7.setBounds(0, 0, 440, 250);
+        txtDesc.setColumns(20);
+        txtDesc.setRows(5);
+        jScrollPane2.setViewportView(txtDesc);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-dados-user.png"))); // NOI18N
-        jPanel3.add(jLabel9);
-        jLabel9.setBounds(0, 0, 440, 250);
+        jPanel3.add(jScrollPane2);
+        jScrollPane2.setBounds(20, 90, 390, 86);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 440, 250));
+        lblNome2.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblNome2.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome2.setText("Descrição");
+        jPanel3.add(lblNome2);
+        lblNome2.setBounds(20, 70, 100, 20);
+
+        lblCidade3.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblCidade3.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade3.setText("Rua:");
+        jPanel3.add(lblCidade3);
+        lblCidade3.setBounds(20, 260, 30, 20);
+
+        lblCidade4.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblCidade4.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade4.setText("Esporte");
+        jPanel3.add(lblCidade4);
+        lblCidade4.setBounds(260, 10, 50, 20);
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 440, 440));
 
         jPanel2.setLayout(null);
 
@@ -402,55 +484,15 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 420, 440));
 
-        jPanel1.setLayout(null);
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(180, 60, 250, 100);
-
-        btnAddFoto.setText("Adicionar Escudo");
-        btnAddFoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFotoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAddFoto);
-        btnAddFoto.setBounds(180, 10, 250, 23);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escudo-placeholder150x150.png"))); // NOI18N
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 10, 154, 154);
-
-        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel5.setText("Sobre");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(174, 37, 248, 15);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(0, 0, 440, 170);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 440, 170));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-padrao.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFotoActionPerformed
-        EscolherFotoVIEW j = new EscolherFotoVIEW();
-        j.setVisible(true);
-    }//GEN-LAST:event_btnAddFotoActionPerformed
-
-    private void txtLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalActionPerformed
+    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocalActionPerformed
+    }//GEN-LAST:event_txtRuaActionPerformed
 
     private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
         
@@ -460,33 +502,33 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbEsporteActionPerformed
 
-    private void checkMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMascActionPerformed
+    private void checkDomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkDomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_checkMascActionPerformed
+    }//GEN-LAST:event_checkDomActionPerformed
 
-    private void checkMasc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc1ActionPerformed
+    private void checkSegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSegActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc1ActionPerformed
+    }//GEN-LAST:event_checkSegActionPerformed
 
-    private void checkMasc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc2ActionPerformed
+    private void checkTerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc2ActionPerformed
+    }//GEN-LAST:event_checkTerActionPerformed
 
-    private void checkMasc3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc3ActionPerformed
+    private void checkQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkQuaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc3ActionPerformed
+    }//GEN-LAST:event_checkQuaActionPerformed
 
-    private void checkMasc4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc4ActionPerformed
+    private void checkQuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkQuiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc4ActionPerformed
+    }//GEN-LAST:event_checkQuiActionPerformed
 
-    private void checkMasc5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc5ActionPerformed
+    private void checkSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSexActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc5ActionPerformed
+    }//GEN-LAST:event_checkSexActionPerformed
 
-    private void checkMasc6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc6ActionPerformed
+    private void checkSabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSabActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc6ActionPerformed
+    }//GEN-LAST:event_checkSabActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -502,10 +544,27 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String nome = txtNome.getText();
-        String cidade = String.valueOf(cbCidade.getSelectedItem());
         String esporte = String.valueOf(cbEsporte.getSelectedItem());
-        
-        
+        String descricao = txtDesc.getText();
+        String rua = txtRua.getText();
+        String bairro = txtBairro.getText();
+        String numero = txtNum.getText();
+        String cidade = String.valueOf(cbCidade.getSelectedItem());
+        String dom, seg, ter, qua, qui, sex, sab;
+        if (checkDom.isSelected()) dom = "1";
+        else dom = "0";
+        if (checkSeg.isSelected()) seg = "1";
+        else seg = "0";
+        if (checkTer.isSelected()) ter = "1";
+        else ter = "0";
+        if (checkQua.isSelected()) qua = "1";
+        else qua = "0";
+        if (checkQui.isSelected()) qui = "1";
+        else qui = "0";
+        if (checkSex.isSelected()) sex = "1";
+        else sex = "0";
+        if (checkSab.isSelected()) sab = "1";
+        else dom = "0";
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed
@@ -525,6 +584,22 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         this.dispose();
         j.setVisible(true);
     }//GEN-LAST:event_btnEditarEquipeEquipeActionPerformed
+
+    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBairroActionPerformed
+
+    private void txtNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumActionPerformed
+
+    private void btnEditarPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPesquisar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarPesquisar1ActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -577,52 +652,54 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddFoto;
+    private javax.swing.JLabel Logo;
     private javax.swing.JButton btnEditarEquipeEquipe;
     private javax.swing.JButton btnEditarEquipePerfil;
     private javax.swing.JButton btnEditarPerfil1;
     private javax.swing.JButton btnEditarPerfil5;
     private javax.swing.JButton btnEditarPesquisar;
+    private javax.swing.JButton btnEditarPesquisar1;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JComboBox<String> cbEsporte;
-    private javax.swing.JCheckBox checkMasc;
-    private javax.swing.JCheckBox checkMasc1;
-    private javax.swing.JCheckBox checkMasc2;
-    private javax.swing.JCheckBox checkMasc3;
-    private javax.swing.JCheckBox checkMasc4;
-    private javax.swing.JCheckBox checkMasc5;
-    private javax.swing.JCheckBox checkMasc6;
+    private javax.swing.JCheckBox checkDom;
+    private javax.swing.JCheckBox checkQua;
+    private javax.swing.JCheckBox checkQui;
+    private javax.swing.JCheckBox checkSab;
+    private javax.swing.JCheckBox checkSeg;
+    private javax.swing.JCheckBox checkSex;
+    private javax.swing.JCheckBox checkTer;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblCidade1;
     private javax.swing.JLabel lblCidade2;
+    private javax.swing.JLabel lblCidade3;
+    private javax.swing.JLabel lblCidade4;
+    private javax.swing.JLabel lblCidade5;
+    private javax.swing.JLabel lblCidade6;
     private javax.swing.JLabel lblIdade;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblNome1;
+    private javax.swing.JLabel lblNome2;
     private javax.swing.JPanel menuTopo;
-    private javax.swing.JTextField txtLocal;
+    private javax.swing.JTextField txtBairro;
+    private javax.swing.JTextArea txtDesc;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNum;
+    private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
 }

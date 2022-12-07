@@ -27,6 +27,8 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         menuTopo = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        Logo = new javax.swing.JLabel();
         btnEquipePerfil = new javax.swing.JButton();
         btnEquipePesquisar = new javax.swing.JButton();
         btnEquipeEditarEquipe = new javax.swing.JButton();
@@ -72,6 +74,26 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menuTopo.setLayout(null);
+
+        btnHome.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnHome);
+        btnHome.setBounds(30, 10, 100, 30);
+
+        Logo.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        Logo.setForeground(new java.awt.Color(255, 255, 255));
+        Logo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Logo.setText("ArenaAPP");
+        menuTopo.add(Logo);
+        Logo.setBounds(40, 10, 110, 30);
 
         btnEquipePerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         btnEquipePerfil.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +231,7 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(116, 116, 116));
         jLabel15.setText("Local");
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(30, 160, 130, 16);
+        jLabel15.setBounds(30, 160, 130, 15);
 
         lblEsportes.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblEsportes.setForeground(new java.awt.Color(116, 116, 116));
@@ -230,7 +252,7 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(116, 116, 116));
         jLabel13.setText("Dias de pratica");
         jPanel3.add(jLabel13);
-        jLabel13.setBounds(30, 110, 130, 16);
+        jLabel13.setBounds(30, 110, 130, 15);
 
         jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(116, 116, 116));
@@ -331,13 +353,13 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(116, 116, 116));
         jLabel3.setText("Nome Equipe");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(174, 16, 248, 16);
+        jLabel3.setBounds(174, 16, 248, 15);
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(116, 116, 116));
         jLabel5.setText("Sobre");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(174, 37, 248, 16);
+        jLabel5.setBounds(174, 37, 248, 15);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
         jPanel1.add(jLabel6);
@@ -383,6 +405,10 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
         j.setVisible(true);
     }//GEN-LAST:event_btnEquipeEditarEquipeActionPerformed
 
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -426,12 +452,14 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Logo;
     private javax.swing.JButton btnEditarPerfil1;
     private javax.swing.JButton btnEditarPerfil2;
     private javax.swing.JButton btnEditarPerfil3;
     private javax.swing.JButton btnEquipeEditarEquipe;
     private javax.swing.JButton btnEquipePerfil;
     private javax.swing.JButton btnEquipePesquisar;
+    private javax.swing.JButton btnHome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

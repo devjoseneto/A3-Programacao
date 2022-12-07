@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class UsuarioService {
 
-    public void cadastrarUsuario(String nome, String email, char[] senha_, String cidade, String nascimento, char sexo) {
+    public void cadastrarUsuario(String nome, String email, char[] senha_, String cidade, String nascimento, char sexo) throws SQLException {
         String senha = new String(senha_);
         UsuarioModel usuario = new UsuarioModel(nome, email, senha, cidade, nascimento, sexo);
         UsuarioRepository repository = new UsuarioRepository();
@@ -45,6 +45,6 @@ public class UsuarioService {
 
     public void sair(UsuarioModel usuario) {
         UsuarioRepository repository = new UsuarioRepository();
-        repository.sair(BancoDeDados.usuarioLogado);
+        repository.sair(UsuarioRepository.usuarioLogado);
     }
 }

@@ -5,6 +5,7 @@
 package VIEW;
 
 import REPOSITORY.BancoDeDados;
+import REPOSITORY.UsuarioRepository;
 import SERVICES.UsuarioService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,19 +30,19 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         txtBiografia.setLineWrap(true);
         txtBiografia.setWrapStyleWord(true);
         Date nascimento_ = null;
-        /*try {
-            //nascimento_ = formato.parse(//puxar do banco);
+        try {
+            nascimento_ = formato.parse(UsuarioRepository.usuarioLogado.getNascimento());
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(rootPane, "Data de nascimento invalida!");
             Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
-        txtNome.setText(BancoDeDados.usuarioLogado.getNome());
-        txtEmail.setText(BancoDeDados.usuarioLogado.getEmail());
-        txtDataDeNascimento.setText(formato.format(BancoDeDados.usuarioLogado.getNascimento()));
-        cbCidade.setSelectedItem(BancoDeDados.usuarioLogado.getCidade());
-        txtBiografia.setText(BancoDeDados.usuarioLogado.getDescricao());
-        String esportes[] = BancoDeDados.usuarioLogado.getEsporte();
+        txtNome.setText(UsuarioRepository.usuarioLogado.getNome());
+        txtEmail.setText(UsuarioRepository.usuarioLogado.getEmail());
+        txtDataDeNascimento.setText(formato.format(UsuarioRepository.usuarioLogado.getNascimento()));
+        cbCidade.setSelectedItem(UsuarioRepository.usuarioLogado.getCidade());
+        txtBiografia.setText(UsuarioRepository.usuarioLogado.getDescricao());
+        String esportes[] = UsuarioRepository.usuarioLogado.getEsporte();
         for (int i = 0; i < 5; i++) {
             System.out.println(esportes[i]);
         }
@@ -55,7 +56,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         else checkVolei.setSelected(false);
         if (esportes[4].equals("Basquete")) checkBasquete.setSelected(true);
         else checkBasquete.setSelected(false);
-        char sexo = BancoDeDados.usuarioLogado.getSexo();
+        char sexo = UsuarioRepository.usuarioLogado.getSexo();
         if (sexo == 'M') checkMasc.setSelected(true);
         else if (sexo == 'F') checkFem.setSelected(true);
     }
@@ -70,6 +71,8 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         menuTopo = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        Logo = new javax.swing.JLabel();
         btnEditarPerfilPerfil = new javax.swing.JButton();
         btnEditarPerfilPesquisar = new javax.swing.JButton();
         btnEditarPerfilEquipe = new javax.swing.JButton();
@@ -112,6 +115,26 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menuTopo.setLayout(null);
+
+        btnHome.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnHome);
+        btnHome.setBounds(30, 10, 100, 30);
+
+        Logo.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        Logo.setForeground(new java.awt.Color(255, 255, 255));
+        Logo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Logo.setText("ArenaAPP");
+        menuTopo.add(Logo);
+        Logo.setBounds(40, 10, 110, 30);
 
         btnEditarPerfilPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         btnEditarPerfilPerfil.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,7 +210,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Sexo");
         jPanel3.add(jLabel12);
-        jLabel12.setBounds(20, 190, 26, 14);
+        jLabel12.setBounds(20, 190, 29, 14);
 
         checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc.setForeground(new java.awt.Color(116, 116, 116));
@@ -211,7 +234,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem);
-        checkFem.setBounds(80, 210, 47, 19);
+        checkFem.setBounds(80, 210, 48, 19);
 
         checkFutVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkFutVolei.setForeground(new java.awt.Color(116, 116, 116));
@@ -325,7 +348,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Email");
         jPanel3.add(jLabel14);
-        jLabel14.setBounds(20, 80, 32, 14);
+        jLabel14.setBounds(20, 80, 30, 14);
 
         lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblNome.setForeground(new java.awt.Color(116, 116, 116));
@@ -521,6 +544,10 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkFutsalActionPerformed
 
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -572,9 +599,11 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Logo;
     private javax.swing.JButton btnEditarPerfilEquipe;
     private javax.swing.JButton btnEditarPerfilPerfil;
     private javax.swing.JButton btnEditarPerfilPesquisar;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnaddFoto;
     private javax.swing.JComboBox<String> cbCidade;

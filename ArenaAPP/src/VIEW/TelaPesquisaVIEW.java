@@ -27,6 +27,8 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         menuTopo = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        Logo = new javax.swing.JLabel();
         btnPesquisarPerfil = new javax.swing.JButton();
         btnPesquisarPesquisar = new javax.swing.JButton();
         btnPesquisarEquipe = new javax.swing.JButton();
@@ -101,6 +103,26 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
 
         menuTopo.setLayout(null);
 
+        btnHome.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnHome);
+        btnHome.setBounds(30, 10, 100, 30);
+
+        Logo.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        Logo.setForeground(new java.awt.Color(255, 255, 255));
+        Logo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Logo.setText("ArenaAPP");
+        menuTopo.add(Logo);
+        Logo.setBounds(40, 10, 110, 30);
+
         btnPesquisarPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         btnPesquisarPerfil.setForeground(new java.awt.Color(255, 255, 255));
         btnPesquisarPerfil.setText("Perfil");
@@ -160,7 +182,7 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton1);
-        jButton1.setBounds(70, 50, 110, 25);
+        jButton1.setBounds(70, 50, 110, 23);
 
         checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc.setForeground(new java.awt.Color(116, 116, 116));
@@ -651,6 +673,10 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
         j.setVisible(true);
     }//GEN-LAST:event_btnPesquisarEquipeActionPerformed
 
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -718,6 +744,8 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Logo;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPesquisarEquipe;
     private javax.swing.JButton btnPesquisarPerfil;
     private javax.swing.JButton btnPesquisarPesquisar;

@@ -5,6 +5,7 @@
 package VIEW;
 
 import REPOSITORY.BancoDeDados;
+import REPOSITORY.UsuarioRepository;
 
 /**
  *
@@ -49,6 +50,8 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         iconPerfilMenu = new javax.swing.JLabel();
         fundoPerfilMenu = new javax.swing.JLabel();
         menuTopo = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        Logo = new javax.swing.JLabel();
         btnPerfilSecundario = new javax.swing.JButton();
         btnPesquisarSecundario = new javax.swing.JButton();
         btnEquipeSecundario = new javax.swing.JButton();
@@ -203,6 +206,26 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
         menuTopo.setLayout(null);
 
+        btnHome.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        menuTopo.add(btnHome);
+        btnHome.setBounds(30, 10, 100, 30);
+
+        Logo.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        Logo.setForeground(new java.awt.Color(255, 255, 255));
+        Logo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Logo.setText("ArenaAPP");
+        menuTopo.add(Logo);
+        Logo.setBounds(40, 10, 110, 30);
+
         btnPerfilSecundario.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         btnPerfilSecundario.setForeground(new java.awt.Color(255, 255, 255));
         btnPerfilSecundario.setText("Perfil");
@@ -279,7 +302,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
     private void btnPerfilSecundarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilSecundarioActionPerformed
 
-        if (BancoDeDados.usuarioLogado.isLogado()) {
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
             TelaPerfilVIEW j = new TelaPerfilVIEW();
             this.dispose();
             j.setVisible(true);
@@ -298,7 +321,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
     private void btnCriarTimePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTimePrincipalActionPerformed
 
-        if (BancoDeDados.usuarioLogado.isLogado()) {
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
 
             FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
             this.dispose();
@@ -320,6 +343,10 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
         this.dispose();
         j.setVisible(true);
     }//GEN-LAST:event_btnEditarPerfilPrincipalActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,9 +385,11 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Logo;
     private javax.swing.JButton btnCriarTimePrincipal;
     private javax.swing.JButton btnEditarPerfilPrincipal;
     private javax.swing.JButton btnEquipeSecundario;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPerfilSecundario;
     private javax.swing.JButton btnPesquisarPrincipal;
     private javax.swing.JButton btnPesquisarSecundario;
