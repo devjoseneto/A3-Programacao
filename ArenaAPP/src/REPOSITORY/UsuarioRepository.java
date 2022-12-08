@@ -42,7 +42,7 @@ public class UsuarioRepository {
                 usuarioLogado = usuario;
                 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, " Não foi possivel cadastrar usuario");
+                JOptionPane.showMessageDialog(null, "UsuarioRepository: "+ex);
                 Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

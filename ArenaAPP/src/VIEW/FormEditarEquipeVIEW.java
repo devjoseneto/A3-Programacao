@@ -6,6 +6,10 @@ package VIEW;
 
 import MODELS.EquipeModel;
 import MODELS.UsuarioModel;
+import SERVICES.EquipeService;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -567,9 +571,16 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         if (checkSex.isSelected()) sex = "1";
         else sex = "0";
         if (checkSab.isSelected()) sab = "1";
-        else dom = "0";
+        else sab = "0";
         
-        EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, cidade, rua, bairro, num, esporte);
+        EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, sab, cidade, rua, bairro, num, esporte);
+        EquipeService service = new EquipeService();
+        try {
+            service.cadastrarEquipe(equipe);
+        } catch (SQLException ex) {
+            System.out.println("FormEditarEquipeVIEW: "+ex);
+            Logger.getLogger(FormEditarEquipeVIEW.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed

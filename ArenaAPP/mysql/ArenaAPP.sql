@@ -1,37 +1,34 @@
-create database ArenaAPP;
+create database if not exists ArenaAPP;
 use ArenaAPP;
 
-CREATE TABLE usuario (
-  id_usuario int NOT NULL AUTO_INCREMENT,
+CREATE TABLE if not exists usuario (
+  id_usuario int auto_increment PRIMARY KEY,
+  fk_equipe int unique,
   email varchar(255) NOT NULL,
   nome varchar(255) NOT NULL,
   dataDeNascimento DATE NOT NULL,
   senha varchar(255) NOT NULL,
   sexo enum('M', 'F') NOT NULL,
-  cidade varchar(30) NOT NULL,
   descricao varchar(510) default '' NOT NULL,
-  posicao_esporte varchar(30) default '' NOT NULL,
-  logado BOOLEAN default '0' NOT NULL,
-  PRIMARY KEY (id_usuario)
+  cidade varchar(30) NOT null,
+  logado BOOLEAN default '0' NOT NULL
 );
 
-select * from usuario;
-
-CREATE TABLE endereco (
-   id_endereco int NOT NULL,
+CREATE TABLE if not exists endereco (
+   id_endereco int auto_increment primary key,
    bairro varchar(255) NOT NULL,
    rua varchar(255) NOT NULL,
    numero int NOT NULL,
-  PRIMARY KEY (id_endereco)
+   cidade varchar(30) NOT NULL
 );
 
 
-CREATE TABLE equipe (
-   id_equipe int NOT NULL AUTO_INCREMENT,
+CREATE TABLE if not exists equipe (
+   id_equipe int NOT NULL auto_increment primary KEY,
    nome varchar(255) UNIQUE NOT NULL,
-   dono int NOT NULL,
-   adm int NOT NULL,
-   descricao varchar(510) NOT NULL,
+   fk_dono int unique,
+   fk_adm int unique,
+   descricao varchar(510) default '' NOT NULL,
    PraticaDom BOOLEAN DEFAULT '0' NOT NULL,
    PraticaSeg BOOLEAN DEFAULT '0' NOT NULL,
    PraticaTer BOOLEAN DEFAULT '0' NOT NULL,
@@ -39,29 +36,21 @@ CREATE TABLE equipe (
    PraticaQui BOOLEAN DEFAULT '0' NOT NULL,
    PraticaSex BOOLEAN DEFAULT '0' NOT NULL,
    PraticaSab BOOLEAN DEFAULT '0' NOT NULL,
-   linkWhatsapp varchar(300) NOT NULL,
-   linkInstagram varchar(300) NOT NULL,
-   cidade varchar(30) NOT NULL,
+   linkWhatsapp varchar(300) default '' NOT NULL,
+   linkInstagram varchar(300) default '' NOT NULL,
    esporte varchar(30) NOT NULL,
-   numDeAtletas int NOT NULL,
-   id_jogadores int NOT NULL,
-   id_endereco int NOT NULL,
-  PRIMARY KEY (id_equipe),
-  KEY id_usuario (id_usuario),
-  KEY id_endereco (id_endereco),
-  CONSTRAINT equipe_ibfk_1 FOREIGN KEY (id_jogadores) REFERENCES usuario (id_jogadores),
-  CONSTRAINT equipe_ibfk_2 FOREIGN KEY (id_endereco) REFERENCES endereco (id_endereco),
-  CONSTRAINT equipe_ibfk_3 FOREIGN KEY (dono) REFERENCES usuario (id_usuario),
-  CONSTRAINT equipe_ibfk_4 FOREIGN KEY (adm) REFERENCES usuario (id_usuario)
+   fk_endereco int unique,
+   foreign key (fk_dono) references usuario(id_usuario),
+   foreign key (fk_adm) references usuario(id_usuario),
+   foreign key (fk_endereco) references endereco(id_endereco)
 );
 
-CREATE TABLE jogadores (
-  id_jogadores int auto_increment not null,
-  id_usuario int NOT NULL,
-  id_equipe int NOT NULL,
-  CONSTRAINT listadejogadores_ibfk_1 FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
-  CONSTRAINT listadejogadores_ibfk_2 FOREIGN KEY (id_equipe) REFERENCES equipe (id_equipe),
-  CONSTRAINT PK_listadejogadores PRIMARY KEY (id_equipe)
-);
+ALTER TABLE usuario ADD CONSTRAINT fk_equipe
+FOREIGN KEY(fk_equipe) REFERENCES equipe(id_equipe);
 
-drop database arenaapp;
+insert into endereco (rua, bairro, numero, cidade) values ('ABC', 'def', '1', 'Guanambi');
+select id_endereco from endereco;
+insert into equipe (nome, descricao, fk_dono, PraticaDom, PraticaSeg, PraticaTer, PraticaQua, PraticaQui, PraticaSex, PraticaSab, esporte, fk_endereco)
+values ('Admin Team 2', 'a', '1', 0, 1, 1, 1, 1, 1, 0, 'futebol', '1');
+select * from endereco;
+select * from equipe;
