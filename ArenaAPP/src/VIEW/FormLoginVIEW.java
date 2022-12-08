@@ -48,6 +48,7 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +137,7 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMudarParaCadastreSeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMudarParaCadastreSeActionPerformed

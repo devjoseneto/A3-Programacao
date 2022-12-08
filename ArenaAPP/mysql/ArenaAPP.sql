@@ -54,3 +54,4 @@ insert into equipe (nome, descricao, fk_dono, PraticaDom, PraticaSeg, PraticaTer
 values ('Admin Team 2', 'a', '1', 0, 1, 1, 1, 1, 1, 0, 'futebol', '1');
 select * from endereco;
 select * from equipe;
+select * from usuario;
