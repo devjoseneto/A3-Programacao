@@ -161,7 +161,18 @@ public class FormLoginVIEW extends javax.swing.JFrame {
         usuario.setSenha(senha);
         UsuarioService service = new UsuarioService();
         boolean autenticacao = service.efetuarLogin(usuario);
-
+        
+        if (autenticacao){
+            if (TelaInicialVIEW.navegacao.equals("criarEquipe")) {
+                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+                j.setVisible(true);
+                this.dispose();
+            } else {
+                TelaInicialVIEW j = new TelaInicialVIEW();
+                j.setVisible(true);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_btnLoginTelaInicialActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed

@@ -13,6 +13,7 @@ import REPOSITORY.UsuarioRepository;
  */
 public class TelaInicialVIEW extends javax.swing.JFrame {
 
+    public static String navegacao = ""; 
     /**
      * Creates new form Home
      */
@@ -322,7 +323,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarPrincipalActionPerformed
 
     private void btnCriarTimePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTimePrincipalActionPerformed
-
+        
         if (UsuarioRepository.usuarioLogado.isLogado()) {
 
             FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
@@ -330,6 +331,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
             j.setVisible(true);
 
         } else {
+           navegacao = "criarEquipe";
             
             FormLoginVIEW j = new FormLoginVIEW();
             this.dispose();
