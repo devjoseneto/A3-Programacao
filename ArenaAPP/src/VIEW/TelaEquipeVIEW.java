@@ -23,13 +23,25 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     public TelaEquipeVIEW() {
         initComponents();
         EquipeModel equipe = new EquipeModel();
-        equipe.setNome("Admin Equipe");
+        equipe.setNome("Admin");
         
-        EquipeRepository repository = new EquipeRepository();
-        equipe = repository.readEquipe(equipe);
+        EquipeService service = new EquipeService();
+        equipe = service.readEquipe(equipe);
         
         txtNome.setText(equipe.getNome());
+        txtDesc.setText(equipe.getDescricao());
         cbEsporte.setSelectedItem(equipe.getEsporte());
+        checkDom.setSelected(getBoolean(equipe.getDom()));
+        checkSeg.setSelected(getBoolean(equipe.getSeg()));
+        checkTer.setSelected(getBoolean(equipe.getTer()));
+        checkQua.setSelected(getBoolean(equipe.getQua()));
+        checkQui.setSelected(getBoolean(equipe.getQui()));
+        checkSex.setSelected(getBoolean(equipe.getSex()));
+        checkSab.setSelected(getBoolean(equipe.getSab()));
+        txtRua.setText(equipe.getRua());
+        txtBairro.setText(equipe.getBairro());
+        txtNum.setText(equipe.getNum());
+        cbCidade.setSelectedItem(equipe.getCidade());
         
         txtNome.setEnabled(false);
         txtDesc.setEnabled(false);
@@ -623,6 +635,10 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    public static boolean getBoolean(String valor) {
+        return !valor.equals("0");
+    }
+    
     /**
      * @param args the command line arguments
      */

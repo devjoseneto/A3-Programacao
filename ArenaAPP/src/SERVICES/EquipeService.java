@@ -17,4 +17,10 @@ public class EquipeService {
             Logger.getLogger(EquipeService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public EquipeModel readEquipe(EquipeModel equipe) {
+        EquipeRepository repository = new EquipeRepository();
+        equipe = repository.readEquipe(equipe);
+        return equipe;
+    }
 }
