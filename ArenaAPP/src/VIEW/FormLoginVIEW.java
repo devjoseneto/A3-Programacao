@@ -149,24 +149,19 @@ public class FormLoginVIEW extends javax.swing.JFrame {
     private void btnRecuperarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarSenhaActionPerformed
         String email = txtEmail.getText();
         JOptionPane.showInputDialog(rootPane, "Digite seu email:", "Recuperar Senha", JOptionPane.INFORMATION_MESSAGE, null, null, email);
-        
+
     }//GEN-LAST:event_btnRecuperarSenhaActionPerformed
 
     private void btnLoginTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginTelaInicialActionPerformed
         String email = txtEmail.getText();
         String senha = new String(txtPassword.getPassword());
-        
+
         UsuarioModel usuario = new UsuarioModel();
         usuario.setEmail(email);
         usuario.setSenha(senha);
         UsuarioService service = new UsuarioService();
         boolean autenticacao = service.efetuarLogin(usuario);
-        if (autenticacao) {
-            TelaInicialVIEW j = new TelaInicialVIEW();
-            j.setVisible(true);
-            this.dispose();
-        }
-        
+
     }//GEN-LAST:event_btnLoginTelaInicialActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed

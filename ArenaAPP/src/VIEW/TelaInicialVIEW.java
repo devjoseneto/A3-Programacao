@@ -330,7 +330,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
             j.setVisible(true);
 
         } else {
-
+            
             FormLoginVIEW j = new FormLoginVIEW();
             this.dispose();
             j.setVisible(true);

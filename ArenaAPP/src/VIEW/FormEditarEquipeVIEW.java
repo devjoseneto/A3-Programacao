@@ -5,11 +5,7 @@
 package VIEW;
 
 import MODELS.EquipeModel;
-import MODELS.UsuarioModel;
 import SERVICES.EquipeService;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -275,7 +271,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkQui);
-        checkQui.setBounds(230, 200, 50, 19);
+        checkQui.setBounds(240, 200, 50, 19);
 
         checkSex.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkSex.setForeground(new java.awt.Color(116, 116, 116));
@@ -287,7 +283,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkSex);
-        checkSex.setBounds(280, 200, 50, 19);
+        checkSex.setBounds(300, 200, 50, 19);
 
         checkSab.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkSab.setForeground(new java.awt.Color(116, 116, 116));
@@ -299,7 +295,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkSab);
-        checkSab.setBounds(330, 200, 70, 19);
+        checkSab.setBounds(360, 200, 50, 19);
 
         checkDom.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkDom.setForeground(new java.awt.Color(116, 116, 116));
@@ -504,7 +500,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRuaActionPerformed
 
     private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
-        
+
     }//GEN-LAST:event_cbCidadeActionPerformed
 
     private void cbEsporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEsporteActionPerformed
@@ -551,40 +547,6 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPerfil5ActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        String nome = txtNome.getText();
-        String esporte = String.valueOf(cbEsporte.getSelectedItem());
-        String descricao = txtDesc.getText();
-        String rua = txtRua.getText();
-        String bairro = txtBairro.getText();
-        String num = txtNum.getText();
-        String cidade = String.valueOf(cbCidade.getSelectedItem());
-        String dom, seg, ter, qua, qui, sex, sab;
-        if (checkDom.isSelected()) dom = "1";
-        else dom = "0";
-        if (checkSeg.isSelected()) seg = "1";
-        else seg = "0";
-        if (checkTer.isSelected()) ter = "1";
-        else ter = "0";
-        if (checkQua.isSelected()) qua = "1";
-        else qua = "0";
-        if (checkQui.isSelected()) qui = "1";
-        else qui = "0";
-        if (checkSex.isSelected()) sex = "1";
-        else sex = "0";
-        if (checkSab.isSelected()) sab = "1";
-        else sab = "0";
-        
-        EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, sab, cidade, rua, bairro, num, esporte);
-        EquipeService service = new EquipeService();
-        try {
-            service.cadastrarEquipe(equipe);
-        } catch (SQLException ex) {
-            System.out.println("FormEditarEquipeVIEW: "+ex);
-            Logger.getLogger(FormEditarEquipeVIEW.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
     private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed
         TelaPerfilVIEW j = new TelaPerfilVIEW();
         this.dispose();
@@ -598,9 +560,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPesquisarActionPerformed
 
     private void btnEditarEquipeEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipeEquipeActionPerformed
-        TelaEquipeVIEW j = new TelaEquipeVIEW();
-        this.dispose();
-        j.setVisible(true);
+
     }//GEN-LAST:event_btnEditarEquipeEquipeActionPerformed
 
     private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
@@ -618,6 +578,56 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String nome = txtNome.getText();
+        String esporte = String.valueOf(cbEsporte.getSelectedItem());
+        String descricao = txtDesc.getText();
+        String rua = txtRua.getText();
+        String bairro = txtBairro.getText();
+        String num = txtNum.getText();
+        String cidade = String.valueOf(cbCidade.getSelectedItem());
+        String dom, seg, ter, qua, qui, sex, sab;
+        if (checkDom.isSelected()) {
+            dom = "1";
+        } else {
+            dom = "0";
+        }
+        if (checkSeg.isSelected()) {
+            seg = "1";
+        } else {
+            seg = "0";
+        }
+        if (checkTer.isSelected()) {
+            ter = "1";
+        } else {
+            ter = "0";
+        }
+        if (checkQua.isSelected()) {
+            qua = "1";
+        } else {
+            qua = "0";
+        }
+        if (checkQui.isSelected()) {
+            qui = "1";
+        } else {
+            qui = "0";
+        }
+        if (checkSex.isSelected()) {
+            sex = "1";
+        } else {
+            sex = "0";
+        }
+        if (checkSab.isSelected()) {
+            sab = "1";
+        } else {
+            sab = "0";
+        }
+
+        EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, sab, cidade, rua, bairro, num, esporte);
+        EquipeService service = new EquipeService();
+        service.cadastrarEquipe(equipe);
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments

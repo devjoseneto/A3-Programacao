@@ -18,6 +18,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    
     public TelaPerfilVIEW() {
         initComponents();
         UsuarioRepository repository = new UsuarioRepository();

@@ -39,7 +39,7 @@ CREATE TABLE if not exists equipe (
    linkWhatsapp varchar(300) default '' NOT NULL,
    linkInstagram varchar(300) default '' NOT NULL,
    esporte varchar(30) NOT NULL,
-   fk_endereco int unique,
+   fk_endereco int,
    foreign key (fk_dono) references usuario(id_usuario),
    foreign key (fk_adm) references usuario(id_usuario),
    foreign key (fk_endereco) references endereco(id_endereco)
@@ -54,4 +54,8 @@ insert into equipe (nome, descricao, fk_dono, PraticaDom, PraticaSeg, PraticaTer
 values ('Admin Team 2', 'a', '1', 0, 1, 1, 1, 1, 1, 0, 'futebol', '1');
 select * from endereco;
 select * from equipe;
+select * from equipe WHERE nome = '';
 select * from usuario;
+select * from endereco WHERE id_endereco = 1;
+select * from equipe WHERE nome = ('Admin FC');
+select id_endereco from endereco where rua = 'ADM STREET' and bairro = 'CENTRO' and numero = 1 and cidade = 'Guanambi-BA';

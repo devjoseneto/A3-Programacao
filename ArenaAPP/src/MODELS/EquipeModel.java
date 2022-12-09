@@ -6,8 +6,8 @@ public class EquipeModel {
 
     private int idEquipe;
     private String nome;
-    private UsuarioModel dono;
-    private UsuarioModel administrador;
+    private int id_dono;
+    private int id_administrador;
     private String descricao;
     private String dom;
     private String seg;
@@ -16,6 +16,7 @@ public class EquipeModel {
     private String qui;
     private String sex;
     private String sab;
+    private String id_endereco;
     private String cidade;
     private String rua;
     private String bairro;
@@ -26,9 +27,11 @@ public class EquipeModel {
     private String linkWhatsapp;
     private ArrayList<UsuarioModel> Jogadores = new ArrayList<UsuarioModel>();
 
+    public EquipeModel() {
+    }
+    
     public EquipeModel(String nome, String descricao, String dom, String seg, String ter, String qua, String qui, String sex, String sab, String cidade, String rua, String bairro, String num, String esporte) {
         this.nome = nome;
-        this.dono = dono;
         this.descricao = descricao;
         this.dom = dom;
         this.seg = seg;
@@ -52,12 +55,12 @@ public class EquipeModel {
         return nome;
     }
 
-    public UsuarioModel getDono() {
-        return dono;
+    public int getId_dono() {
+        return id_dono;
     }
 
-    public UsuarioModel getAdministrador() {
-        return administrador;
+    public int getId_administrador() {
+        return id_administrador;
     }
 
     public String getDescricao() {
@@ -90,6 +93,10 @@ public class EquipeModel {
 
     public String getSab() {
         return sab;
+    }
+
+    public String getId_endereco() {
+        return id_endereco;
     }
 
     public String getCidade() {
@@ -128,16 +135,20 @@ public class EquipeModel {
         return Jogadores;
     }
 
+    public void setIdEquipe(int idEquipe) {
+        this.idEquipe = idEquipe;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setDono(UsuarioModel dono) {
-        this.dono = dono;
+    public void setId_dono(int id_dono) {
+        this.id_dono = id_dono;
     }
 
-    public void setAdministrador(UsuarioModel administrador) {
-        this.administrador = administrador;
+    public void setId_administrador(int id_administrador) {
+        this.id_administrador = id_administrador;
     }
 
     public void setDescricao(String descricao) {
@@ -170,6 +181,10 @@ public class EquipeModel {
 
     public void setSab(String sab) {
         this.sab = sab;
+    }
+
+    public void setId_endereco(String id_endereco) {
+        this.id_endereco = id_endereco;
     }
 
     public void setCidade(String cidade) {
