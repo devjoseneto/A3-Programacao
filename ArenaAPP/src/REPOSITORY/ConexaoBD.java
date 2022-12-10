@@ -14,7 +14,7 @@ public class ConexaoBD {
         try {
             String url = "jdbc:mysql://localhost:3306/arenaapp?serverTimezone=UTC";
             String usuario = "root";
-            String senha = "10121012";
+            String senha = "12345679";
             conn = DriverManager.getConnection(url, usuario, senha);
             
         } catch (SQLException ex) {
