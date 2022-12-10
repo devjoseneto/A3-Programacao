@@ -4,9 +4,7 @@
  */
 package VIEW;
 
-import REPOSITORY.BancoDeDados;
 import REPOSITORY.UsuarioRepository;
-import SERVICES.UsuarioService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,40 +23,13 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
      */
     public FormEditarPerfilVIEW() {
         initComponents();
+        txtUserID.setEnabled(false);
         
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         txtBiografia.setLineWrap(true);
         txtBiografia.setWrapStyleWord(true);
-        Date nascimento_ = null;
-        try {
-            nascimento_ = formato.parse(UsuarioRepository.usuarioLogado.getNascimento());
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Data de nascimento invalida!");
-            Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
-        txtNome.setText(UsuarioRepository.usuarioLogado.getNome());
-        txtEmail.setText(UsuarioRepository.usuarioLogado.getEmail());
-        txtDataDeNascimento.setText(formato.format(UsuarioRepository.usuarioLogado.getNascimento()));
-        cbCidade.setSelectedItem(UsuarioRepository.usuarioLogado.getCidade());
-        txtBiografia.setText(UsuarioRepository.usuarioLogado.getDescricao());
-        String esportes[] = UsuarioRepository.usuarioLogado.getEsporte();
-        for (int i = 0; i < 5; i++) {
-            System.out.println(esportes[i]);
-        }
-        if (esportes[0].equals("Futsal")) checkFutsal.setSelected(true);
-        else checkFutsal.setSelected(false);
-        if (esportes[1].equals("Futebol")) checkFutebol.setSelected(true);
-        else checkFutebol.setSelected(false);
-        if (esportes[2].equals("FutVolei")) checkFutVolei.setSelected(true);
-        else checkFutVolei.setSelected(false);
-        if (esportes[3].equals("Volei")) checkVolei.setSelected(true);
-        else checkVolei.setSelected(false);
-        if (esportes[4].equals("Basquete")) checkBasquete.setSelected(true);
-        else checkBasquete.setSelected(false);
-        char sexo = UsuarioRepository.usuarioLogado.getSexo();
-        if (sexo == 'M') checkMasc.setSelected(true);
-        else if (sexo == 'F') checkFem.setSelected(true);
+        
     }
 
     /**
@@ -83,32 +54,27 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         checkMasc = new javax.swing.JCheckBox();
         checkFem = new javax.swing.JCheckBox();
-        checkFutVolei = new javax.swing.JCheckBox();
-        checkVolei = new javax.swing.JCheckBox();
-        checkBasquete = new javax.swing.JCheckBox();
-        checkFutsal = new javax.swing.JCheckBox();
-        checkFutebol = new javax.swing.JCheckBox();
-        jLabel15 = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
         cbCidade = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        txtDataDeNascimento = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        txtUserID = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtEmail1 = new javax.swing.JTextField();
+        txtEmail3 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        txtEmail4 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtBiografia = new javax.swing.JTextArea();
+        lblNome2 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtBiografia = new javax.swing.JTextArea();
-        btnaddFoto = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -200,18 +166,18 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnSalvar);
-        btnSalvar.setBounds(260, 210, 160, 20);
+        btnSalvar.setBounds(270, 400, 160, 20);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(260, 200, 160, 40);
+        jLabel3.setBounds(270, 390, 160, 40);
 
         jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(116, 116, 116));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Sexo");
         jPanel3.add(jLabel12);
-        jLabel12.setBounds(20, 190, 29, 14);
+        jLabel12.setBounds(20, 380, 29, 14);
 
         checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkMasc.setForeground(new java.awt.Color(116, 116, 116));
@@ -223,7 +189,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkMasc);
-        checkMasc.setBounds(20, 210, 60, 19);
+        checkMasc.setBounds(20, 400, 60, 19);
 
         checkFem.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkFem.setForeground(new java.awt.Color(116, 116, 116));
@@ -235,81 +201,14 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem);
-        checkFem.setBounds(80, 210, 48, 19);
-
-        checkFutVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkFutVolei.setForeground(new java.awt.Color(116, 116, 116));
-        checkFutVolei.setText("Futevôlei");
-        checkFutVolei.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkFutVolei.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkFutVoleiActionPerformed(evt);
-            }
-        });
-        jPanel3.add(checkFutVolei);
-        checkFutVolei.setBounds(160, 160, 80, 19);
-
-        checkVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkVolei.setForeground(new java.awt.Color(116, 116, 116));
-        checkVolei.setText("Vôlei");
-        checkVolei.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkVolei.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkVoleiActionPerformed(evt);
-            }
-        });
-        jPanel3.add(checkVolei);
-        checkVolei.setBounds(250, 160, 70, 19);
-
-        checkBasquete.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkBasquete.setForeground(new java.awt.Color(116, 116, 116));
-        checkBasquete.setText("Basquete");
-        checkBasquete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkBasquete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBasqueteActionPerformed(evt);
-            }
-        });
-        jPanel3.add(checkBasquete);
-        checkBasquete.setBounds(320, 160, 90, 19);
-
-        checkFutsal.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkFutsal.setForeground(new java.awt.Color(116, 116, 116));
-        checkFutsal.setText("Futsal");
-        checkFutsal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkFutsal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkFutsalActionPerformed(evt);
-            }
-        });
-        jPanel3.add(checkFutsal);
-        checkFutsal.setBounds(20, 160, 70, 19);
-
-        checkFutebol.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkFutebol.setForeground(new java.awt.Color(116, 116, 116));
-        checkFutebol.setText("Futebol");
-        checkFutebol.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkFutebol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkFutebolActionPerformed(evt);
-            }
-        });
-        jPanel3.add(checkFutebol);
-        checkFutebol.setBounds(80, 160, 70, 19);
-
-        jLabel15.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText("Esportes praticados");
-        jPanel3.add(jLabel15);
-        jLabel15.setBounds(20, 140, 120, 14);
+        checkFem.setBounds(80, 400, 48, 19);
 
         lblCidade.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade.setForeground(new java.awt.Color(116, 116, 116));
         lblCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCidade.setText("Cidade");
         jPanel3.add(lblCidade);
-        lblCidade.setBounds(260, 80, 50, 14);
+        lblCidade.setBounds(230, 200, 50, 14);
 
         cbCidade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         cbCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
@@ -319,37 +218,22 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(cbCidade);
-        cbCidade.setBounds(260, 100, 140, 30);
+        cbCidade.setBounds(230, 220, 190, 30);
 
         jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(116, 116, 116));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setText("Data De Nascimento");
+        jLabel11.setText("User ID");
         jPanel3.add(jLabel11);
-        jLabel11.setBounds(260, 20, 120, 14);
+        jLabel11.setBounds(340, 20, 60, 14);
 
-        txtDataDeNascimento.addActionListener(new java.awt.event.ActionListener() {
+        txtUserID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDataDeNascimentoActionPerformed(evt);
+                txtUserIDActionPerformed(evt);
             }
         });
-        jPanel3.add(txtDataDeNascimento);
-        txtDataDeNascimento.setBounds(260, 40, 130, 30);
-
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-        jPanel3.add(txtEmail);
-        txtEmail.setBounds(20, 100, 200, 30);
-
-        jLabel14.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("Email");
-        jPanel3.add(jLabel14);
-        jLabel14.setBounds(20, 80, 30, 14);
+        jPanel3.add(txtUserID);
+        txtUserID.setBounds(340, 40, 80, 30);
 
         lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblNome.setForeground(new java.awt.Color(116, 116, 116));
@@ -364,13 +248,77 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtNome);
-        txtNome.setBounds(20, 40, 200, 30);
+        txtNome.setBounds(20, 40, 300, 30);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-dados-user.png"))); // NOI18N
-        jPanel3.add(jLabel7);
-        jLabel7.setBounds(0, 0, 440, 250);
+        jLabel16.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("Data de Nascimento");
+        jPanel3.add(jLabel16);
+        jLabel16.setBounds(20, 200, 130, 14);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 440, 250));
+        txtEmail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmail1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtEmail1);
+        txtEmail1.setBounds(20, 220, 190, 30);
+
+        txtEmail3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmail3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtEmail3);
+        txtEmail3.setBounds(230, 340, 190, 30);
+
+        jLabel18.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText("Confirmar Senha");
+        jPanel3.add(jLabel18);
+        jLabel18.setBounds(230, 320, 100, 14);
+
+        txtEmail4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmail4ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtEmail4);
+        txtEmail4.setBounds(20, 340, 190, 30);
+
+        txtBiografia.setColumns(20);
+        txtBiografia.setRows(5);
+        jScrollPane2.setViewportView(txtBiografia);
+
+        jPanel3.add(jScrollPane2);
+        jScrollPane2.setBounds(20, 100, 400, 86);
+
+        lblNome2.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblNome2.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome2.setText("Biografia");
+        jPanel3.add(lblNome2);
+        lblNome2.setBounds(20, 80, 70, 20);
+
+        jLabel14.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText("Email");
+        jPanel3.add(jLabel14);
+        jLabel14.setBounds(20, 260, 32, 14);
+        jPanel3.add(txtEmail);
+        txtEmail.setBounds(20, 280, 400, 30);
+
+        jLabel19.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel19.setText("Nova Senha");
+        jPanel3.add(jLabel19);
+        jLabel19.setBounds(20, 320, 80, 14);
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 440, 440));
 
         jPanel2.setLayout(null);
 
@@ -391,41 +339,6 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 420, 440));
 
-        jPanel1.setLayout(null);
-
-        txtBiografia.setColumns(20);
-        txtBiografia.setRows(5);
-        jScrollPane1.setViewportView(txtBiografia);
-
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(180, 60, 250, 100);
-
-        btnaddFoto.setText("Adicionar Foto de Perfil");
-        btnaddFoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnaddFotoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnaddFoto);
-        btnaddFoto.setBounds(180, 10, 250, 23);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boy-profile.png"))); // NOI18N
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 10, 154, 154);
-
-        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel5.setText("Adicionar biografia");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(180, 40, 248, 15);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(0, 0, 440, 170);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 440, 170));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-padrao.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -434,87 +347,20 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
         
-        String sobre = txtBiografia.getText();
-        String nome = txtNome.getText();
-        String email = txtEmail.getText();
-        Date nascimento = null;
-        try {
-            nascimento = formato.parse(txtDataDeNascimento.getText());
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Data de nascimento invalida!");
-            Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String cidade = (String) cbCidade.getSelectedItem();
-        char sexo = 'N';
-        
-        if (checkMasc.isSelected()) {
-            sexo = 'M';
-        } else if (checkFem.isSelected()) {
-            sexo = 'F';
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione o sexo");
-        }
-        
-        String futsal, futebol, futvolei, volei, basquete;
-        if (checkFutsal.isSelected()) futsal = "Futsal";
-        else futsal = "<html><s>Futsal</s><html>";
-        if (checkFutebol.isSelected()) futebol = "Futebol";
-        else futebol = "<html><s>Futebol</s><html>";
-        if (checkFutVolei.isSelected()) futvolei = "FutVolei";
-        else futvolei = "<html><s>FutVolei</s><html>";
-        if (checkVolei.isSelected()) volei = "Volei";
-        else volei = "<html><s>Volei</s><html>";
-        if (checkBasquete.isSelected()) basquete = "Basquete";
-        else basquete = "<html><s>Basquete</s><html>";
-        
-        String esportes[] = {futsal, futebol, futvolei, volei, basquete};
-        
-        UsuarioService service = new UsuarioService();
-        //service.alterarDados(nome, email, cidade, nascimento, sexo, sobre, esportes);
-        
-        TelaPerfilVIEW j = new TelaPerfilVIEW();
-        this.dispose();
-        j.setVisible(true);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+    private void txtUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtDataDeNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataDeNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataDeNascimentoActionPerformed
+    }//GEN-LAST:event_txtUserIDActionPerformed
 
     private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCidadeActionPerformed
-
-    private void checkFutebolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFutebolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkFutebolActionPerformed
-
-    private void checkFutVoleiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFutVoleiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkFutVoleiActionPerformed
-
-    private void checkVoleiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVoleiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkVoleiActionPerformed
-
-    private void checkBasqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBasqueteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkBasqueteActionPerformed
-
-    private void btnaddFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddFotoActionPerformed
-        EscolherFotoVIEW j = new EscolherFotoVIEW();
-        j.setVisible(true);
-    }//GEN-LAST:event_btnaddFotoActionPerformed
 
     private void btnEditarPerfilPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilPerfilActionPerformed
         TelaPerfilVIEW j = new TelaPerfilVIEW();
@@ -542,13 +388,21 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         checkMasc.setSelected(false);
     }//GEN-LAST:event_checkFemActionPerformed
 
-    private void checkFutsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFutsalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkFutsalActionPerformed
-
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void txtEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmail1ActionPerformed
+
+    private void txtEmail3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmail3ActionPerformed
+
+    private void txtEmail4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmail4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -607,39 +461,34 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarPerfilPesquisar;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnaddFoto;
     private javax.swing.JComboBox<String> cbCidade;
-    private javax.swing.JCheckBox checkBasquete;
     private javax.swing.JCheckBox checkFem;
-    private javax.swing.JCheckBox checkFutVolei;
-    private javax.swing.JCheckBox checkFutebol;
-    private javax.swing.JCheckBox checkFutsal;
     private javax.swing.JCheckBox checkMasc;
-    private javax.swing.JCheckBox checkVolei;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblNome2;
     private javax.swing.JPanel menuTopo;
     private javax.swing.JTextArea txtBiografia;
-    private javax.swing.JTextField txtDataDeNascimento;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEmail1;
+    private javax.swing.JTextField txtEmail3;
+    private javax.swing.JTextField txtEmail4;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtUserID;
     // End of variables declaration//GEN-END:variables
 }

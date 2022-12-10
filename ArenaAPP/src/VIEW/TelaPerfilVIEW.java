@@ -4,11 +4,6 @@
  */
 package VIEW;
 
-import REPOSITORY.BancoDeDados;
-import REPOSITORY.UsuarioRepository;
-import SERVICES.UsuarioService;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author netoi
@@ -18,31 +13,15 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
-    
     public TelaPerfilVIEW() {
         initComponents();
-        UsuarioRepository repository = new UsuarioRepository();
         
-        if (!UsuarioRepository.usuarioLogado.isLogado()) {
-            lblSair.setVisible(false);
-            lblEditar.setVisible(false);
-            lblExcluir.setVisible(false);
-            btnSair.setVisible(false);
-            btnEditar.setVisible(false);
-            btnExcluir.setVisible(false);
-        }
+        txtNome.setEnabled(false);
+        txtBiografia.setEnabled(false);
+        txtUserID.setEnabled(false);
+        txtIdade.setEnabled(false);
+        cbCidade.setEnabled(false);
         
-        lblNome.setText(UsuarioRepository.usuarioLogado.getNome());
-        lblCidade.setText(UsuarioRepository.usuarioLogado.getCidade());
-        lblIdUsuario.setText(String.valueOf(UsuarioRepository.usuarioLogado.getIdUsuario()));
-        lblIdade.setText(String.valueOf(repository.getIdade()));
-        lblBiografia.setText(UsuarioRepository.usuarioLogado.getDescricao());
-        String[] esportes = UsuarioRepository.usuarioLogado.getEsporte();
-        lblFutsal.setText(esportes[0]);
-        lblFutebol.setText(esportes[1]);
-        lblFutVolei.setText(esportes[2]);
-        lblVolei.setText(esportes[3]);
-        lblBasquete.setText(esportes[4]);
     }
 
     /**
@@ -62,35 +41,23 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         btnPerfilEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnExcluir = new javax.swing.JButton();
-        lblExcluir = new javax.swing.JLabel();
-        btnSair = new javax.swing.JButton();
-        lblSair = new javax.swing.JLabel();
-        btnEditar = new javax.swing.JButton();
-        lblEditar = new javax.swing.JLabel();
-        lblVolei = new javax.swing.JLabel();
-        lblBasquete = new javax.swing.JLabel();
-        lblFutVolei = new javax.swing.JLabel();
-        lblFutebol = new javax.swing.JLabel();
-        lblFutsal = new javax.swing.JLabel();
-        lblIdade = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        cbCidade = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        lblIdUsuario = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        txtUserID = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtIdade = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtBiografia = new javax.swing.JTextArea();
+        lblNome2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        lblBiografia = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        lblNome = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -170,135 +137,101 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
 
-        btnExcluir.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluir.setText("Excluir");
-        btnExcluir.setBorderPainted(false);
-        btnExcluir.setContentAreaFilled(false);
-        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvar.setText("Salvar");
+        btnSalvar.setBorderPainted(false);
+        btnSalvar.setContentAreaFilled(false);
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnExcluir);
-        btnExcluir.setBounds(300, 170, 120, 20);
+        jPanel3.add(btnSalvar);
+        btnSalvar.setBounds(270, 400, 160, 20);
 
-        lblExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
-        jPanel3.add(lblExcluir);
-        lblExcluir.setBounds(300, 160, 120, 40);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(270, 390, 160, 40);
 
-        btnSair.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnSair.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair.setText("Sair");
-        btnSair.setBorderPainted(false);
-        btnSair.setContentAreaFilled(false);
-        btnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnSair);
-        btnSair.setBounds(30, 210, 120, 20);
-
-        lblSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
-        jPanel3.add(lblSair);
-        lblSair.setBounds(30, 200, 120, 40);
-
-        btnEditar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar");
-        btnEditar.setBorderPainted(false);
-        btnEditar.setContentAreaFilled(false);
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnEditar);
-        btnEditar.setBounds(300, 210, 120, 20);
-
-        lblEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
-        jPanel3.add(lblEditar);
-        lblEditar.setBounds(300, 200, 120, 40);
-
-        lblVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblVolei.setForeground(new java.awt.Color(116, 116, 116));
-        lblVolei.setText("Volei");
-        jPanel3.add(lblVolei);
-        lblVolei.setBounds(30, 130, 190, 20);
-
-        lblBasquete.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblBasquete.setForeground(new java.awt.Color(116, 116, 116));
-        lblBasquete.setText("Basquete");
-        jPanel3.add(lblBasquete);
-        lblBasquete.setBounds(30, 150, 190, 20);
-
-        lblFutVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblFutVolei.setForeground(new java.awt.Color(116, 116, 116));
-        lblFutVolei.setText("FutVolei");
-        jPanel3.add(lblFutVolei);
-        lblFutVolei.setBounds(30, 110, 190, 20);
-
-        lblFutebol.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblFutebol.setForeground(new java.awt.Color(116, 116, 116));
-        lblFutebol.setText("Futebol");
-        jPanel3.add(lblFutebol);
-        lblFutebol.setBounds(30, 90, 190, 20);
-
-        lblFutsal.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblFutsal.setForeground(new java.awt.Color(116, 116, 116));
-        lblFutsal.setText("Futsal");
-        jPanel3.add(lblFutsal);
-        lblFutsal.setBounds(30, 70, 190, 20);
-
-        lblIdade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblIdade.setForeground(new java.awt.Color(116, 116, 116));
-        jPanel3.add(lblIdade);
-        lblIdade.setBounds(270, 20, 130, 20);
-
-        lblCidade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        lblCidade.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade.setText("Cidade");
         jPanel3.add(lblCidade);
-        lblCidade.setBounds(80, 20, 130, 20);
+        lblCidade.setBounds(230, 200, 50, 14);
 
-        jLabel13.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel13.setText("Esportes praticados:");
-        jPanel3.add(jLabel13);
-        jLabel13.setBounds(30, 50, 130, 15);
+        cbCidade.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        cbCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guanambi-BA", "Caetité-BA", "Igaporã-BA" }));
+        cbCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCidadeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cbCidade);
+        cbCidade.setBounds(230, 220, 190, 30);
 
-        jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel11.setText("Idade:");
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("User ID");
         jPanel3.add(jLabel11);
-        jLabel11.setBounds(232, 20, 40, 20);
+        jLabel11.setBounds(340, 20, 60, 14);
 
-        jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel12.setText("Cidade:");
-        jPanel3.add(jLabel12);
-        jLabel12.setBounds(30, 20, 50, 20);
+        txtUserID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserIDActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtUserID);
+        txtUserID.setBounds(340, 40, 80, 30);
 
-        jLabel15.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel15.setText("ID");
-        jPanel3.add(jLabel15);
-        jLabel15.setBounds(30, 180, 20, 20);
+        lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome.setText("Nome");
+        jPanel3.add(lblNome);
+        lblNome.setBounds(20, 20, 40, 14);
 
-        lblIdUsuario.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblIdUsuario.setForeground(new java.awt.Color(116, 116, 116));
-        lblIdUsuario.setText("00000000");
-        jPanel3.add(lblIdUsuario);
-        lblIdUsuario.setBounds(60, 180, 130, 20);
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtNome);
+        txtNome.setBounds(20, 40, 300, 30);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-dados-user.png"))); // NOI18N
-        jPanel3.add(jLabel7);
-        jLabel7.setBounds(0, 0, 440, 250);
+        jLabel16.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(116, 116, 116));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("Idade");
+        jPanel3.add(jLabel16);
+        jLabel16.setBounds(20, 200, 130, 14);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 440, 250));
+        txtIdade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdadeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtIdade);
+        txtIdade.setBounds(20, 220, 190, 30);
+
+        txtBiografia.setColumns(20);
+        txtBiografia.setRows(5);
+        jScrollPane2.setViewportView(txtBiografia);
+
+        jPanel3.add(jScrollPane2);
+        jScrollPane2.setBounds(20, 100, 400, 86);
+
+        lblNome2.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
+        lblNome2.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome2.setText("Biografia");
+        jPanel3.add(lblNome2);
+        lblNome2.setBounds(20, 80, 70, 20);
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 440, 440));
 
         jPanel2.setLayout(null);
 
@@ -319,51 +252,12 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 420, 440));
 
-        jPanel1.setLayout(null);
-
-        lblBiografia.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        lblBiografia.setForeground(new java.awt.Color(116, 116, 116));
-        lblBiografia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblBiografia.setText("a");
-        lblBiografia.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(lblBiografia);
-        lblBiografia.setBounds(180, 60, 250, 100);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boy-profile.png"))); // NOI18N
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 10, 154, 154);
-
-        lblNome.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        lblNome.setForeground(new java.awt.Color(116, 116, 116));
-        lblNome.setText("Nome Completo");
-        jPanel1.add(lblNome);
-        lblNome.setBounds(174, 16, 248, 15);
-
-        jLabel5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(116, 116, 116));
-        jLabel5.setText("Sobre");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(174, 37, 248, 15);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(0, 0, 440, 170);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 440, 170));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-padrao.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
-        this.dispose();
-        j.setVisible(true);
-    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnPerfilEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilEditarPerfilActionPerformed
         FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
@@ -383,33 +277,31 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         j.setVisible(true);
     }//GEN-LAST:event_btnPerfilEquipeActionPerformed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-
-        UsuarioService service = new UsuarioService();
-        service.sair(UsuarioRepository.usuarioLogado);
-        TelaInicialVIEW j = new TelaInicialVIEW();
-        this.dispose();
-        j.setVisible(true);
-        
-    }//GEN-LAST:event_btnSairActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        
-        int confirmar = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir sua conta?", "Confirmar Exclusão",JOptionPane.YES_NO_OPTION);
-        if (confirmar == JOptionPane.YES_OPTION) {
-            UsuarioService service = new UsuarioService();
-            service.excluir(UsuarioRepository.usuarioLogado);
-            JOptionPane.showMessageDialog(rootPane, "Sua conta foi deletada");
-            TelaInicialVIEW j = new TelaInicialVIEW();
-            this.dispose();
-            j.setVisible(true);
-        }
-            
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbCidadeActionPerformed
+
+    private void txtUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserIDActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,42 +343,30 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPerfilEditarPerfil;
     private javax.swing.JButton btnPerfilEquipe;
     private javax.swing.JButton btnPerfilPesquisar;
-    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblBasquete;
-    private javax.swing.JLabel lblBiografia;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCidade;
-    private javax.swing.JLabel lblEditar;
-    private javax.swing.JLabel lblExcluir;
-    private javax.swing.JLabel lblFutVolei;
-    private javax.swing.JLabel lblFutebol;
-    private javax.swing.JLabel lblFutsal;
-    private javax.swing.JLabel lblIdUsuario;
-    private javax.swing.JLabel lblIdade;
     private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblSair;
-    private javax.swing.JLabel lblVolei;
+    private javax.swing.JLabel lblNome2;
     private javax.swing.JPanel menuTopo;
+    private javax.swing.JTextArea txtBiografia;
+    private javax.swing.JTextField txtIdade;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtUserID;
     // End of variables declaration//GEN-END:variables
 }

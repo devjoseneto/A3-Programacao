@@ -48,7 +48,7 @@ CREATE TABLE if not exists equipe (
 ALTER TABLE usuario ADD CONSTRAINT fk_equipe
 FOREIGN KEY(fk_equipe) REFERENCES equipe(id_equipe);
 
-insert into endereco (rua, bairro, numero, cidade) values ('ABC', 'def', '1', 'Guanambi');
+insert into endereco (rua, bairro, numero, cidade) values ('ABC', 'def', '1', 'Guanambi') return id_endereco;
 select id_endereco from endereco;
 insert into equipe (nome, descricao, fk_dono, PraticaDom, PraticaSeg, PraticaTer, PraticaQua, PraticaQui, PraticaSex, PraticaSab, esporte, fk_endereco)
 values ('Admin Team 2', 'a', '1', 0, 1, 1, 1, 1, 1, 0, 'futebol', '1');
@@ -59,3 +59,4 @@ select * from usuario;
 select * from endereco WHERE id_endereco = 1;
 select * from equipe WHERE nome = ('Admin FC');
 select id_endereco from endereco where rua = 'ADM STREET' and bairro = 'CENTRO' and numero = 1 and cidade = 'Guanambi-BA';
+

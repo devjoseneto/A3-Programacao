@@ -5,11 +5,7 @@
 package VIEW;
 
 import MODELS.EquipeModel;
-import REPOSITORY.EquipeRepository;
 import SERVICES.EquipeService;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -628,7 +624,9 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPesquisar1ActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed

@@ -1,5 +1,6 @@
 package REPOSITORY;
 
+import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,8 +15,7 @@ public class EquipeRepository {
     Connection conn;
     PreparedStatement pstm;
 
-    public void cadastrarEquipe(EquipeModel equipe) throws SQLException {
-        int id_endereco = cadastrarEndereco(equipe);
+    public void createEquipe(EquipeModel equipe, int id_endereco) throws SQLException {
         try {
 
             String sql = "insert into equipe (nome, descricao, fk_dono, PraticaDom, PraticaSeg, PraticaTer, PraticaQua, PraticaQui, PraticaSex, PraticaSab, esporte, fk_endereco)\n"
@@ -25,7 +25,7 @@ public class EquipeRepository {
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, equipe.getNome());
             pstm.setString(2, equipe.getDescricao());
-            pstm.setString(3, "1"/*Integer.toString(UsuarioRepository.usuarioLogado.getIdUsuario())*/);
+            pstm.setString(3, "3"/*Integer.toString(UsuarioRepository.usuarioLogado.getIdUsuario())*/);
             pstm.setString(4, equipe.getDom());
             pstm.setString(5, equipe.getSeg());
             pstm.setString(6, equipe.getTer());
@@ -34,64 +34,31 @@ public class EquipeRepository {
             pstm.setString(9, equipe.getSex());
             pstm.setString(10, equipe.getSab());
             pstm.setString(11, equipe.getEsporte());
-            pstm.setString(12, Integer.toString(id_endereco));
+            pstm.setString(12, Integer.toString(id_endereco));// Buscar o id de endereco;
 
             pstm.execute();
             pstm.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "O nome já está em uso");
+            JOptionPane.showMessageDialog(null, "O nome já está em uso "+ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public int cadastrarEndereco(EquipeModel equipe) {
-        int id_endereco = 0;
-        try {
-            String sqlID = "select id_endereco from endereco where rua = ? and bairro = ? and numero = ? and cidade = ?;";
-            
-            conn = new ConexaoBD().conectaDB();
-            pstm = conn.prepareStatement(sqlID);
-            pstm.setString(1, equipe.getRua());
-            pstm.setString(2, equipe.getBairro());
-            pstm.setString(3, equipe.getNum());
-            pstm.setString(4, equipe.getCidade());
-
-            ResultSet rsId = pstm.executeQuery();
-
-            if (rsId.next()) {
-                id_endereco = rsId.getInt("id_endereco");
-            } else {
-                String sql = "insert into endereco (rua, bairro, numero, cidade) values (?, ?, ?, ?);";
-                conn = new ConexaoBD().conectaDB();
-                pstm = conn.prepareStatement(sql);
-                pstm.setString(1, equipe.getRua());
-                pstm.setString(2, equipe.getBairro());
-                pstm.setString(3, equipe.getNum());
-                pstm.setString(4, equipe.getCidade());
-
-                pstm.execute();
-                pstm.close();
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar endereco");
-            Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return id_endereco;
     }
 
     public EquipeModel readEquipe(EquipeModel equipe) {
+        // equipe - informações para pesquisar no banco de dados
         EquipeModel equipeReturn = new EquipeModel();
         String sql = "select * from equipe WHERE nome = ?;";
-        String sqlEndereco = "select * from endereco WHERE id_endereco = ?;";
         conn = new ConexaoBD().conectaDB();
         try {
             pstm = conn.prepareStatement(sql);
-            System.out.println(equipe.getNome());
             pstm.setString(1, equipe.getNome());
 
             ResultSet rs = pstm.executeQuery();
 
+            /* equipe_ - para receberem informações do bando de dados */
             EquipeModel equipe_ = new EquipeModel();
+            EnderecoModel endereco_ = new EnderecoModel();
+
             while (rs.next()) {
                 equipe_.setIdEquipe(rs.getInt("id_equipe"));
                 equipe_.setNome(rs.getString("nome"));
@@ -108,26 +75,14 @@ public class EquipeRepository {
                 equipe_.setLinkWhatsapp(rs.getString("linkWhatsapp"));
                 equipe_.setLinkInstagram(rs.getString("linkInstagram"));
                 equipe_.setEsporte(rs.getString("esporte"));
-                equipe_.setId_endereco("1");
+                equipe_.setId_endereco(rs.getInt("fk_endereco"));
 
-                try {
-                    pstm = conn.prepareStatement(sqlEndereco);
-                    pstm.setString(1, String.valueOf(equipe_.getId_endereco()));
+                return equipe_;
 
-                    rs = pstm.executeQuery();
-                    if (rs != null && rs.next()) {
-                        equipe_.setRua(rs.getString("rua"));
-                        equipe_.setBairro(rs.getString("bairro"));
-                        equipe_.setNum(rs.getString("numero"));
-                        equipe_.setCidade(rs.getString("cidade"));
-                    }
-                    equipeReturn = equipe_;
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "EquipeRepository Read Endereco" + ex);
-                }
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "EquipeRepository Read Equipe" + ex);
+            return null;
         }
         return equipeReturn;
     }

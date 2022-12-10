@@ -16,12 +16,8 @@ public class EquipeModel {
     private String qui;
     private String sex;
     private String sab;
-    private String id_endereco;
-    private String cidade;
-    private String rua;
-    private String bairro;
-    private String num;
     private String esporte;
+    private int id_endereco;
     private int numeroDeAtletas;
     private String linkInstagram;
     private String linkWhatsapp;
@@ -30,7 +26,7 @@ public class EquipeModel {
     public EquipeModel() {
     }
     
-    public EquipeModel(String nome, String descricao, String dom, String seg, String ter, String qua, String qui, String sex, String sab, String cidade, String rua, String bairro, String num, String esporte) {
+    public EquipeModel(String nome, String descricao, String dom, String seg, String ter, String qua, String qui, String sex, String sab, String esporte) {
         this.nome = nome;
         this.descricao = descricao;
         this.dom = dom;
@@ -40,10 +36,6 @@ public class EquipeModel {
         this.qui = qui;
         this.sex = sex;
         this.sab = sab;
-        this.cidade = cidade;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.num = num;
         this.esporte = esporte;
     }
 
@@ -95,26 +87,6 @@ public class EquipeModel {
         return sab;
     }
 
-    public String getId_endereco() {
-        return id_endereco;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public String getNum() {
-        return num;
-    }
-
     public String getEsporte() {
         return esporte;
     }
@@ -133,6 +105,10 @@ public class EquipeModel {
 
     public ArrayList<UsuarioModel> getJogadores() {
         return Jogadores;
+    }
+
+    public int getId_endereco() {
+        return id_endereco;
     }
 
     public void setIdEquipe(int idEquipe) {
@@ -183,26 +159,6 @@ public class EquipeModel {
         this.sab = sab;
     }
 
-    public void setId_endereco(String id_endereco) {
-        this.id_endereco = id_endereco;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public void setNum(String num) {
-        this.num = num;
-    }
-
     public void setEsporte(String esporte) {
         this.esporte = esporte;
     }
@@ -223,4 +179,7 @@ public class EquipeModel {
         this.Jogadores = Jogadores;
     }
 
+    public void setId_endereco(int id_endereco) {
+        this.id_endereco = id_endereco;
+    }
 }

@@ -1,6 +1,8 @@
 package SERVICES;
 
+import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
+import REPOSITORY.EnderecoRepository;
 import REPOSITORY.EquipeRepository;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -8,10 +10,12 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class EquipeService {
-    public void cadastrarEquipe(EquipeModel equipe) {
+    public void createEquipe(EquipeModel equipe, EnderecoModel endereco) {
         EquipeRepository repository = new EquipeRepository();
+        EnderecoRepository repositoryEnde = new EnderecoRepository();
         try {
-            repository.cadastrarEquipe(equipe);
+            int id_endereco = repositoryEnde.createEndereco(endereco);
+            repository.createEquipe(equipe, id_endereco);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "EquipeService"+ex);
             Logger.getLogger(EquipeService.class.getName()).log(Level.SEVERE, null, ex);

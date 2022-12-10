@@ -4,6 +4,7 @@
  */
 package VIEW;
 
+import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
 import SERVICES.EquipeService;
 
@@ -580,53 +581,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        String nome = txtNome.getText();
-        String esporte = String.valueOf(cbEsporte.getSelectedItem());
-        String descricao = txtDesc.getText();
-        String rua = txtRua.getText();
-        String bairro = txtBairro.getText();
-        String num = txtNum.getText();
-        String cidade = String.valueOf(cbCidade.getSelectedItem());
-        String dom, seg, ter, qua, qui, sex, sab;
-        if (checkDom.isSelected()) {
-            dom = "1";
-        } else {
-            dom = "0";
-        }
-        if (checkSeg.isSelected()) {
-            seg = "1";
-        } else {
-            seg = "0";
-        }
-        if (checkTer.isSelected()) {
-            ter = "1";
-        } else {
-            ter = "0";
-        }
-        if (checkQua.isSelected()) {
-            qua = "1";
-        } else {
-            qua = "0";
-        }
-        if (checkQui.isSelected()) {
-            qui = "1";
-        } else {
-            qui = "0";
-        }
-        if (checkSex.isSelected()) {
-            sex = "1";
-        } else {
-            sex = "0";
-        }
-        if (checkSab.isSelected()) {
-            sab = "1";
-        } else {
-            sab = "0";
-        }
-
-        EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, sab, cidade, rua, bairro, num, esporte);
-        EquipeService service = new EquipeService();
-        service.cadastrarEquipe(equipe);
+        salvarDados();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -730,4 +685,27 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtNum;
     private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
+
+    public void salvarDados() {
+        String nome = txtNome.getText();
+        String esporte = String.valueOf(cbEsporte.getSelectedItem());
+        String descricao = txtDesc.getText();
+        String rua = txtRua.getText();
+        String bairro = txtBairro.getText();
+        String num = txtNum.getText();
+        String cidade = String.valueOf(cbCidade.getSelectedItem());
+        String dom, seg, ter, qua, qui, sex, sab;
+        dom = checkDom.isSelected() ? "1" : "0";
+        seg = checkSeg.isSelected() ? "1" : "0";
+        ter = checkTer.isSelected() ? "1" : "0";
+        qua = checkQua.isSelected() ? "1" : "0";
+        qui = checkQui.isSelected() ? "1" : "0";
+        sex = checkSex.isSelected() ? "1" : "0";
+        sab = checkSab.isSelected() ? "1" : "0";
+
+        EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, sab, esporte);
+        EnderecoModel endereco = new EnderecoModel(cidade, rua, bairro, num);
+        EquipeService service = new EquipeService();
+        service.createEquipe(equipe, endereco);
+    }
 }
