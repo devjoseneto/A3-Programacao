@@ -10,8 +10,7 @@ public class UsuarioModel {
     private String senha;
     private String cidade;
     private String nascimento;
-    private String descricao;
-    private String posicaoEsporte;
+    private String biografia;
     private boolean logado;
     private char sexo;
     private String[] esporte = new String[5];
@@ -54,12 +53,8 @@ public class UsuarioModel {
         return nascimento;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public String getPosicaoEsporte() {
-        return posicaoEsporte;
+    public String getBiografia() {
+        return biografia;
     }
 
     public boolean isLogado() {
@@ -98,14 +93,9 @@ public class UsuarioModel {
         this.nascimento = nascimento;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
     }
-
-    public void setPosicaoEsporte(String posicaoEsporte) {
-        this.posicaoEsporte = posicaoEsporte;
-    }
-
     public void setLogado(boolean logado) {
         this.logado = logado;
     }

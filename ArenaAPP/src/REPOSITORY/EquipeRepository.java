@@ -57,7 +57,6 @@ public class EquipeRepository {
 
             /* equipe_ - para receberem informações do bando de dados */
             EquipeModel equipe_ = new EquipeModel();
-            EnderecoModel endereco_ = new EnderecoModel();
 
             while (rs.next()) {
                 equipe_.setIdEquipe(rs.getInt("id_equipe"));

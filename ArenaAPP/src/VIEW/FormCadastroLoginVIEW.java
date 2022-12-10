@@ -237,49 +237,7 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMudarParaLoginActionPerformed
 
     private void btnCadastrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarLoginActionPerformed
-        SimpleDateFormat formatoBR = new SimpleDateFormat("dd/MM/yyyy"); 
-        SimpleDateFormat formatoEUA = new SimpleDateFormat("yyyy/MM/dd"); 
-        
-        String nome = txtNome.getText();
-        String email = txtEmail.getText();
-        char[] senha = txtSenha.getPassword();
-        String cidade = cbCidade.getSelectedItem().toString();
-        
-        Date nascimento_ = null;
-        try {
-            nascimento_ = formatoBR.parse(txtDataDeNascimento.getText());
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Data de nascimento invalida!");
-            Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String nascimento = formatoEUA.format(nascimento_);
-        System.out.println(nascimento);
-        
-        char sexo = 0;
-        boolean verificar = false;
-
-        if (checkMasc.isSelected()) {
-            sexo = 'M';
-            verificar = true;
-        } else if (checkFem.isSelected()) {
-            sexo = 'F';
-            verificar = true;
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione o sexo");
-        }
-
-        UsuarioService service = new UsuarioService();
-        try {
-            service.cadastrarUsuario(nome, email, senha, cidade, nascimento, sexo);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "FormCadastroLoginVIEW: " + ex);
-            Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-            FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
-            this.dispose();
-            j.setVisible(true);
+        createLogin();
     }//GEN-LAST:event_btnCadastrarLoginActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -384,4 +342,50 @@ public class FormCadastroLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    public void createLogin() {
+        SimpleDateFormat formatoBR = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoEUA = new SimpleDateFormat("yyyy/MM/dd");
+
+        String nome = txtNome.getText();
+        String email = txtEmail.getText();
+        char[] senha = txtSenha.getPassword();
+        String cidade = cbCidade.getSelectedItem().toString();
+
+        Date nascimento_ = null;
+        try {
+            nascimento_ = formatoBR.parse(txtDataDeNascimento.getText());
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Data de nascimento invalida!");
+            Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String nascimento = formatoEUA.format(nascimento_);
+        System.out.println(nascimento);
+
+        char sexo = 0;
+        boolean verificar = false;
+
+        if (checkMasc.isSelected()) {
+            sexo = 'M';
+            verificar = true;
+        } else if (checkFem.isSelected()) {
+            sexo = 'F';
+            verificar = true;
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione o sexo");
+        }
+
+        UsuarioService service = new UsuarioService();
+        try {
+            service.cadastrarUsuario(nome, email, senha, cidade, nascimento, sexo);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "FormCadastroLoginVIEW: " + ex);
+            Logger.getLogger(FormCadastroLoginVIEW.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
+        this.dispose();
+        j.setVisible(true);
+    }
 }

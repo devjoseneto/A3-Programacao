@@ -4,6 +4,9 @@
  */
 package VIEW;
 
+import MODELS.UsuarioModel;
+import SERVICES.UsuarioService;
+
 /**
  *
  * @author netoi
@@ -15,13 +18,8 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
      */
     public TelaPerfilVIEW() {
         initComponents();
-        
-        txtNome.setEnabled(false);
-        txtBiografia.setEnabled(false);
-        txtUserID.setEnabled(false);
-        txtIdade.setEnabled(false);
-        cbCidade.setEnabled(false);
-        
+        readUsuario();
+
     }
 
     /**
@@ -369,4 +367,25 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtUserID;
     // End of variables declaration//GEN-END:variables
+
+    public void readUsuario() {
+        
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setIdUsuario(1);
+        UsuarioService service = new UsuarioService();
+        usuario = service.readEquipe(usuario);
+        
+        txtNome.setText(usuario.getNome());
+        txtBiografia.setText(usuario.getBiografia());
+        txtUserID.setText(Integer.toString(usuario.getIdUsuario()));
+        txtIdade.setText(Integer.toString(service.getIdade(usuario.getNascimento())));
+        cbCidade.setSelectedItem(usuario.getCidade());
+
+        txtNome.setEnabled(false);
+        txtBiografia.setEnabled(false);
+        txtUserID.setEnabled(false);
+        txtIdade.setEnabled(false);
+        cbCidade.setEnabled(false);
+    }
+
 }

@@ -4,13 +4,14 @@
  */
 package VIEW;
 
-import REPOSITORY.UsuarioRepository;
-import java.text.ParseException;
+import MODELS.EnderecoModel;
+import MODELS.EquipeModel;
+import MODELS.UsuarioModel;
+import SERVICES.EnderecoService;
+import SERVICES.EquipeService;
+import SERVICES.UsuarioService;
+import static VIEW.TelaEquipeVIEW.getBoolean;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,7 +30,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         txtBiografia.setLineWrap(true);
         txtBiografia.setWrapStyleWord(true);
         
-        
+        readUsuario();
     }
 
     /**
@@ -61,10 +62,10 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txtEmail1 = new javax.swing.JTextField();
-        txtEmail3 = new javax.swing.JTextField();
+        txtNasc = new javax.swing.JTextField();
+        txtConfSenha = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        txtEmail4 = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtBiografia = new javax.swing.JTextArea();
         lblNome2 = new javax.swing.JLabel();
@@ -201,7 +202,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(checkFem);
-        checkFem.setBounds(80, 400, 48, 19);
+        checkFem.setBounds(80, 400, 60, 19);
 
         lblCidade.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade.setForeground(new java.awt.Color(116, 116, 116));
@@ -257,21 +258,22 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jPanel3.add(jLabel16);
         jLabel16.setBounds(20, 200, 130, 14);
 
-        txtEmail1.addActionListener(new java.awt.event.ActionListener() {
+        txtNasc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmail1ActionPerformed(evt);
+                txtNascActionPerformed(evt);
             }
         });
-        jPanel3.add(txtEmail1);
-        txtEmail1.setBounds(20, 220, 190, 30);
+        jPanel3.add(txtNasc);
+        txtNasc.setBounds(20, 220, 190, 30);
 
-        txtEmail3.addActionListener(new java.awt.event.ActionListener() {
+        txtConfSenha.setText("********");
+        txtConfSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmail3ActionPerformed(evt);
+                txtConfSenhaActionPerformed(evt);
             }
         });
-        jPanel3.add(txtEmail3);
-        txtEmail3.setBounds(230, 340, 190, 30);
+        jPanel3.add(txtConfSenha);
+        txtConfSenha.setBounds(230, 340, 190, 30);
 
         jLabel18.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(116, 116, 116));
@@ -280,13 +282,14 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jPanel3.add(jLabel18);
         jLabel18.setBounds(230, 320, 100, 14);
 
-        txtEmail4.addActionListener(new java.awt.event.ActionListener() {
+        txtSenha.setText("********");
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmail4ActionPerformed(evt);
+                txtSenhaActionPerformed(evt);
             }
         });
-        jPanel3.add(txtEmail4);
-        txtEmail4.setBounds(20, 340, 190, 30);
+        jPanel3.add(txtSenha);
+        txtSenha.setBounds(20, 340, 190, 30);
 
         txtBiografia.setColumns(20);
         txtBiografia.setRows(5);
@@ -392,17 +395,17 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    private void txtEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail1ActionPerformed
+    private void txtNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmail1ActionPerformed
+    }//GEN-LAST:event_txtNascActionPerformed
 
-    private void txtEmail3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail3ActionPerformed
+    private void txtConfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmail3ActionPerformed
+    }//GEN-LAST:event_txtConfSenhaActionPerformed
 
-    private void txtEmail4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail4ActionPerformed
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmail4ActionPerformed
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -484,11 +487,29 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel lblNome2;
     private javax.swing.JPanel menuTopo;
     private javax.swing.JTextArea txtBiografia;
+    private javax.swing.JTextField txtConfSenha;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEmail1;
-    private javax.swing.JTextField txtEmail3;
-    private javax.swing.JTextField txtEmail4;
+    private javax.swing.JTextField txtNasc;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtUserID;
     // End of variables declaration//GEN-END:variables
+    
+    public void readUsuario() {
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setIdUsuario(1);
+        UsuarioService service = new UsuarioService();
+        usuario = service.readEquipe(usuario);
+        
+        txtNome.setText(usuario.getNome());
+        txtBiografia.setText(usuario.getBiografia());
+        txtUserID.setText(Integer.toString(usuario.getIdUsuario()));
+        txtNasc.setText(usuario.getNascimento());
+        cbCidade.setSelectedItem(usuario.getCidade());
+        txtEmail.setText(usuario.getEmail());
+        if (usuario.getSexo() == 'M')
+            checkMasc.setSelected(true);
+        if (usuario.getSexo() == 'F')
+            checkMasc.setSelected(true);
+    }
 }

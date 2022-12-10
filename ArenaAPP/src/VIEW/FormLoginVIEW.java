@@ -5,7 +5,6 @@
 package VIEW;
 
 import MODELS.UsuarioModel;
-import REPOSITORY.UsuarioRepository;
 import SERVICES.UsuarioService;
 import javax.swing.JOptionPane;
 
@@ -153,26 +152,7 @@ public class FormLoginVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecuperarSenhaActionPerformed
 
     private void btnLoginTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginTelaInicialActionPerformed
-        String email = txtEmail.getText();
-        String senha = new String(txtPassword.getPassword());
-
-        UsuarioModel usuario = new UsuarioModel();
-        usuario.setEmail(email);
-        usuario.setSenha(senha);
-        UsuarioService service = new UsuarioService();
-        boolean autenticacao = service.efetuarLogin(usuario);
-        
-        if (autenticacao){
-            if (TelaInicialVIEW.navegacao.equals("criarEquipe")) {
-                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
-                j.setVisible(true);
-                this.dispose();
-            } else {
-                TelaInicialVIEW j = new TelaInicialVIEW();
-                j.setVisible(true);
-                this.dispose();
-            }
-        }
+        efetuarLogin();
     }//GEN-LAST:event_btnLoginTelaInicialActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -231,4 +211,28 @@ public class FormLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
+
+    public void efetuarLogin() {
+        String email = txtEmail.getText();
+        String senha = new String(txtPassword.getPassword());
+
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setEmail(email);
+        usuario.setSenha(senha);
+        UsuarioService service = new UsuarioService();
+        boolean autenticacao = service.efetuarLogin(usuario);
+        
+        if (autenticacao){
+            if (TelaInicialVIEW.navegacao.equals("criarEquipe")) {
+                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+                j.setVisible(true);
+                this.dispose();
+            } else {
+                TelaInicialVIEW j = new TelaInicialVIEW();
+                j.setVisible(true);
+                this.dispose();
+            }
+        }
+    }
+
 }

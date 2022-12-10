@@ -1,8 +1,9 @@
 package SERVICES;
 
+import MODELS.EquipeModel;
 import java.sql.ResultSet;
 import MODELS.UsuarioModel;
-import REPOSITORY.BancoDeDados;
+import REPOSITORY.EquipeRepository;
 import REPOSITORY.UsuarioRepository;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -31,6 +32,18 @@ public class UsuarioService {
             JOptionPane.showMessageDialog(null, "UsuarioService" + ex);
         }
         return autenticacao;
+    }
+    
+    public UsuarioModel readEquipe(UsuarioModel usuario) {
+        UsuarioRepository repository = new UsuarioRepository();
+        usuario = repository.readEquipe(usuario);
+        return usuario;
+    }
+    
+    public int getIdade(String nascimento) {
+        UsuarioRepository usuario = new UsuarioRepository();
+        int idade = usuario.getIdade(nascimento);
+        return idade;
     }
 
     public void alterarDados(String nome, String email, String cidade, String nascimento, char sexo, String sobre, String[] esportes) {
