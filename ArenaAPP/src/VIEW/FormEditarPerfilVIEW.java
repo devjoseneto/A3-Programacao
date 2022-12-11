@@ -46,6 +46,8 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         btnEditarPerfilEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        btnExcluir = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -75,6 +77,8 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ArenaAPP");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/ArenaAPP-Logo.png")).getImage());
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -151,6 +155,24 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
 
+        btnExcluir.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("Deletar");
+        btnExcluir.setBorderPainted(false);
+        btnExcluir.setContentAreaFilled(false);
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnExcluir);
+        btnExcluir.setBounds(160, 400, 120, 20);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(160, 390, 120, 40);
+
         btnSalvar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
@@ -163,11 +185,11 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnSalvar);
-        btnSalvar.setBounds(270, 400, 160, 20);
+        btnSalvar.setBounds(300, 400, 120, 20);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(270, 390, 160, 40);
+        jLabel3.setBounds(300, 390, 120, 40);
 
         jLabel12.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(116, 116, 116));
@@ -403,6 +425,10 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -458,6 +484,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarPerfilEquipe;
     private javax.swing.JButton btnEditarPerfilPerfil;
     private javax.swing.JButton btnEditarPerfilPesquisar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbCidade;
@@ -473,6 +500,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
