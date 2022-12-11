@@ -4,13 +4,9 @@
  */
 package VIEW;
 
-import MODELS.EnderecoModel;
-import MODELS.EquipeModel;
 import MODELS.UsuarioModel;
-import SERVICES.EnderecoService;
-import SERVICES.EquipeService;
 import SERVICES.UsuarioService;
-import static VIEW.TelaEquipeVIEW.getBoolean;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -25,11 +21,11 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     public FormEditarPerfilVIEW() {
         initComponents();
         txtUserID.setEnabled(false);
-        
+
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         txtBiografia.setLineWrap(true);
         txtBiografia.setWrapStyleWord(true);
-        
+
         readUsuario();
     }
 
@@ -350,7 +346,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
+        uptadeUsuario();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -494,22 +490,49 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtUserID;
     // End of variables declaration//GEN-END:variables
-    
+
     public void readUsuario() {
         UsuarioModel usuario = new UsuarioModel();
         usuario.setIdUsuario(1);
         UsuarioService service = new UsuarioService();
         usuario = service.readEquipe(usuario);
-        
+
         txtNome.setText(usuario.getNome());
         txtBiografia.setText(usuario.getBiografia());
         txtUserID.setText(Integer.toString(usuario.getIdUsuario()));
         txtNasc.setText(usuario.getNascimento());
         cbCidade.setSelectedItem(usuario.getCidade());
         txtEmail.setText(usuario.getEmail());
-        if (usuario.getSexo() == 'M')
+        if (usuario.getSexo() == 'M') {
             checkMasc.setSelected(true);
-        if (usuario.getSexo() == 'F')
+        }
+        if (usuario.getSexo() == 'F') {
             checkMasc.setSelected(true);
+        }
+    }
+
+    public void uptadeUsuario() {
+        String id_usuario = txtUserID.getText();
+        String nome = txtNome.getText();
+        String email = txtEmail.getText();
+        String biografia = txtBiografia.getText();
+        String nasc = txtNasc.getText();
+        String cidade = (String) cbCidade.getSelectedItem();
+        
+        char sexo = checkMasc.isSelected() ? 'M' : 'F';
+        
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setIdUsuario(Integer.parseInt(id_usuario));
+        usuario.setNome(nome);
+        usuario.setEmail(email);
+        usuario.setBiografia(biografia);
+        usuario.setNascimento(nasc);
+        usuario.setCidade(cidade);
+        usuario.setSexo(sexo);
+        usuario.setSenha("admin");
+
+        UsuarioService service = new UsuarioService();
+        service.uptadeUsuario(usuario);
+        
     }
 }

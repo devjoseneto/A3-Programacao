@@ -94,6 +94,38 @@ public class UsuarioRepository {
         return usuario_;
     }
 
+    public void updateUsuario(UsuarioModel usuario) {
+        try {
+            String sql = "update usuario\n"
+                    + "set nome = ?,\n"
+                    + "email = ?,\n"
+                    + "dataDeNascimento = ?,\n"
+                    + "senha = ?,\n"
+                    + "sexo = ?,\n"
+                    + "biografia = ?,\n"
+                    + "cidade = ?\n"
+                    + "where id_usuario = ?;";
+            conn = new ConexaoBD().conectaDB();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, usuario.getNome());
+            pstm.setString(2, usuario.getEmail());
+            pstm.setString(3, usuario.getNascimento());
+            pstm.setString(4, usuario.getSenha());
+            pstm.setString(5, String.valueOf(usuario.getSexo()));
+            pstm.setString(6, usuario.getBiografia());
+            pstm.setString(7, usuario.getCidade());
+            pstm.setString(8, String.valueOf(usuario.getIdUsuario()));
+
+            pstm.execute();
+            pstm.close();
+            usuarioLogado = usuario;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
+            Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void excluirUsuario(UsuarioModel usuario) {
         /*for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
         if (BancoDeDados.listaDeUsuario.get(i).isLogado()) {
@@ -101,10 +133,6 @@ public class UsuarioRepository {
         BancoDeDados.usuarioLogado = new UsuarioModel();
         }
         }*/
-    }
-
-    public void alterarDados(String nome, String email, String cidade, String nascimento, char sexo, String descricao, String[] esportes) {
-
     }
 
     public void sair(UsuarioModel usuario) {
@@ -129,18 +157,18 @@ public class UsuarioRepository {
 
     public int getIdade(String nascimentoUsuario) {
         // nascimentoUsuario traz os dados de data do mysql (yyyy/mm/dd)
-        
+
         SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
         Date nascimento_ = null;
         try {
             nascimento_ = formato.parse(nascimentoUsuario.replace("-", "/"));
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Data de nascimento invalida!");
-            Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger
+                    .getLogger(UsuarioRepository.class
+                            .getName()).log(Level.SEVERE, null, ex);
         }
 
-        
-       
         // Data de hoje.
         GregorianCalendar calendar = new GregorianCalendar();
         int ano = 0,

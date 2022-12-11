@@ -9,7 +9,7 @@ CREATE TABLE if not exists usuario (
   dataDeNascimento DATE NOT NULL,
   senha varchar(255) NOT NULL,
   sexo enum('M', 'F') NOT NULL,
-  descricao varchar(510) default '' NOT NULL,
+  biografia varchar(510) default '' NOT NULL,
   cidade varchar(30) NOT null,
   logado BOOLEAN default '0' NOT NULL
 );
@@ -60,3 +60,10 @@ select * from endereco WHERE id_endereco = 1;
 select * from equipe WHERE nome = ('Admin FC');
 select id_endereco from endereco where rua = 'ADM STREET' and bairro = 'CENTRO' and numero = 1 and cidade = 'Guanambi-BA';
 
+alter table usuario
+CHANGE descricao biografia  varchar(510);
+
+desc usuario;
+drop database arenaapp; 
+
+update usuario set biografia = 'Oi, eu sou o José' where id_usuario = 1;

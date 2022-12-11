@@ -46,9 +46,9 @@ public class UsuarioService {
         return idade;
     }
 
-    public void alterarDados(String nome, String email, String cidade, String nascimento, char sexo, String sobre, String[] esportes) {
+    public void uptadeUsuario(UsuarioModel usuario){
         UsuarioRepository repository = new UsuarioRepository();
-        repository.alterarDados(nome, email, cidade, nascimento, sexo, sobre, esportes);
+        repository.updateUsuario(usuario);
     }
 
     public void excluir(UsuarioModel usuario) {
