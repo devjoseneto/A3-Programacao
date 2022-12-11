@@ -34,4 +34,11 @@ public class EquipeService {
         repository.updateEquipe(equipe);
         repositoryEnde.updateEndereco(endereco);
     }
+    
+    public void deleteEquipe(EquipeModel equipe) {
+        EquipeRepository repository = new EquipeRepository();
+        EnderecoRepository repositoryEnde = new EnderecoRepository();
+        repository.deleteEquipe(equipe);
+        repositoryEnde.deleteEndereco(equipe);
+    }
 }

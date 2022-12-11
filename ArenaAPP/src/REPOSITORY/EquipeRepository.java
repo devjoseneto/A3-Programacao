@@ -1,9 +1,6 @@
 package REPOSITORY;
 
-import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
-import MODELS.UsuarioModel;
-import static REPOSITORY.UsuarioRepository.usuarioLogado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -122,6 +119,22 @@ public class EquipeRepository {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "EquipeRepository update: " + ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteEquipe(EquipeModel equipe) {
+        try {
+            String sql = "delete from equipe where id_equipe = ?";
+            
+            conn = new ConexaoBD().conectaDB();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, String.valueOf(equipe.getIdEquipe()));
+            
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "EquipeRepository delete: " + ex);
+            Logger.getLogger(EquipeRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

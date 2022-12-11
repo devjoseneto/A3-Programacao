@@ -104,4 +104,46 @@ public class EnderecoRepository {
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void deleteEndereco(EquipeModel equipe) {
+        // Se o endereco estiver em uso somente por essa equipe ele sera deletado
+        boolean verificarEndereco = verificarEndereco(equipe);
+        if (verificarEndereco) {
+            try {
+                String sql = "delete from endereco where id_endereco = ?";
+
+                conn = new ConexaoBD().conectaDB();
+                pstm = conn.prepareStatement(sql);
+                pstm.setString(1, String.valueOf(equipe.getId_endereco()));
+
+                pstm.execute();
+                pstm.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "EquipeRepository delete: " + ex);
+                Logger.getLogger(EquipeRepository.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    // verificar se o endereco esta em uso somente naquela equipe
+    public boolean verificarEndereco(EquipeModel equipe) {
+        boolean verificarEndereco = false;
+        try {
+            String sql = "select count(*) from equipe where fk_endereco = ?;";
+            
+            conn = new ConexaoBD().conectaDB();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, String.valueOf(equipe.getId_endereco()));
+
+            ResultSet rsId = pstm.executeQuery();
+
+            if (rsId.next()) {
+                int numDeEnderecos = rsId.getInt("count(*)");
+                verificarEndereco = numDeEnderecos == 1 ? true : false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EnderecoRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return verificarEndereco;
+    }
 }

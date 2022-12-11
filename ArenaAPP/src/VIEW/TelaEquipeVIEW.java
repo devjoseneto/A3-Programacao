@@ -599,7 +599,9 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
+        FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     public static boolean getBoolean(String valor) {
@@ -727,7 +729,7 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     public void readEquipe() {
         EquipeModel equipe = new EquipeModel();
         EnderecoModel endereco = new EnderecoModel();
-        equipe.setNome("Admin 001");
+        equipe.setNome("Jose's Dev Team");
         
         EquipeService service = new EquipeService();
         EnderecoService serviceEnde = new EnderecoService();

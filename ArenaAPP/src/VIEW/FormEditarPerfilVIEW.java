@@ -167,11 +167,11 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnExcluir);
-        btnExcluir.setBounds(160, 400, 120, 20);
+        btnExcluir.setBounds(170, 400, 120, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(160, 390, 120, 40);
+        jLabel4.setBounds(170, 390, 120, 40);
 
         btnSalvar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));

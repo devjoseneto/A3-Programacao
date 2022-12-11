@@ -42,11 +42,11 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         btnEditarEquipeEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnSalvar = new javax.swing.JButton();
+        btnRedesSociais = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
-        btnEditarPerfil1 = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        btnEditarPerfil5 = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         checkSeg = new javax.swing.JCheckBox();
         checkTer = new javax.swing.JCheckBox();
@@ -181,6 +181,24 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(180, 180, 180));
         jPanel3.setLayout(null);
 
+        btnRedesSociais.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnRedesSociais.setForeground(new java.awt.Color(255, 255, 255));
+        btnRedesSociais.setText("Redes Sociais");
+        btnRedesSociais.setBorderPainted(false);
+        btnRedesSociais.setContentAreaFilled(false);
+        btnRedesSociais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRedesSociais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRedesSociaisActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnRedesSociais);
+        btnRedesSociais.setBounds(30, 400, 120, 20);
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
+        jPanel3.add(jLabel24);
+        jLabel24.setBounds(30, 390, 120, 40);
+
         btnSalvar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
@@ -193,47 +211,29 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnSalvar);
-        btnSalvar.setBounds(50, 400, 120, 20);
-
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
-        jPanel3.add(jLabel24);
-        jLabel24.setBounds(50, 390, 120, 40);
-
-        btnEditarPerfil1.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnEditarPerfil1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarPerfil1.setText("Add Whatsapp");
-        btnEditarPerfil1.setBorderPainted(false);
-        btnEditarPerfil1.setContentAreaFilled(false);
-        btnEditarPerfil1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditarPerfil1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPerfil1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnEditarPerfil1);
-        btnEditarPerfil1.setBounds(310, 400, 120, 20);
+        btnSalvar.setBounds(290, 400, 120, 20);
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel21);
-        jLabel21.setBounds(310, 390, 120, 40);
+        jLabel21.setBounds(290, 390, 120, 40);
 
-        btnEditarPerfil5.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnEditarPerfil5.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarPerfil5.setText("Add Instagram");
-        btnEditarPerfil5.setBorderPainted(false);
-        btnEditarPerfil5.setContentAreaFilled(false);
-        btnEditarPerfil5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditarPerfil5.addActionListener(new java.awt.event.ActionListener() {
+        btnDeletar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnDeletar.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeletar.setText("Deletar");
+        btnDeletar.setBorderPainted(false);
+        btnDeletar.setContentAreaFilled(false);
+        btnDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPerfil5ActionPerformed(evt);
+                btnDeletarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEditarPerfil5);
-        btnEditarPerfil5.setBounds(180, 400, 124, 20);
+        jPanel3.add(btnDeletar);
+        btnDeletar.setBounds(160, 400, 120, 20);
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel25);
-        jLabel25.setBounds(180, 390, 120, 40);
+        jLabel25.setBounds(160, 390, 120, 40);
 
         checkSeg.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         checkSeg.setForeground(new java.awt.Color(116, 116, 116));
@@ -577,13 +577,13 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void btnEditarPerfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfil1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarPerfil1ActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        updateEquipe();
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnEditarPerfil5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfil5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarPerfil5ActionPerformed
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        deleteEquipe();
+    }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed
         TelaPerfilVIEW j = new TelaPerfilVIEW();
@@ -617,10 +617,10 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    private void btnRedesSociaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedesSociaisActionPerformed
         //salvarDados();
         updateEquipe();
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }//GEN-LAST:event_btnRedesSociaisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -674,13 +674,13 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
+    private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnEditarEquipeEquipe;
     private javax.swing.JButton btnEditarEquipePerfil;
-    private javax.swing.JButton btnEditarPerfil1;
-    private javax.swing.JButton btnEditarPerfil5;
     private javax.swing.JButton btnEditarPesquisar;
     private javax.swing.JButton btnEditarPesquisar1;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnRedesSociais;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JComboBox<String> cbEsporte;
@@ -754,7 +754,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     public void readEquipe() {
         EquipeModel equipe = new EquipeModel();
         EnderecoModel endereco = new EnderecoModel();
-        equipe.setNome("ArenaAPP Team");
+        equipe.setNome("Jose's Dev Team");
         
         EquipeService service = new EquipeService();
         EnderecoService serviceEnde = new EnderecoService();
@@ -806,5 +806,13 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         EnderecoModel endereco = new EnderecoModel(cidade, rua, bairro, num);
         endereco.setId_endereco(equipe_.getId_endereco());
         service.uptadeEquipe(equipe, endereco);
+    }
+    
+    public void deleteEquipe() {
+        EquipeModel equipe_ = new EquipeModel();
+        EquipeService service = new EquipeService();
+        equipe_.setNome("Jose's Dev Team");
+        equipe_ = service.readEquipe(equipe_);
+        service.deleteEquipe(equipe_);
     }
 }
