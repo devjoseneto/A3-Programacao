@@ -6,7 +6,9 @@ package VIEW;
 
 import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
+import SERVICES.EnderecoService;
 import SERVICES.EquipeService;
+import static VIEW.TelaEquipeVIEW.getBoolean;
 
 /**
  *
@@ -19,6 +21,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
      */
     public FormEditarEquipeVIEW() {
         initComponents();
+        readEquipe();
     }
 
     /**
@@ -71,6 +74,10 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         lblCidade3 = new javax.swing.JLabel();
         lblCidade4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        lblArenaID_ = new javax.swing.JLabel();
+        lblArenaID = new javax.swing.JLabel();
+        lblDono_ = new javax.swing.JLabel();
+        lblDono = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -441,21 +448,49 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
 
         jPanel2.setLayout(null);
 
+        lblArenaID_.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lblArenaID_.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID_.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID_.setText("Arena ID:");
+        jPanel2.add(lblArenaID_);
+        lblArenaID_.setBounds(10, 410, 60, 20);
+
+        lblArenaID.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lblArenaID.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID.setText("ID");
+        jPanel2.add(lblArenaID);
+        lblArenaID.setBounds(70, 410, 50, 20);
+
+        lblDono_.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lblDono_.setForeground(new java.awt.Color(116, 116, 116));
+        lblDono_.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDono_.setText("Criado por:");
+        jPanel2.add(lblDono_);
+        lblDono_.setBounds(160, 410, 70, 20);
+
+        lblDono.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        lblDono.setForeground(new java.awt.Color(116, 116, 116));
+        lblDono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDono.setText("Nome");
+        jPanel2.add(lblDono);
+        lblDono.setBounds(240, 410, 50, 20);
+
         jButton4.setText("ADM");
         jPanel2.add(jButton4);
-        jButton4.setBounds(340, 410, 70, 23);
+        jButton4.setBounds(340, 380, 70, 23);
 
         jButton2.setText("Alterar");
         jPanel2.add(jButton2);
-        jButton2.setBounds(120, 410, 100, 23);
+        jButton2.setBounds(120, 380, 100, 23);
 
         jButton3.setText("Deletar");
         jPanel2.add(jButton3);
-        jButton3.setBounds(230, 410, 100, 23);
+        jButton3.setBounds(230, 380, 100, 23);
 
         jButton1.setText("Adicionar");
         jPanel2.add(jButton1);
-        jButton1.setBounds(10, 410, 100, 23);
+        jButton1.setBounds(10, 380, 100, 23);
 
         jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
@@ -481,7 +516,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 420, 400);
+        jScrollPane1.setBounds(0, 0, 420, 370);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-user-time.png"))); // NOI18N
         jPanel2.add(jLabel8);
@@ -581,7 +616,8 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        salvarDados();
+        //salvarDados();
+        updateEquipe();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -668,12 +704,16 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblArenaID;
+    private javax.swing.JLabel lblArenaID_;
     private javax.swing.JLabel lblCidade1;
     private javax.swing.JLabel lblCidade2;
     private javax.swing.JLabel lblCidade3;
     private javax.swing.JLabel lblCidade4;
     private javax.swing.JLabel lblCidade5;
     private javax.swing.JLabel lblCidade6;
+    private javax.swing.JLabel lblDono;
+    private javax.swing.JLabel lblDono_;
     private javax.swing.JLabel lblIdade;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome1;
@@ -707,5 +747,62 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         EnderecoModel endereco = new EnderecoModel(cidade, rua, bairro, num);
         EquipeService service = new EquipeService();
         service.createEquipe(equipe, endereco);
+    }
+    
+    public void readEquipe() {
+        EquipeModel equipe = new EquipeModel();
+        EnderecoModel endereco = new EnderecoModel();
+        equipe.setNome("ArenaAPP Team");
+        
+        EquipeService service = new EquipeService();
+        EnderecoService serviceEnde = new EnderecoService();
+        equipe = service.readEquipe(equipe);
+        endereco = serviceEnde.readEndereco(equipe);
+        
+        lblArenaID.setText(String.valueOf(equipe.getIdEquipe()));
+        txtNome.setText(equipe.getNome());
+        txtDesc.setText(equipe.getDescricao());
+        cbEsporte.setSelectedItem(equipe.getEsporte());
+        checkDom.setSelected(getBoolean(equipe.getDom()));
+        checkSeg.setSelected(getBoolean(equipe.getSeg()));
+        checkTer.setSelected(getBoolean(equipe.getTer()));
+        checkQua.setSelected(getBoolean(equipe.getQua()));
+        checkQui.setSelected(getBoolean(equipe.getQui()));
+        checkSex.setSelected(getBoolean(equipe.getSex()));
+        checkSab.setSelected(getBoolean(equipe.getSab()));
+        txtRua.setText(endereco.getRua());
+        txtBairro.setText(endereco.getBairro());
+        txtNum.setText(endereco.getNum());
+        cbCidade.setSelectedItem(endereco.getCidade());
+    }
+    
+    public void updateEquipe() {
+        String nome = txtNome.getText();
+        String esporte = String.valueOf(cbEsporte.getSelectedItem());
+        String descricao = txtDesc.getText();
+        String rua = txtRua.getText();
+        String bairro = txtBairro.getText();
+        String num = txtNum.getText();
+        String cidade = String.valueOf(cbCidade.getSelectedItem());
+        String dom, seg, ter, qua, qui, sex, sab;
+        dom = checkDom.isSelected() ? "1" : "0";
+        seg = checkSeg.isSelected() ? "1" : "0";
+        ter = checkTer.isSelected() ? "1" : "0";
+        qua = checkQua.isSelected() ? "1" : "0";
+        qui = checkQui.isSelected() ? "1" : "0";
+        sex = checkSex.isSelected() ? "1" : "0";
+        sab = checkSab.isSelected() ? "1" : "0";
+        
+        // Usar o read para pegar a chave estrageira de endereco
+        EquipeModel equipe_ = new EquipeModel();
+        EquipeService service = new EquipeService();
+        equipe_.setNome("ArenaAPP Team");
+        equipe_ = service.readEquipe(equipe_);
+        
+        EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, sab, esporte);
+        equipe.setIdEquipe(Integer.parseInt(lblArenaID.getText()));
+        EnderecoModel endereco = new EnderecoModel(cidade, rua, bairro, num);
+        endereco.setId_endereco(equipe_.getId_endereco());
+        service.uptadeEquipe(equipe, endereco);
     }
 }

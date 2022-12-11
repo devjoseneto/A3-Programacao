@@ -27,4 +27,11 @@ public class EquipeService {
         equipe = repository.readEquipe(equipe);
         return equipe;
     }
+    
+    public void uptadeEquipe(EquipeModel equipe, EnderecoModel endereco){
+        EquipeRepository repository = new EquipeRepository();
+        EnderecoRepository repositoryEnde = new EnderecoRepository();
+        repository.updateEquipe(equipe);
+        repositoryEnde.updateEndereco(endereco);
+    }
 }

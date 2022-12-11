@@ -22,8 +22,8 @@ public class EnderecoRepository {
 
     Connection conn;
     PreparedStatement pstm;
-    
-    public int createEndereco (EnderecoModel endereco) {
+
+    public int createEndereco(EnderecoModel endereco) {
         int id_endereco = 0;
         try {
             String sqlID = "select id_endereco from endereco where rua = ? and bairro = ? and numero = ? and cidade = ?;";
@@ -77,6 +77,31 @@ public class EnderecoRepository {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "EquipeRepository Read Endereco" + ex);
             return null;
+        }
+    }
+
+    public void updateEndereco(EnderecoModel endereco) {
+        try {
+            String sql = "update endereco\n"
+                    + "set rua = ?,\n"
+                    + "bairro = ?,\n"
+                    + "numero = ?,\n"
+                    + "cidade = ?\n"
+                    + "where id_endereco = ?;";
+            conn = new ConexaoBD().conectaDB();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, endereco.getRua());
+            pstm.setString(2, endereco.getBairro());
+            pstm.setString(3, endereco.getNum());
+            pstm.setString(4, endereco.getCidade());
+            pstm.setString(5, String.valueOf(endereco.getId_endereco()));
+
+            pstm.execute();
+            pstm.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "UEnderecoRepository: " + ex);
+            Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

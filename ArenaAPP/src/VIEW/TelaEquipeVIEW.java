@@ -725,7 +725,7 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     public void readEquipe() {
         EquipeModel equipe = new EquipeModel();
         EnderecoModel endereco = new EnderecoModel();
-        equipe.setNome("Jose's Dev Team");
+        equipe.setNome("Admin 001");
         
         EquipeService service = new EquipeService();
         EnderecoService serviceEnde = new EnderecoService();

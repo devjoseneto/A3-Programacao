@@ -2,6 +2,8 @@ package REPOSITORY;
 
 import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
+import MODELS.UsuarioModel;
+import static REPOSITORY.UsuarioRepository.usuarioLogado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +41,7 @@ public class EquipeRepository {
             pstm.execute();
             pstm.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "O nome já está em uso "+ex);
+            JOptionPane.showMessageDialog(null, "O nome já está em uso " + ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -84,6 +86,43 @@ public class EquipeRepository {
             return null;
         }
         return equipeReturn;
+    }
+
+    public void updateEquipe(EquipeModel equipe) {
+        try {
+            String sql = "update Equipe\n"
+                    + "set nome = ?,\n"
+                    + "descricao = ?,\n"
+                    + "PraticaDom = ?,\n"
+                    + "PraticaSeg = ?,\n"
+                    + "PraticaTer = ?,\n"
+                    + "PraticaQua = ?,\n"
+                    + "PraticaQui = ?,\n"
+                    + "PraticaSex = ?,\n"
+                    + "PraticaSab = ?,\n"
+                    + "esporte = ?\n"
+                    + "where id_equipe = ?;";
+            conn = new ConexaoBD().conectaDB();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, equipe.getNome());
+            pstm.setString(2, equipe.getDescricao());
+            pstm.setString(3, equipe.getDom());
+            pstm.setString(4, equipe.getSeg());
+            pstm.setString(5, equipe.getTer());
+            pstm.setString(6, equipe.getQua());
+            pstm.setString(7, equipe.getQui());
+            pstm.setString(8, equipe.getSex());
+            pstm.setString(9, equipe.getSab());
+            pstm.setString(10, equipe.getEsporte());
+            pstm.setString(11, String.valueOf(equipe.getIdEquipe()));
+
+            pstm.execute();
+            pstm.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "EquipeRepository update: " + ex);
+            Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void vincularLinkWhatsapp() {

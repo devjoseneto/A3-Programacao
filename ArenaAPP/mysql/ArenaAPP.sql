@@ -67,3 +67,32 @@ desc usuario;
 drop database arenaapp; 
 
 update usuario set biografia = 'Oi, eu sou o José' where id_usuario = 1;
+update usuario
+set nome = 'Admin 001',
+email = 'admin@gmail.com',
+dataDeNascimento = '2000-01-01',
+senha = '12345678',
+sexo = 'F',
+biografia = 'Admin',
+cidade = 'Igaporã-BA'
+where id_usuario = 1;
+
+update Equipe
+set nome = 'Admin 001',
+descricao = 'Equipe de Volei',
+PraticaDom = '1',
+PraticaSeg = '1',
+PraticaTer = '1',
+PraticaQua = '1',
+PraticaQui = '1',
+PraticaSex = '1',
+PraticaSab = '1',
+esporte = 'Volei'
+where id_equipe = 2;
+
+update endereco
+set rua = '',
+bairro = '',
+numero = '10',
+cidade = 'Caetite-BA'
+where id_endereco = '2';
