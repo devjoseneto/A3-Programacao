@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import MODELS.UsuarioModel;
+import java.sql.Statement;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,15 +22,14 @@ public class UsuarioRepository {
 
     public void cadastrarUsuario(UsuarioModel usuario) throws SQLException {
         ResultSet rsEfetuarLogin = this.verificarSeExiste(usuario);
-
         if (rsEfetuarLogin.next()) {
-            JOptionPane.showMessageDialog(null, "Esse usuario já está cadastrado");
+            JOptionPane.showMessageDialog(null, "Esse email já está cadastrado");
         } else {
             try {
 
                 String sql = "insert into usuario (nome, email, senha, cidade, dataDeNascimento, sexo) values (?, ?, ?, ?, ?, ?);";
                 conn = new ConexaoBD().conectaDB();
-                pstm = conn.prepareStatement(sql);
+                pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, usuario.getNome());
                 pstm.setString(2, usuario.getEmail());
                 pstm.setString(3, usuario.getSenha());
@@ -38,8 +38,14 @@ public class UsuarioRepository {
                 pstm.setString(6, String.valueOf(usuario.getSexo()));
 
                 pstm.execute();
+
+                ResultSet rs = pstm.getGeneratedKeys();
+                if (rs.next()) {
+                    usuarioLogado.setIdUsuario(rs.getInt(1));
+                }
+
                 pstm.close();
-                usuarioLogado = usuario;
+                usuarioLogado.setLogado(true);
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
@@ -58,10 +64,10 @@ public class UsuarioRepository {
             pstm.setString(2, usuario.getSenha());
 
             ResultSet rs = pstm.executeQuery();
-            usuarioLogado = usuario;
             return rs;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
+            Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -118,7 +124,6 @@ public class UsuarioRepository {
 
             pstm.execute();
             pstm.close();
-            usuarioLogado = usuario;
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
@@ -126,17 +131,24 @@ public class UsuarioRepository {
         }
     }
 
-    public void excluirUsuario(UsuarioModel usuario) {
-        /*for (int i = 0; i < BancoDeDados.listaDeUsuario.size(); i++) {
-        if (BancoDeDados.listaDeUsuario.get(i).isLogado()) {
-        BancoDeDados.listaDeUsuario.remove(i);
-        BancoDeDados.usuarioLogado = new UsuarioModel();
+    public void deleteUsuario(UsuarioModel usuario) {
+        try {
+            String sql = "delete from usuario where id_usuario = ?";
+
+            conn = new ConexaoBD().conectaDB();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, String.valueOf(usuario.getIdUsuario()));
+
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "UsuarioRepository delete: " + ex);
+            Logger.getLogger(EquipeRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }*/
     }
 
     public void sair(UsuarioModel usuario) {
-        usuarioLogado = new UsuarioModel();
+        usuarioLogado.setLogado(false);
     }
 
     public ResultSet verificarSeExiste(UsuarioModel usuario) {

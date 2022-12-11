@@ -1,10 +1,9 @@
 package SERVICES;
 
-import MODELS.EquipeModel;
 import java.sql.ResultSet;
 import MODELS.UsuarioModel;
-import REPOSITORY.EquipeRepository;
 import REPOSITORY.UsuarioRepository;
+import static REPOSITORY.UsuarioRepository.usuarioLogado;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -25,6 +24,8 @@ public class UsuarioService {
 
             if (rsEfetuarLogin.next()) {
                 autenticacao = true;
+                usuarioLogado.setIdUsuario(rsEfetuarLogin.getInt("id_usuario"));
+                usuarioLogado.setLogado(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario ou Senha Inválida!");
             }
@@ -34,7 +35,7 @@ public class UsuarioService {
         return autenticacao;
     }
     
-    public UsuarioModel readEquipe(UsuarioModel usuario) {
+    public UsuarioModel readUsuario(UsuarioModel usuario) {
         UsuarioRepository repository = new UsuarioRepository();
         usuario = repository.readEquipe(usuario);
         return usuario;
@@ -51,13 +52,13 @@ public class UsuarioService {
         repository.updateUsuario(usuario);
     }
 
-    public void excluir(UsuarioModel usuario) {
+    public void deleteUsuario(UsuarioModel usuario) {
         UsuarioRepository repository = new UsuarioRepository();
-        repository.excluirUsuario(usuario);
+        repository.deleteUsuario(usuario);
     }
 
     public void sair(UsuarioModel usuario) {
         UsuarioRepository repository = new UsuarioRepository();
-        repository.sair(UsuarioRepository.usuarioLogado);
+        //repository.sair(usuarioLogado);
     }
 }

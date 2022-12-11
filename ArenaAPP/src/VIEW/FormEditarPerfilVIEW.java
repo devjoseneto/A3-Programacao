@@ -5,6 +5,7 @@
 package VIEW;
 
 import MODELS.UsuarioModel;
+import REPOSITORY.UsuarioRepository;
 import SERVICES.UsuarioService;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -46,7 +47,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         btnEditarPerfilEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnExcluir = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -155,19 +156,19 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
 
-        btnExcluir.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluir.setText("Deletar");
-        btnExcluir.setBorderPainted(false);
-        btnExcluir.setContentAreaFilled(false);
-        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnDeletar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnDeletar.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeletar.setText("Deletar");
+        btnDeletar.setBorderPainted(false);
+        btnDeletar.setContentAreaFilled(false);
+        btnDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btnDeletarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnExcluir);
-        btnExcluir.setBounds(170, 400, 120, 20);
+        jPanel3.add(btnDeletar);
+        btnDeletar.setBounds(170, 400, 120, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel4);
@@ -369,6 +370,9 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         uptadeUsuario();
+        TelaPerfilVIEW j = new TelaPerfilVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -425,9 +429,9 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluirActionPerformed
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        deleteUsuario();
+    }//GEN-LAST:event_btnDeletarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -481,10 +485,10 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
+    private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnEditarPerfilEquipe;
     private javax.swing.JButton btnEditarPerfilPerfil;
     private javax.swing.JButton btnEditarPerfilPesquisar;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbCidade;
@@ -521,9 +525,9 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
 
     public void readUsuario() {
         UsuarioModel usuario = new UsuarioModel();
-        usuario.setIdUsuario(1);
+        usuario.setIdUsuario(UsuarioRepository.usuarioLogado.getIdUsuario());
         UsuarioService service = new UsuarioService();
-        usuario = service.readEquipe(usuario);
+        usuario = service.readUsuario(usuario);
 
         txtNome.setText(usuario.getNome());
         txtBiografia.setText(usuario.getBiografia());
@@ -562,5 +566,10 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         UsuarioService service = new UsuarioService();
         service.uptadeUsuario(usuario);
         
+    }
+    
+    public void deleteUsuario() {
+        UsuarioService service = new UsuarioService();
+        service.deleteUsuario(UsuarioRepository.usuarioLogado);
     }
 }

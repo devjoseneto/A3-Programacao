@@ -6,6 +6,7 @@ package VIEW;
 
 import REPOSITORY.BancoDeDados;
 import REPOSITORY.UsuarioRepository;
+import static REPOSITORY.UsuarioRepository.usuarioLogado;
 
 /**
  *
@@ -307,7 +308,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
     private void btnPerfilSecundarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilSecundarioActionPerformed
 
-        if (UsuarioRepository.usuarioLogado.isLogado()) {
+        if (usuarioLogado.isLogado()) {
             TelaPerfilVIEW j = new TelaPerfilVIEW();
             this.dispose();
             j.setVisible(true);
@@ -326,7 +327,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
     private void btnCriarTimePrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTimePrincipalActionPerformed
         
-        if (UsuarioRepository.usuarioLogado.isLogado()) {
+        if (usuarioLogado.isLogado()) {
 
             FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
             this.dispose();

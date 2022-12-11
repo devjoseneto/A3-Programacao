@@ -5,6 +5,7 @@
 package VIEW;
 
 import MODELS.UsuarioModel;
+import REPOSITORY.UsuarioRepository;
 import SERVICES.UsuarioService;
 
 /**
@@ -139,7 +140,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
 
         btnSalvar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Editar");
         btnSalvar.setBorderPainted(false);
         btnSalvar.setContentAreaFilled(false);
         btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -149,11 +150,11 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnSalvar);
-        btnSalvar.setBounds(270, 400, 160, 20);
+        btnSalvar.setBounds(300, 400, 120, 20);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botaoEditarPerfil.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(270, 390, 160, 40);
+        jLabel3.setBounds(300, 390, 120, 40);
 
         lblCidade.setFont(new java.awt.Font("Lucida Sans", 1, 11)); // NOI18N
         lblCidade.setForeground(new java.awt.Color(116, 116, 116));
@@ -284,7 +285,9 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
+        FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
@@ -373,9 +376,9 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     public void readUsuario() {
         
         UsuarioModel usuario = new UsuarioModel();
-        usuario.setIdUsuario(1);
+        usuario.setIdUsuario(UsuarioRepository.usuarioLogado.getIdUsuario());
         UsuarioService service = new UsuarioService();
-        usuario = service.readEquipe(usuario);
+        usuario = service.readUsuario(usuario);
         
         txtNome.setText(usuario.getNome());
         txtBiografia.setText(usuario.getBiografia());
