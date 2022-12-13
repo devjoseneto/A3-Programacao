@@ -54,9 +54,13 @@ public class UsuarioService {
     }
     
     public void setEquipe(UsuarioModel usuario, EquipeModel equipe) throws SQLException {
-        System.out.println(usuario.getId_usuario());
         UsuarioRepository repository = new UsuarioRepository();
         repository.setEquipe(usuario, equipe);
+    }
+    
+    public void removeEquipe(UsuarioModel usuario) {
+        UsuarioRepository repository = new UsuarioRepository();
+        repository.removeEquipe(usuario);
     }
 
     public void sair(UsuarioModel usuario) {

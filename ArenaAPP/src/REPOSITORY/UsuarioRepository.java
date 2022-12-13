@@ -154,7 +154,7 @@ public class UsuarioRepository {
         boolean verificar = this.verificarSeJaTemEquipe(usuario);
         // true = ele ja tem equipe
         if (verificar) {
-                JOptionPane.showMessageDialog(null, "Esse usuario já pertence a uma equipe");
+            JOptionPane.showMessageDialog(null, "Esse usuario já pertence a uma equipe");
         } else {
             usuario = readUsuario(usuario);
             String label = "Você quer mesmo adicionar o " + usuario.getNome() + " ( UserID: " + usuario.getId_usuario() + ") a sua equipe?";
@@ -175,6 +175,28 @@ public class UsuarioRepository {
                     JOptionPane.showMessageDialog(null, "UsuarioRepository setEquipe: " + ex);
                     Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+        }
+    }
+
+    public void removeEquipe(UsuarioModel usuario) {
+        usuario = readUsuario(usuario);
+        String label = "Você quer mesmo remover o " + usuario.getNome() + " ( UserID: " + usuario.getId_usuario() + ") da sua equipe?";
+        int confirmar = JOptionPane.showConfirmDialog(null, label);
+        if (confirmar == JOptionPane.YES_OPTION) {
+            try {
+
+                String sql = "update usuario set fk_equipe = null where id_usuario = ?;";
+                conn = new ConexaoBD().conectaDB();
+                pstm = conn.prepareStatement(sql);
+                pstm.setString(1, String.valueOf(usuario.getId_usuario()));
+
+                pstm.execute();
+                pstm.close();
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "UsuarioRepository removeEquipe: " + ex);
+                Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -202,17 +224,18 @@ public class UsuarioRepository {
     public boolean verificarSeJaTemEquipe(UsuarioModel usuario) {
         conn = new ConexaoBD().conectaDB();
         boolean verificar = false;
-        
+
         try {
             String sql = "select * from usuario where id_usuario = ?;";
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, String.valueOf(usuario.getId_usuario()));
 
             ResultSet rs = pstm.executeQuery();
-            
-            if (rs.next())
-                // se fk_equipe for diferente de nulo ele já pertence a uma equipe
+
+            if (rs.next()) // se fk_equipe for diferente de nulo ele já pertence a uma equipe
+            {
                 verificar = rs.getInt("fk_equipe") != 0;
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
         }

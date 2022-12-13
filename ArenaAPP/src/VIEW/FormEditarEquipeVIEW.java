@@ -89,9 +89,9 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         lblDono_ = new javax.swing.JLabel();
         lblDono = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
+        btnAdicionar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
@@ -456,7 +456,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel3.add(lblCidade4);
         lblCidade4.setBounds(260, 10, 50, 20);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 440, 440));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 440, 440));
 
         jPanel2.setLayout(null);
 
@@ -492,22 +492,32 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel2.add(jButton4);
         jButton4.setBounds(340, 380, 70, 23);
 
-        jButton2.setText("Alterar");
-        jPanel2.add(jButton2);
-        jButton2.setBounds(120, 380, 100, 23);
-
-        jButton3.setText("Deletar");
-        jPanel2.add(jButton3);
-        jButton3.setBounds(230, 380, 100, 23);
-
-        jButton1.setText("Adicionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(10, 380, 100, 23);
+        jPanel2.add(btnAlterar);
+        btnAlterar.setBounds(120, 380, 100, 23);
+
+        btnRemover.setText("Deletar");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnRemover);
+        btnRemover.setBounds(230, 380, 100, 23);
+
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAdicionar);
+        btnAdicionar.setBounds(10, 380, 100, 23);
 
         jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
@@ -548,61 +558,6 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRuaActionPerformed
-
-    private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
-
-    }//GEN-LAST:event_cbCidadeActionPerformed
-
-    private void cbEsporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEsporteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbEsporteActionPerformed
-
-    private void checkDomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkDomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkDomActionPerformed
-
-    private void checkSegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSegActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkSegActionPerformed
-
-    private void checkTerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkTerActionPerformed
-
-    private void checkQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkQuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkQuaActionPerformed
-
-    private void checkQuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkQuiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkQuiActionPerformed
-
-    private void checkSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSexActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkSexActionPerformed
-
-    private void checkSabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSabActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkSabActionPerformed
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if (UsuarioRepository.usuarioLogado.getId_equipe() == 0)
-            createEquipe();
-        else
-            updateEquipe();
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        deleteEquipe();
-    }//GEN-LAST:event_btnDeletarActionPerformed
-
     private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed
         TelaPerfilVIEW j = new TelaPerfilVIEW();
         this.dispose();
@@ -619,14 +574,6 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEditarEquipeEquipeActionPerformed
 
-    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroActionPerformed
-
-    private void txtNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumActionPerformed
-
     private void btnEditarPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPesquisar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPesquisar1ActionPerformed
@@ -635,14 +582,85 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
 
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        adicionarUsuario();
+    }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        removerUsuario();
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRuaActionPerformed
+
+    private void cbCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCidadeActionPerformed
+
+    }//GEN-LAST:event_cbCidadeActionPerformed
+
+    private void cbEsporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEsporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbEsporteActionPerformed
+
+    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBairroActionPerformed
+
+    private void txtNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumActionPerformed
+
+    private void checkDomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkDomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkDomActionPerformed
+
+    private void checkSabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSabActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkSabActionPerformed
+
+    private void checkSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSexActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkSexActionPerformed
+
+    private void checkQuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkQuiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkQuiActionPerformed
+
+    private void checkQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkQuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkQuaActionPerformed
+
+    private void checkTerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkTerActionPerformed
+
+    private void checkSegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkSegActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        deleteEquipe();
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if (UsuarioRepository.usuarioLogado.getId_equipe() == 0)
+        createEquipe();
+        else
+        updateEquipe();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
     private void btnRedesSociaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedesSociaisActionPerformed
         //salvarDados();
         updateEquipe();
     }//GEN-LAST:event_btnRedesSociaisActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        adicionarUsuario();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        alterarUsuario();
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -696,6 +714,8 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnEditarEquipeEquipe;
     private javax.swing.JButton btnEditarEquipePerfil;
@@ -703,6 +723,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarPesquisar1;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnRedesSociais;
+    private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JComboBox<String> cbEsporte;
@@ -713,9 +734,6 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkSeg;
     private javax.swing.JCheckBox checkSex;
     private javax.swing.JCheckBox checkTer;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -843,13 +861,15 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private void adicionarUsuario() {
         // Pegar o id do usuario que deseja adicionar
         String id_usuario = JOptionPane.showInputDialog("Digite o id do usuario que deseja adicionar.");
-        System.out.println(id_usuario);
+        
         // Pegar a equipe do dono ou adm
         EquipeModel equipe = new EquipeModel();
         equipe.setIdEquipe(UsuarioRepository.usuarioLogado.getId_equipe());
+        
         // Seta um UsuarioModel com o id do usuario a ser adicionado
         UsuarioModel usuario = new UsuarioModel();
         usuario.setId_usuario(Integer.parseInt(id_usuario));
+        
         // Chama o metodo para adicionar a id da equipe como chave estrageira no usuario
         UsuarioService service = new UsuarioService();
         try {
@@ -860,5 +880,23 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
                     .getLogger(FormEditarEquipeVIEW.class
                             .getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void removerUsuario() {
+        // Pegar o id do usuario que deseja adicionar
+        String id_usuario = JOptionPane.showInputDialog("Digite o id do usuario que deseja remover.");
+        
+        // Seta um UsuarioModel com o id do usuario a ser adicionado
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setId_usuario(Integer.parseInt(id_usuario));
+        
+        // Chama o metodo para adicionar a id da equipe como chave estrageira no usuario
+        UsuarioService service = new UsuarioService();
+        service.removeEquipe(usuario);
+    }
+    
+    public void alterarUsuario() {
+        removerUsuario();
+        adicionarUsuario();
     }
 }
