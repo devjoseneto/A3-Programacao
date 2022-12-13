@@ -6,6 +6,7 @@ package REPOSITORY;
 
 import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -42,13 +43,19 @@ public class EnderecoRepository {
             } else {
                 String sql = "insert into endereco (rua, bairro, numero, cidade) values (?, ?, ?, ?);";
                 conn = new ConexaoBD().conectaDB();
-                pstm = conn.prepareStatement(sql);
+                pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, endereco.getRua());
                 pstm.setString(2, endereco.getBairro());
                 pstm.setString(3, endereco.getNum());
                 pstm.setString(4, endereco.getCidade());
 
                 pstm.execute();
+                
+                ResultSet rs = pstm.getGeneratedKeys();
+                if (rs.next()) {
+                    id_endereco = rs.getInt(1);
+                }
+                
                 pstm.close();
             }
         } catch (SQLException ex) {
@@ -130,7 +137,7 @@ public class EnderecoRepository {
         boolean verificarEndereco = false;
         try {
             String sql = "select count(*) from equipe where fk_endereco = ?;";
-            
+
             conn = new ConexaoBD().conectaDB();
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, String.valueOf(equipe.getId_endereco()));

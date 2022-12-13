@@ -6,6 +6,7 @@ package VIEW;
 
 import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
+import REPOSITORY.UsuarioRepository;
 import SERVICES.EnderecoService;
 import SERVICES.EquipeService;
 
@@ -607,7 +608,7 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     public static boolean getBoolean(String valor) {
         return !valor.equals("0");
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -727,44 +728,45 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void readEquipe() {
-        EquipeModel equipe = new EquipeModel();
-        EnderecoModel endereco = new EnderecoModel();
-        equipe.setNome("Jose's Dev Team");
-        
-        EquipeService service = new EquipeService();
-        EnderecoService serviceEnde = new EnderecoService();
-        equipe = service.readEquipe(equipe);
-        endereco = serviceEnde.readEndereco(equipe);
-        
-        txtNome.setText(equipe.getNome());
-        txtDesc.setText(equipe.getDescricao());
-        cbEsporte.setSelectedItem(equipe.getEsporte());
-        checkDom.setSelected(getBoolean(equipe.getDom()));
-        checkSeg.setSelected(getBoolean(equipe.getSeg()));
-        checkTer.setSelected(getBoolean(equipe.getTer()));
-        checkQua.setSelected(getBoolean(equipe.getQua()));
-        checkQui.setSelected(getBoolean(equipe.getQui()));
-        checkSex.setSelected(getBoolean(equipe.getSex()));
-        checkSab.setSelected(getBoolean(equipe.getSab()));
-        txtRua.setText(endereco.getRua());
-        txtBairro.setText(endereco.getBairro());
-        txtNum.setText(endereco.getNum());
-        cbCidade.setSelectedItem(endereco.getCidade());
-        
-        txtNome.setEnabled(false);
-        txtDesc.setEnabled(false);
-        cbEsporte.setEnabled(false);
-        checkDom.setEnabled(false);
-        checkSeg.setEnabled(false);
-        checkTer.setEnabled(false);
-        checkQua.setEnabled(false);
-        checkQui.setEnabled(false);
-        checkSex.setEnabled(false);
-        checkSab.setEnabled(false);
-        txtRua.setEnabled(false);
-        txtBairro.setEnabled(false);
-        txtNum.setEnabled(false);
-        cbCidade.setEnabled(false);
+        if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+            EquipeModel equipe = new EquipeModel();
+            EnderecoModel endereco = new EnderecoModel();
+            equipe.setIdEquipe(UsuarioRepository.usuarioLogado.getId_equipe());
 
+            EquipeService service = new EquipeService();
+            EnderecoService serviceEnde = new EnderecoService();
+            equipe = service.readEquipe(equipe);
+            endereco = serviceEnde.readEndereco(equipe);
+
+            txtNome.setText(equipe.getNome());
+            txtDesc.setText(equipe.getDescricao());
+            cbEsporte.setSelectedItem(equipe.getEsporte());
+            checkDom.setSelected(getBoolean(equipe.getDom()));
+            checkSeg.setSelected(getBoolean(equipe.getSeg()));
+            checkTer.setSelected(getBoolean(equipe.getTer()));
+            checkQua.setSelected(getBoolean(equipe.getQua()));
+            checkQui.setSelected(getBoolean(equipe.getQui()));
+            checkSex.setSelected(getBoolean(equipe.getSex()));
+            checkSab.setSelected(getBoolean(equipe.getSab()));
+            txtRua.setText(endereco.getRua());
+            txtBairro.setText(endereco.getBairro());
+            txtNum.setText(endereco.getNum());
+            cbCidade.setSelectedItem(endereco.getCidade());
+
+            txtNome.setEnabled(false);
+            txtDesc.setEnabled(false);
+            cbEsporte.setEnabled(false);
+            checkDom.setEnabled(false);
+            checkSeg.setEnabled(false);
+            checkTer.setEnabled(false);
+            checkQua.setEnabled(false);
+            checkQui.setEnabled(false);
+            checkSex.setEnabled(false);
+            checkSab.setEnabled(false);
+            txtRua.setEnabled(false);
+            txtBairro.setEnabled(false);
+            txtNum.setEnabled(false);
+            cbCidade.setEnabled(false);
+        }
     }
 }

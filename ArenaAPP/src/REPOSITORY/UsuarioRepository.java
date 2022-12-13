@@ -1,5 +1,6 @@
 package REPOSITORY;
 
+import MODELS.EquipeModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,8 +22,8 @@ public class UsuarioRepository {
     public static UsuarioModel usuarioLogado = new UsuarioModel();
 
     public void cadastrarUsuario(UsuarioModel usuario) throws SQLException {
-        ResultSet rsEfetuarLogin = this.verificarSeExiste(usuario);
-        if (rsEfetuarLogin.next()) {
+        ResultSet rsVerificar = this.verificarSeExiste(usuario);
+        if (rsVerificar.next()) {
             JOptionPane.showMessageDialog(null, "Esse email já está cadastrado");
         } else {
             try {
@@ -41,7 +42,7 @@ public class UsuarioRepository {
 
                 ResultSet rs = pstm.getGeneratedKeys();
                 if (rs.next()) {
-                    usuarioLogado.setIdUsuario(rs.getInt(1));
+                    usuarioLogado.setId_usuario(rs.getInt(1));
                 }
 
                 pstm.close();
@@ -72,7 +73,7 @@ public class UsuarioRepository {
         }
     }
 
-    public UsuarioModel readEquipe(UsuarioModel usuario) {
+    public UsuarioModel readUsuario(UsuarioModel usuario) {
         // usuario - informações para pesquisar no banco de dados
         // usuario_ - para receberem informações do bando de dados
         UsuarioModel usuario_ = new UsuarioModel();
@@ -80,12 +81,12 @@ public class UsuarioRepository {
         conn = new ConexaoBD().conectaDB();
         try {
             pstm = conn.prepareStatement(sql);
-            pstm.setString(1, Integer.toString(usuario.getIdUsuario()));
+            pstm.setString(1, Integer.toString(usuario.getId_usuario()));
 
             ResultSet rs = pstm.executeQuery();
 
             while (rs.next()) {
-                usuario_.setIdUsuario(rs.getInt("id_usuario"));
+                usuario_.setId_usuario(rs.getInt("id_usuario"));
                 usuario_.setNome(rs.getString("nome"));
                 usuario_.setEmail(rs.getString("email"));
                 usuario_.setCidade(rs.getString("cidade"));
@@ -120,7 +121,7 @@ public class UsuarioRepository {
             pstm.setString(5, String.valueOf(usuario.getSexo()));
             pstm.setString(6, usuario.getBiografia());
             pstm.setString(7, usuario.getCidade());
-            pstm.setString(8, String.valueOf(usuario.getIdUsuario()));
+            pstm.setString(8, String.valueOf(usuario.getId_usuario()));
 
             pstm.execute();
             pstm.close();
@@ -137,13 +138,44 @@ public class UsuarioRepository {
 
             conn = new ConexaoBD().conectaDB();
             pstm = conn.prepareStatement(sql);
-            pstm.setString(1, String.valueOf(usuario.getIdUsuario()));
+            pstm.setString(1, String.valueOf(usuario.getId_usuario()));
 
             pstm.execute();
             pstm.close();
+
+            usuarioLogado = new UsuarioModel();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository delete: " + ex);
             Logger.getLogger(EquipeRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void setEquipe(UsuarioModel usuario, EquipeModel equipe) throws SQLException {
+        boolean verificar = this.verificarSeJaTemEquipe(usuario);
+        // true = ele ja tem equipe
+        if (verificar) {
+                JOptionPane.showMessageDialog(null, "Esse usuario já pertence a uma equipe");
+        } else {
+            usuario = readUsuario(usuario);
+            String label = "Você quer mesmo adicionar o " + usuario.getNome() + " ( UserID: " + usuario.getId_usuario() + ") a sua equipe?";
+            int confirmar = JOptionPane.showConfirmDialog(null, label);
+            if (confirmar == JOptionPane.YES_OPTION) {
+                try {
+
+                    String sql = "update usuario set fk_equipe = ? where id_usuario = ?;";
+                    conn = new ConexaoBD().conectaDB();
+                    pstm = conn.prepareStatement(sql);
+                    pstm.setString(1, String.valueOf(equipe.getIdEquipe()));
+                    pstm.setString(2, String.valueOf(usuario.getId_usuario()));
+
+                    pstm.execute();
+                    pstm.close();
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "UsuarioRepository setEquipe: " + ex);
+                    Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
@@ -165,6 +197,26 @@ public class UsuarioRepository {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
             return null;
         }
+    }
+
+    public boolean verificarSeJaTemEquipe(UsuarioModel usuario) {
+        conn = new ConexaoBD().conectaDB();
+        boolean verificar = false;
+        
+        try {
+            String sql = "select * from usuario where id_usuario = ?;";
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, String.valueOf(usuario.getId_usuario()));
+
+            ResultSet rs = pstm.executeQuery();
+            
+            if (rs.next())
+                // se fk_equipe for diferente de nulo ele já pertence a uma equipe
+                verificar = rs.getInt("fk_equipe") != 0;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
+        }
+        return verificar;
     }
 
     public int getIdade(String nascimentoUsuario) {

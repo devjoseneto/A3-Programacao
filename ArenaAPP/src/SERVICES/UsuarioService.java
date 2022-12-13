@@ -1,5 +1,6 @@
 package SERVICES;
 
+import MODELS.EquipeModel;
 import java.sql.ResultSet;
 import MODELS.UsuarioModel;
 import REPOSITORY.UsuarioRepository;
@@ -24,7 +25,8 @@ public class UsuarioService {
 
             if (rsEfetuarLogin.next()) {
                 autenticacao = true;
-                usuarioLogado.setIdUsuario(rsEfetuarLogin.getInt("id_usuario"));
+                usuarioLogado.setId_usuario(rsEfetuarLogin.getInt("id_usuario"));
+                usuarioLogado.setId_equipe(rsEfetuarLogin.getInt("fk_equipe"));
                 usuarioLogado.setLogado(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario ou Senha Inválida!");
@@ -37,14 +39,8 @@ public class UsuarioService {
     
     public UsuarioModel readUsuario(UsuarioModel usuario) {
         UsuarioRepository repository = new UsuarioRepository();
-        usuario = repository.readEquipe(usuario);
+        usuario = repository.readUsuario(usuario);
         return usuario;
-    }
-    
-    public int getIdade(String nascimento) {
-        UsuarioRepository usuario = new UsuarioRepository();
-        int idade = usuario.getIdade(nascimento);
-        return idade;
     }
 
     public void uptadeUsuario(UsuarioModel usuario){
@@ -56,9 +52,21 @@ public class UsuarioService {
         UsuarioRepository repository = new UsuarioRepository();
         repository.deleteUsuario(usuario);
     }
+    
+    public void setEquipe(UsuarioModel usuario, EquipeModel equipe) throws SQLException {
+        System.out.println(usuario.getId_usuario());
+        UsuarioRepository repository = new UsuarioRepository();
+        repository.setEquipe(usuario, equipe);
+    }
 
     public void sair(UsuarioModel usuario) {
         UsuarioRepository repository = new UsuarioRepository();
         //repository.sair(usuarioLogado);
+    }
+    
+    public int getIdade(String nascimento) {
+        UsuarioRepository usuario = new UsuarioRepository();
+        int idade = usuario.getIdade(nascimento);
+        return idade;
     }
 }

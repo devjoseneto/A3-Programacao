@@ -96,3 +96,7 @@ bairro = '',
 numero = '10',
 cidade = 'Caetite-BA'
 where id_endereco = '2';
+
+SELECT COUNT(*) FROM equipe where fk_endereco = 1;
+
+update usuario set fk_equipe = ? where id_usuario = ?;

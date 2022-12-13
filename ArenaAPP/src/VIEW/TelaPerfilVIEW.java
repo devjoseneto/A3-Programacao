@@ -376,13 +376,13 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     public void readUsuario() {
         
         UsuarioModel usuario = new UsuarioModel();
-        usuario.setIdUsuario(UsuarioRepository.usuarioLogado.getIdUsuario());
+        usuario.setId_usuario(UsuarioRepository.usuarioLogado.getId_usuario());
         UsuarioService service = new UsuarioService();
         usuario = service.readUsuario(usuario);
         
         txtNome.setText(usuario.getNome());
         txtBiografia.setText(usuario.getBiografia());
-        txtUserID.setText(Integer.toString(usuario.getIdUsuario()));
+        txtUserID.setText(Integer.toString(usuario.getId_usuario()));
         txtIdade.setText(Integer.toString(service.getIdade(usuario.getNascimento())));
         cbCidade.setSelectedItem(usuario.getCidade());
 

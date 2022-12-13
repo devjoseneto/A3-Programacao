@@ -6,9 +6,17 @@ package VIEW;
 
 import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
+import MODELS.UsuarioModel;
+import REPOSITORY.EquipeRepository;
+import REPOSITORY.UsuarioRepository;
 import SERVICES.EnderecoService;
 import SERVICES.EquipeService;
+import SERVICES.UsuarioService;
 import static VIEW.TelaEquipeVIEW.getBoolean;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +29,9 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
      */
     public FormEditarEquipeVIEW() {
         initComponents();
-        readEquipe();
+        if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+            readEquipe();
+        }
     }
 
     /**
@@ -491,6 +501,11 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jButton3.setBounds(230, 380, 100, 23);
 
         jButton1.setText("Adicionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.setBounds(10, 380, 100, 23);
 
@@ -578,7 +593,10 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        updateEquipe();
+        if (UsuarioRepository.usuarioLogado.getId_equipe() == 0)
+            createEquipe();
+        else
+            updateEquipe();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
@@ -621,6 +639,10 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         //salvarDados();
         updateEquipe();
     }//GEN-LAST:event_btnRedesSociaisActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        adicionarUsuario();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -728,7 +750,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
 
-    public void salvarDados() {
+    public void createEquipe() {
         String nome = txtNome.getText();
         String esporte = String.valueOf(cbEsporte.getSelectedItem());
         String descricao = txtDesc.getText();
@@ -750,34 +772,36 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         EquipeService service = new EquipeService();
         service.createEquipe(equipe, endereco);
     }
-    
+
     public void readEquipe() {
-        EquipeModel equipe = new EquipeModel();
-        EnderecoModel endereco = new EnderecoModel();
-        equipe.setNome("Jose's Dev Team");
-        
-        EquipeService service = new EquipeService();
-        EnderecoService serviceEnde = new EnderecoService();
-        equipe = service.readEquipe(equipe);
-        endereco = serviceEnde.readEndereco(equipe);
-        
-        lblArenaID.setText(String.valueOf(equipe.getIdEquipe()));
-        txtNome.setText(equipe.getNome());
-        txtDesc.setText(equipe.getDescricao());
-        cbEsporte.setSelectedItem(equipe.getEsporte());
-        checkDom.setSelected(getBoolean(equipe.getDom()));
-        checkSeg.setSelected(getBoolean(equipe.getSeg()));
-        checkTer.setSelected(getBoolean(equipe.getTer()));
-        checkQua.setSelected(getBoolean(equipe.getQua()));
-        checkQui.setSelected(getBoolean(equipe.getQui()));
-        checkSex.setSelected(getBoolean(equipe.getSex()));
-        checkSab.setSelected(getBoolean(equipe.getSab()));
-        txtRua.setText(endereco.getRua());
-        txtBairro.setText(endereco.getBairro());
-        txtNum.setText(endereco.getNum());
-        cbCidade.setSelectedItem(endereco.getCidade());
+        if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+            EquipeModel equipe = new EquipeModel();
+            EnderecoModel endereco = new EnderecoModel();
+
+            equipe.setIdEquipe(UsuarioRepository.usuarioLogado.getId_equipe());
+            EquipeService service = new EquipeService();
+            EnderecoService serviceEnde = new EnderecoService();
+            equipe = service.readEquipe(equipe);
+            endereco = serviceEnde.readEndereco(equipe);
+
+            lblArenaID.setText(String.valueOf(equipe.getIdEquipe()));
+            txtNome.setText(equipe.getNome());
+            txtDesc.setText(equipe.getDescricao());
+            cbEsporte.setSelectedItem(equipe.getEsporte());
+            checkDom.setSelected(getBoolean(equipe.getDom()));
+            checkSeg.setSelected(getBoolean(equipe.getSeg()));
+            checkTer.setSelected(getBoolean(equipe.getTer()));
+            checkQua.setSelected(getBoolean(equipe.getQua()));
+            checkQui.setSelected(getBoolean(equipe.getQui()));
+            checkSex.setSelected(getBoolean(equipe.getSex()));
+            checkSab.setSelected(getBoolean(equipe.getSab()));
+            txtRua.setText(endereco.getRua());
+            txtBairro.setText(endereco.getBairro());
+            txtNum.setText(endereco.getNum());
+            cbCidade.setSelectedItem(endereco.getCidade());
+        }
     }
-    
+
     public void updateEquipe() {
         String nome = txtNome.getText();
         String esporte = String.valueOf(cbEsporte.getSelectedItem());
@@ -794,25 +818,47 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         qui = checkQui.isSelected() ? "1" : "0";
         sex = checkSex.isSelected() ? "1" : "0";
         sab = checkSab.isSelected() ? "1" : "0";
-        
+
         // Usar o read para pegar a chave estrageira de endereco
         EquipeModel equipe_ = new EquipeModel();
         EquipeService service = new EquipeService();
-        equipe_.setNome("ArenaAPP Team");
+        equipe_.setIdEquipe(UsuarioRepository.usuarioLogado.getId_equipe());
         equipe_ = service.readEquipe(equipe_);
-        
+
         EquipeModel equipe = new EquipeModel(nome, descricao, dom, seg, ter, qua, qui, sex, sab, esporte);
         equipe.setIdEquipe(Integer.parseInt(lblArenaID.getText()));
         EnderecoModel endereco = new EnderecoModel(cidade, rua, bairro, num);
         endereco.setId_endereco(equipe_.getId_endereco());
         service.uptadeEquipe(equipe, endereco);
     }
-    
+
     public void deleteEquipe() {
         EquipeModel equipe_ = new EquipeModel();
         EquipeService service = new EquipeService();
-        equipe_.setNome("Jose's Dev Team");
+        equipe_.setIdEquipe(UsuarioRepository.usuarioLogado.getId_equipe());
         equipe_ = service.readEquipe(equipe_);
         service.deleteEquipe(equipe_);
+    }
+
+    private void adicionarUsuario() {
+        // Pegar o id do usuario que deseja adicionar
+        String id_usuario = JOptionPane.showInputDialog("Digite o id do usuario que deseja adicionar.");
+        System.out.println(id_usuario);
+        // Pegar a equipe do dono ou adm
+        EquipeModel equipe = new EquipeModel();
+        equipe.setIdEquipe(UsuarioRepository.usuarioLogado.getId_equipe());
+        // Seta um UsuarioModel com o id do usuario a ser adicionado
+        UsuarioModel usuario = new UsuarioModel();
+        usuario.setId_usuario(Integer.parseInt(id_usuario));
+        // Chama o metodo para adicionar a id da equipe como chave estrageira no usuario
+        UsuarioService service = new UsuarioService();
+        try {
+            service.setEquipe(usuario, equipe);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "FormEditarEquipeVIEW adicionar usuario" + ex);
+            Logger
+                    .getLogger(FormEditarEquipeVIEW.class
+                            .getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -15,6 +15,7 @@ public class EquipeService {
         EnderecoRepository repositoryEnde = new EnderecoRepository();
         try {
             int id_endereco = repositoryEnde.createEndereco(endereco);
+            System.out.println("Id endereco" + id_endereco);
             repository.createEquipe(equipe, id_endereco);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "EquipeService"+ex);

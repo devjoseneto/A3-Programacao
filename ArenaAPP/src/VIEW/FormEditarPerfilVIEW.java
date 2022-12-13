@@ -7,8 +7,8 @@ package VIEW;
 import MODELS.UsuarioModel;
 import REPOSITORY.UsuarioRepository;
 import SERVICES.UsuarioService;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -430,7 +430,11 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        String senha = JOptionPane.showInputDialog("<html>Digite a sua senha para deletar o seu perfil<br><b>OBS: Não é possivel reveter essa ação</b></html>");
         deleteUsuario();
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     /**
@@ -525,13 +529,13 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
 
     public void readUsuario() {
         UsuarioModel usuario = new UsuarioModel();
-        usuario.setIdUsuario(UsuarioRepository.usuarioLogado.getIdUsuario());
+        usuario.setId_usuario(UsuarioRepository.usuarioLogado.getId_usuario());
         UsuarioService service = new UsuarioService();
         usuario = service.readUsuario(usuario);
 
         txtNome.setText(usuario.getNome());
         txtBiografia.setText(usuario.getBiografia());
-        txtUserID.setText(Integer.toString(usuario.getIdUsuario()));
+        txtUserID.setText(Integer.toString(usuario.getId_usuario()));
         txtNasc.setText(usuario.getNascimento());
         cbCidade.setSelectedItem(usuario.getCidade());
         txtEmail.setText(usuario.getEmail());
@@ -554,7 +558,7 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         char sexo = checkMasc.isSelected() ? 'M' : 'F';
         
         UsuarioModel usuario = new UsuarioModel();
-        usuario.setIdUsuario(Integer.parseInt(id_usuario));
+        usuario.setId_usuario(Integer.parseInt(id_usuario));
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setBiografia(biografia);

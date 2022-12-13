@@ -4,7 +4,8 @@ import REPOSITORY.BancoDeDados;
 
 public class UsuarioModel {
 
-    private int idUsuario;
+    private int id_usuario;
+    private int id_equipe;
     private String nome;
     private String email;
     private String senha;
@@ -25,14 +26,18 @@ public class UsuarioModel {
         this.cidade = cidade;
         this.nascimento = nascimento;
         this.sexo = sexo;
-        this.idUsuario = BancoDeDados.SEQUENCIAL;
+        this.id_usuario = BancoDeDados.SEQUENCIAL;
         BancoDeDados.SEQUENCIAL += 1;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
+    public int getId_equipe() {
+        return id_equipe;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -69,8 +74,12 @@ public class UsuarioModel {
         return esporte;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId_usuario(int idUsuario) {
+        this.id_usuario = idUsuario;
+    }
+
+    public void setId_equipe(int id_equipe) {
+        this.id_equipe = id_equipe;
     }
 
     public void setNome(String nome) {
