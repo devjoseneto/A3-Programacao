@@ -14,9 +14,11 @@ import SERVICES.EquipeService;
 import SERVICES.UsuarioService;
 import static VIEW.TelaEquipeVIEW.getBoolean;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +31,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
      */
     public FormEditarEquipeVIEW() {
         initComponents();
+        carregarDados();
         if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
             readEquipe();
         }
@@ -93,7 +96,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         btnRemover = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableJogadores = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -519,28 +522,17 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         jPanel2.add(btnAdicionar);
         btnAdicionar.setBounds(10, 380, 100, 23);
 
-        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableJogadores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tableJogadores.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        tableJogadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "POS", "NOME", "CIDADE"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        ));
+        jScrollPane1.setViewportView(tableJogadores);
 
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(0, 0, 420, 370);
@@ -745,7 +737,6 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblArenaID;
     private javax.swing.JLabel lblArenaID_;
     private javax.swing.JLabel lblCidade1;
@@ -761,6 +752,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel lblNome1;
     private javax.swing.JLabel lblNome2;
     private javax.swing.JPanel menuTopo;
+    private javax.swing.JTable tableJogadores;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextArea txtDesc;
     private javax.swing.JTextField txtNome;
@@ -880,6 +872,7 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
                     .getLogger(FormEditarEquipeVIEW.class
                             .getName()).log(Level.SEVERE, null, ex);
         }
+        carregarDados();
     }
     
     public void removerUsuario() {
@@ -893,10 +886,28 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
         // Chama o metodo para adicionar a id da equipe como chave estrageira no usuario
         UsuarioService service = new UsuarioService();
         service.removeEquipe(usuario);
+        carregarDados();
     }
     
     public void alterarUsuario() {
         removerUsuario();
         adicionarUsuario();
+    }
+    
+    public void carregarDados() {
+        DefaultTableModel model = new DefaultTableModel(0, 3);
+        model.setColumnIdentifiers(new Object[] {"UserID", "Nome", "Cidade"});
+        tableJogadores.setModel(model);
+        
+        UsuarioRepository repository = new UsuarioRepository();
+        ArrayList<UsuarioModel> jogadores = repository.readAllUsuarios();
+        jogadores.forEach(usuario -> {
+            model.addRow(new Object[] {
+                usuario.getId_usuario(),
+                usuario.getNome(),
+                usuario.getCidade()
+            }
+            );
+        });
     }
 }

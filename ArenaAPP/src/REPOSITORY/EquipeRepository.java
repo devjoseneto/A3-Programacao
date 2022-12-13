@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class EquipeRepository {
 

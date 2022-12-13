@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -99,6 +100,34 @@ public class UsuarioRepository {
             usuario_ = null;
         }
         return usuario_;
+    }
+    
+    public ArrayList<UsuarioModel> readAllUsuarios() {
+        ArrayList<UsuarioModel> jogadores = new ArrayList<>();
+        String sql = "select * from usuario where fk_equipe = ?;";
+        conn = new ConexaoBD().conectaDB();
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, String.valueOf(usuarioLogado.getId_equipe()));
+            ResultSet rs = pstm.executeQuery();
+            
+            while (rs.next()) {
+                UsuarioModel usuario = new UsuarioModel();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setCidade(rs.getString("cidade"));
+                
+                jogadores.add(usuario);
+            }
+            pstm.close();
+            return jogadores;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "UsuarioRepository readAllMedicamentos"+ex);
+            Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+        
     }
 
     public void updateUsuario(UsuarioModel usuario) {
