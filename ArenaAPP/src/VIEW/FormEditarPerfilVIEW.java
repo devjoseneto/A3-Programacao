@@ -585,11 +585,11 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
         usuario.setNascimento(nasc);
         usuario.setCidade(cidade);
         usuario.setSexo(sexo);
-        usuario.setSenha("admin");
-
+        if(txtSenha.getText().equals(txtSenha.getText())) {
+            usuario.setSenha(txtSenha.getText());
+        }
         UsuarioService service = new UsuarioService();
         service.uptadeUsuario(usuario);
-        
     }
     
     public void deleteUsuario() {

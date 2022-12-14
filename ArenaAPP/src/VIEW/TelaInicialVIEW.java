@@ -357,9 +357,15 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCriarTimePrincipalActionPerformed
 
     private void btnEditarPerfilPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilPrincipalActionPerformed
-        FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
-        this.dispose();
-        j.setVisible(true);
+       if (UsuarioRepository.usuarioLogado.isLogado()) {
+            TelaPerfilVIEW j = new TelaPerfilVIEW();
+            this.dispose();
+            j.setVisible(true);
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnEditarPerfilPrincipalActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed

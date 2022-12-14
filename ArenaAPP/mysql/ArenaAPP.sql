@@ -11,7 +11,6 @@ CREATE TABLE if not exists usuario (
   sexo enum('M', 'F') NOT NULL,
   biografia varchar(510) default '' NOT NULL,
   cidade varchar(30) NOT null,
-  logado BOOLEAN default '0' NOT NULL
 );
 
 CREATE TABLE if not exists endereco (
