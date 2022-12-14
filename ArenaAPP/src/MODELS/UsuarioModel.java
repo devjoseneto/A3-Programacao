@@ -1,7 +1,5 @@
 package MODELS;
 
-import REPOSITORY.BancoDeDados;
-
 public class UsuarioModel {
 
     private int id_usuario;
@@ -26,8 +24,6 @@ public class UsuarioModel {
         this.cidade = cidade;
         this.nascimento = nascimento;
         this.sexo = sexo;
-        this.id_usuario = BancoDeDados.SEQUENCIAL;
-        BancoDeDados.SEQUENCIAL += 1;
     }
 
     public int getId_usuario() {

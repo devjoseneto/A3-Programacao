@@ -566,9 +566,15 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPerfil5ActionPerformed
 
     private void btnEditarEquipePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipePerfilActionPerformed
-        TelaPerfilVIEW j = new TelaPerfilVIEW();
-        this.dispose();
-        j.setVisible(true);
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            TelaPerfilVIEW j = new TelaPerfilVIEW();
+            this.dispose();
+            j.setVisible(true);
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnEditarEquipePerfilActionPerformed
 
     private void btnEditarPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPesquisarActionPerformed
@@ -578,7 +584,21 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPesquisarActionPerformed
 
     private void btnEditarEquipeEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipeEquipeActionPerformed
-
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+                TelaEquipeVIEW j = new TelaEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            } else {
+                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            }
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnEditarEquipeEquipeActionPerformed
 
     private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
@@ -590,7 +610,9 @@ public class TelaEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumActionPerformed
 
     private void btnEditarPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPesquisar1ActionPerformed
-        // TODO add your handling code here:
+        TelaPesquisaVIEW j = new TelaPesquisaVIEW();
+        this.dispose();
+        j.setVisible(true);
     }//GEN-LAST:event_btnEditarPesquisar1ActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed

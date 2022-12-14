@@ -3,7 +3,7 @@ use ArenaAPP;
 
 CREATE TABLE if not exists usuario (
   id_usuario int auto_increment PRIMARY KEY,
-  fk_equipe int unique,
+  fk_equipe int,
   email varchar(255) NOT NULL,
   nome varchar(255) NOT NULL,
   dataDeNascimento DATE NOT NULL,
@@ -40,63 +40,12 @@ CREATE TABLE if not exists equipe (
    linkInstagram varchar(300) default '' NOT NULL,
    esporte varchar(30) NOT NULL,
    fk_endereco int,
-   foreign key (fk_dono) references usuario(id_usuario),
    foreign key (fk_adm) references usuario(id_usuario),
-   foreign key (fk_endereco) references endereco(id_endereco)
+   foreign key (fk_endereco) references endereco(id_endereco),
+   foreign key (fk_dono) references usuario(id_usuario)
+   ON DELETE CASCADE
 );
 
 ALTER TABLE usuario ADD CONSTRAINT fk_equipe
-FOREIGN KEY(fk_equipe) REFERENCES equipe(id_equipe);
-
-insert into endereco (rua, bairro, numero, cidade) values ('ABC', 'def', '1', 'Guanambi') return id_endereco;
-select id_endereco from endereco;
-insert into equipe (nome, descricao, fk_dono, PraticaDom, PraticaSeg, PraticaTer, PraticaQua, PraticaQui, PraticaSex, PraticaSab, esporte, fk_endereco)
-values ('Admin Team 2', 'a', '1', 0, 1, 1, 1, 1, 1, 0, 'futebol', '1');
-select * from endereco;
-select * from equipe;
-select * from equipe WHERE nome = '';
-select * from usuario;
-select * from endereco WHERE id_endereco = 1;
-select * from equipe WHERE nome = ('Admin FC');
-select id_endereco from endereco where rua = 'ADM STREET' and bairro = 'CENTRO' and numero = 1 and cidade = 'Guanambi-BA';
-
-alter table usuario
-CHANGE descricao biografia  varchar(510);
-
-desc usuario;
-drop database arenaapp; 
-
-update usuario set biografia = 'Oi, eu sou o José' where id_usuario = 1;
-update usuario
-set nome = 'Admin 001',
-email = 'admin@gmail.com',
-dataDeNascimento = '2000-01-01',
-senha = '12345678',
-sexo = 'F',
-biografia = 'Admin',
-cidade = 'Igaporã-BA'
-where id_usuario = 1;
-
-update Equipe
-set nome = 'Admin 001',
-descricao = 'Equipe de Volei',
-PraticaDom = '1',
-PraticaSeg = '1',
-PraticaTer = '1',
-PraticaQua = '1',
-PraticaQui = '1',
-PraticaSex = '1',
-PraticaSab = '1',
-esporte = 'Volei'
-where id_equipe = 2;
-
-update endereco
-set rua = '',
-bairro = '',
-numero = '10',
-cidade = 'Caetite-BA'
-where id_endereco = '2';
-
-SELECT COUNT(*) FROM equipe where fk_endereco = 1;
-
-update usuario set fk_equipe = ? where id_usuario = ?;
+FOREIGN KEY(fk_equipe) REFERENCES equipe(id_equipe)
+on delete set NULL;

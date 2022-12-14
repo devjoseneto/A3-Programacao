@@ -53,6 +53,8 @@ public class UsuarioRepository {
                 JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
                 Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            new ConexaoBD().fecharDB(conn);
         }
     }
 
@@ -66,10 +68,12 @@ public class UsuarioRepository {
             pstm.setString(2, usuario.getSenha());
 
             ResultSet rs = pstm.executeQuery();
+            new ConexaoBD().fecharDB(conn);
             return rs;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
+            new ConexaoBD().fecharDB(conn);
             return null;
         }
     }
@@ -99,6 +103,7 @@ public class UsuarioRepository {
             JOptionPane.showMessageDialog(null, "EquipeRepository Read Equipe" + ex);
             usuario_ = null;
         }
+        new ConexaoBD().fecharDB(conn);
         return usuario_;
     }
     
@@ -125,9 +130,8 @@ public class UsuarioRepository {
             JOptionPane.showMessageDialog(null, "UsuarioRepository readAllMedicamentos"+ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        new ConexaoBD().fecharDB(conn);
         return null;
-        
     }
 
     public void updateUsuario(UsuarioModel usuario) {
@@ -159,6 +163,7 @@ public class UsuarioRepository {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
+        new ConexaoBD().fecharDB(conn);
     }
 
     public void deleteUsuario(UsuarioModel usuario) {
@@ -177,6 +182,7 @@ public class UsuarioRepository {
             JOptionPane.showMessageDialog(null, "UsuarioRepository delete: " + ex);
             Logger.getLogger(EquipeRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
+        new ConexaoBD().fecharDB(conn);
     }
 
     public void setEquipe(UsuarioModel usuario, EquipeModel equipe) throws SQLException {
@@ -206,6 +212,7 @@ public class UsuarioRepository {
                 }
             }
         }
+        new ConexaoBD().fecharDB(conn);
     }
 
     public void removeEquipe(UsuarioModel usuario) {
@@ -214,7 +221,7 @@ public class UsuarioRepository {
         int confirmar = JOptionPane.showConfirmDialog(null, label);
         if (confirmar == JOptionPane.YES_OPTION) {
             try {
-
+                // Remove a chave estrageira (fk_equipe) de usuario
                 String sql = "update usuario set fk_equipe = null where id_usuario = ?;";
                 conn = new ConexaoBD().conectaDB();
                 pstm = conn.prepareStatement(sql);
@@ -228,6 +235,7 @@ public class UsuarioRepository {
                 Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        new ConexaoBD().fecharDB(conn);
     }
 
     public void sair(UsuarioModel usuario) {
@@ -243,9 +251,11 @@ public class UsuarioRepository {
             pstm.setString(1, usuario.getEmail());
 
             ResultSet rs = pstm.executeQuery();
+            new ConexaoBD().fecharDB(conn);
             return rs;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
+            new ConexaoBD().fecharDB(conn);
             return null;
         }
     }
@@ -268,6 +278,7 @@ public class UsuarioRepository {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
         }
+        new ConexaoBD().fecharDB(conn);
         return verificar;
     }
 

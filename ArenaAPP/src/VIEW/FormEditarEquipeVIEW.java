@@ -7,7 +7,6 @@ package VIEW;
 import MODELS.EnderecoModel;
 import MODELS.EquipeModel;
 import MODELS.UsuarioModel;
-import REPOSITORY.EquipeRepository;
 import REPOSITORY.UsuarioRepository;
 import SERVICES.EnderecoService;
 import SERVICES.EquipeService;
@@ -563,7 +562,21 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPesquisarActionPerformed
 
     private void btnEditarEquipeEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipeEquipeActionPerformed
-
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+                TelaEquipeVIEW j = new TelaEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            } else {
+                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            }
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnEditarEquipeEquipeActionPerformed
 
     private void btnEditarPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPesquisar1ActionPerformed
@@ -571,7 +584,9 @@ public class FormEditarEquipeVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPesquisar1ActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed

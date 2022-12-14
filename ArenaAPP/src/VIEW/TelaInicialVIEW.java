@@ -4,7 +4,6 @@
  */
 package VIEW;
 
-import REPOSITORY.BancoDeDados;
 import REPOSITORY.UsuarioRepository;
 import static REPOSITORY.UsuarioRepository.usuarioLogado;
 
@@ -301,14 +300,26 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarSecundarioActionPerformed
 
     private void btnEquipeSecundarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipeSecundarioActionPerformed
-        TelaEquipeVIEW j = new TelaEquipeVIEW();
-        this.dispose();
-        j.setVisible(true);
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+                TelaEquipeVIEW j = new TelaEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            } else {
+                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            }
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnEquipeSecundarioActionPerformed
 
     private void btnPerfilSecundarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilSecundarioActionPerformed
 
-        if (usuarioLogado.isLogado()) {
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
             TelaPerfilVIEW j = new TelaPerfilVIEW();
             this.dispose();
             j.setVisible(true);
@@ -352,7 +363,9 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPerfilPrincipalActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     /**

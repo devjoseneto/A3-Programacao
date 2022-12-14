@@ -23,4 +23,13 @@ public class ConexaoBD {
         }
         return conn;
     }
+    
+    public void fecharDB(Connection conn) {
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possival fechar conexao com o banco de dados");
+            Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

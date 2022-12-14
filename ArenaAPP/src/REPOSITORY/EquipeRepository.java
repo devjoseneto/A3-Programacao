@@ -52,21 +52,20 @@ public class EquipeRepository {
             JOptionPane.showMessageDialog(null, "O nome já está em uso " + ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
+        new ConexaoBD().fecharDB(conn);
     }
 
     public EquipeModel readEquipe(EquipeModel equipe) {
         // equipe - informações para pesquisar no banco de dados
-        EquipeModel equipeReturn = new EquipeModel();
         String sql = "select * from equipe WHERE id_equipe = ?;";
         conn = new ConexaoBD().conectaDB();
+        /* equipe_ - para receberem informações do bando de dados */
+        EquipeModel equipe_ = new EquipeModel();
         try {
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, String.valueOf(equipe.getIdEquipe()));
 
             ResultSet rs = pstm.executeQuery();
-
-            /* equipe_ - para receberem informações do bando de dados */
-            EquipeModel equipe_ = new EquipeModel();
 
             while (rs.next()) {
                 equipe_.setIdEquipe(rs.getInt("id_equipe"));
@@ -85,15 +84,59 @@ public class EquipeRepository {
                 equipe_.setLinkInstagram(rs.getString("linkInstagram"));
                 equipe_.setEsporte(rs.getString("esporte"));
                 equipe_.setId_endereco(rs.getInt("fk_endereco"));
-
-                return equipe_;
-
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "EquipeRepository Read Equipe" + ex);
-            return null;
         }
-        return equipeReturn;
+        new ConexaoBD().fecharDB(conn);
+        return equipe_;
+    }
+
+    public ArrayList<EquipeModel> readEquipePorNome(EquipeModel equipe, int pagina) {
+        ArrayList<EquipeModel> listaDeEquipe = new ArrayList<>();
+        String sql = "select * from equipe where nome like concat('%', ?,'%') order by 'nome' LIMIT 5 OFFSET ?;";
+        conn = new ConexaoBD().conectaDB();
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, String.valueOf(equipe.getNome()));
+            pstm.setInt(2, pagina);
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                EquipeModel equipe_ = new EquipeModel();
+                equipe_.setIdEquipe(rs.getInt("id_equipe"));
+                equipe_.setNome(rs.getString("nome"));
+
+                listaDeEquipe.add(equipe_);
+            }
+            pstm.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "EquipeRepository readEquipePorNome" + ex);
+            Logger.getLogger(EquipeRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        new ConexaoBD().fecharDB(conn);
+        return listaDeEquipe;
+    }
+    
+    public int contarPaginas(EquipeModel equipe) {
+        int quant = 0;
+        try {
+            String sql = "select count(*) from equipe where nome = ?;";
+
+            conn = new ConexaoBD().conectaDB();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, equipe.getNome());
+
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                quant = rs.getInt("count(*)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EnderecoRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        new ConexaoBD().fecharDB(conn);
+        return quant / 5;
     }
 
     public void updateEquipe(EquipeModel equipe) {
@@ -131,6 +174,7 @@ public class EquipeRepository {
             JOptionPane.showMessageDialog(null, "EquipeRepository update: " + ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
+        new ConexaoBD().fecharDB(conn);
     }
 
     public void deleteEquipe(EquipeModel equipe) {
@@ -147,6 +191,7 @@ public class EquipeRepository {
             JOptionPane.showMessageDialog(null, "EquipeRepository delete: " + ex);
             Logger.getLogger(EquipeRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
+        new ConexaoBD().fecharDB(conn);
     }
 
     public void adicionarDono(UsuarioModel usuario, EquipeModel equipe) {
@@ -154,31 +199,28 @@ public class EquipeRepository {
 
             String sql = "update usuario set fk_equipe = ? where id_usuario = ?;";
             String sqlSetDono = "update equipe set fk_dono = ? where id_equipe = ?";
-            
+
             conn = new ConexaoBD().conectaDB();
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, String.valueOf(equipe.getIdEquipe()));
             pstm.setString(2, String.valueOf(usuario.getId_usuario()));
 
             pstm.execute();
-            
+
             conn = new ConexaoBD().conectaDB();
             pstm = conn.prepareStatement(sqlSetDono);
             pstm.setString(1, String.valueOf(usuario.getId_usuario()));
             pstm.setString(2, String.valueOf(equipe.getIdEquipe()));
-            
+
             pstm.execute();
             pstm.close();
-            
+
             UsuarioRepository.usuarioLogado.setId_equipe(equipe.getIdEquipe());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository adicionarDono: " + ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public void pesquisarEquipe() {
-
+        new ConexaoBD().fecharDB(conn);
     }
 
     public void vincularLinkWhatsapp() {

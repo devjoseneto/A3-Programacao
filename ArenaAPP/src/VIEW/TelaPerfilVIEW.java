@@ -40,6 +40,8 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
         btnPerfilEquipe = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        btnSair = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
@@ -137,6 +139,24 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(null);
+
+        btnSair.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setText("Sair");
+        btnSair.setBorderPainted(false);
+        btnSair.setContentAreaFilled(false);
+        btnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSair);
+        btnSair.setBounds(170, 400, 120, 20);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/botao120x30.png"))); // NOI18N
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(170, 390, 120, 40);
 
         btnSalvar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,9 +281,15 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPerfilEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilEditarPerfilActionPerformed
-        FormEditarPerfilVIEW j = new FormEditarPerfilVIEW();
-        this.dispose();
-        j.setVisible(true);
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            TelaPerfilVIEW j = new TelaPerfilVIEW();
+            this.dispose();
+            j.setVisible(true);
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnPerfilEditarPerfilActionPerformed
 
     private void btnPerfilPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilPesquisarActionPerformed
@@ -273,9 +299,21 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPerfilPesquisarActionPerformed
 
     private void btnPerfilEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilEquipeActionPerformed
-        TelaPerfilVIEW j = new TelaPerfilVIEW();
-        this.dispose();
-        j.setVisible(true);
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+                TelaEquipeVIEW j = new TelaEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            } else {
+                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            }
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnPerfilEquipeActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -305,6 +343,10 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private void txtIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdadeActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        UsuarioRepository.usuarioLogado = new UsuarioModel();
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,6 +392,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnPerfilEditarPerfil;
     private javax.swing.JButton btnPerfilEquipe;
     private javax.swing.JButton btnPerfilPesquisar;
+    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JLabel jLabel1;
@@ -358,6 +401,7 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;

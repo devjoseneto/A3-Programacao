@@ -4,17 +4,37 @@
  */
 package VIEW;
 
+import MODELS.EnderecoModel;
+import MODELS.EquipeModel;
+import REPOSITORY.EquipeRepository;
+import REPOSITORY.UsuarioRepository;
+import SERVICES.EnderecoService;
+import SERVICES.EquipeService;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author netoi
  */
 public class TelaPesquisaVIEW extends javax.swing.JFrame {
 
+    String texto;
+    int pagina = 0;
+
     /**
      * Creates new form Home
      */
     public TelaPesquisaVIEW() {
         initComponents();
+        checkNome.setSelected(true);
+        pnlEquipe1.setVisible(false);
+        pnlEquipe2.setVisible(false);
+        pnlEquipe3.setVisible(false);
+        pnlEquipe4.setVisible(false);
+        pnlEquipe5.setVisible(false);
+        btnAvançar.setVisible(false);
+        btnVoltar.setVisible(false);
     }
 
     /**
@@ -26,83 +46,129 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAvançar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
         menuTopo = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
         btnPesquisarPerfil = new javax.swing.JButton();
         btnPesquisarPesquisar = new javax.swing.JButton();
         btnPesquisarEquipe = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        checkMasc = new javax.swing.JCheckBox();
-        checkMasc2 = new javax.swing.JCheckBox();
-        checkMasc1 = new javax.swing.JCheckBox();
-        checkMasc3 = new javax.swing.JCheckBox();
-        checkMasc4 = new javax.swing.JCheckBox();
-        lblNome1 = new javax.swing.JLabel();
-        checkMasc5 = new javax.swing.JCheckBox();
-        checkMasc6 = new javax.swing.JCheckBox();
-        checkMasc7 = new javax.swing.JCheckBox();
-        lblNome2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        pnlEquipe7 = new javax.swing.JPanel();
-        lblNJogadores6 = new javax.swing.JLabel();
-        lblEnderecoEquipe6 = new javax.swing.JLabel();
-        lblNomeDaEquipe6 = new javax.swing.JLabel();
-        lblEsporteEquipe6 = new javax.swing.JLabel();
-        lblCidadeEquipe6 = new javax.swing.JLabel();
-        fundo6 = new javax.swing.JLabel();
-        pnlEquipe6 = new javax.swing.JPanel();
-        lblNJogadores5 = new javax.swing.JLabel();
-        lblEnderecoEquipe5 = new javax.swing.JLabel();
-        lblNomeDaEquipe5 = new javax.swing.JLabel();
-        lblEsporteEquipe5 = new javax.swing.JLabel();
-        lblCidadeEquipe5 = new javax.swing.JLabel();
-        fundo5 = new javax.swing.JLabel();
-        pnlEquipe5 = new javax.swing.JPanel();
-        lblNJogadores4 = new javax.swing.JLabel();
-        lblEnderecoEquipe4 = new javax.swing.JLabel();
-        lblNomeDaEquipe4 = new javax.swing.JLabel();
-        lblEsporteEquipe4 = new javax.swing.JLabel();
-        lblCidadeEquipe4 = new javax.swing.JLabel();
-        fundo4 = new javax.swing.JLabel();
-        pnlEquipe4 = new javax.swing.JPanel();
-        lblNJogadores2 = new javax.swing.JLabel();
-        lblEnderecoEquipe2 = new javax.swing.JLabel();
-        lblNomeDaEquipe2 = new javax.swing.JLabel();
-        lblEsporteEquipe2 = new javax.swing.JLabel();
-        lblCidadeEquipe2 = new javax.swing.JLabel();
-        fundo2 = new javax.swing.JLabel();
-        pnlEquipe3 = new javax.swing.JPanel();
-        lblNJogadores3 = new javax.swing.JLabel();
-        lblEnderecoEquipe3 = new javax.swing.JLabel();
-        lblNomeDaEquipe3 = new javax.swing.JLabel();
-        lblEsporteEquipe3 = new javax.swing.JLabel();
-        lblCidadeEquipe3 = new javax.swing.JLabel();
-        fundo3 = new javax.swing.JLabel();
-        pnlEquipe2 = new javax.swing.JPanel();
-        lblNJogadores1 = new javax.swing.JLabel();
-        lblEnderecoEquipe1 = new javax.swing.JLabel();
-        lblNomeDaEquipe1 = new javax.swing.JLabel();
-        lblEsporteEquipe1 = new javax.swing.JLabel();
-        lblCidadeEquipe1 = new javax.swing.JLabel();
-        fundo1 = new javax.swing.JLabel();
+        backgroudMenuTopo = new javax.swing.JLabel();
+        barraLateral = new javax.swing.JPanel();
+        btnBuscar = new javax.swing.JButton();
+        lblNome6 = new javax.swing.JLabel();
+        checkID = new javax.swing.JCheckBox();
+        checkNome = new javax.swing.JCheckBox();
+        txtPesquisa = new javax.swing.JTextField();
+        checkFutebol = new javax.swing.JCheckBox();
+        checkFutsal = new javax.swing.JCheckBox();
+        checkFutVolei = new javax.swing.JCheckBox();
+        checkVolei = new javax.swing.JCheckBox();
+        checkBasquete = new javax.swing.JCheckBox();
+        lblFiltroCidade = new javax.swing.JLabel();
+        checkIgapora = new javax.swing.JCheckBox();
+        checkCaetite = new javax.swing.JCheckBox();
+        checkGuanambi = new javax.swing.JCheckBox();
+        lblFiltroEsporte = new javax.swing.JLabel();
+        backgroundFiltro = new javax.swing.JLabel();
         pnlEquipe1 = new javax.swing.JPanel();
-        lblNJogadores = new javax.swing.JLabel();
-        lblEnderecoEquipe = new javax.swing.JLabel();
-        lblNomeDaEquipe = new javax.swing.JLabel();
-        lblEsporteEquipe = new javax.swing.JLabel();
-        lblCidadeEquipe = new javax.swing.JLabel();
-        fundo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblNome_1 = new javax.swing.JLabel();
+        lblNome1 = new javax.swing.JLabel();
+        lblArenaID_1 = new javax.swing.JLabel();
+        lblArenaID1 = new javax.swing.JLabel();
+        lblEsporte_1 = new javax.swing.JLabel();
+        lblEsporte1 = new javax.swing.JLabel();
+        lblEndereco1 = new javax.swing.JLabel();
+        lblNum_1 = new javax.swing.JLabel();
+        lblNum1 = new javax.swing.JLabel();
+        lblRua1 = new javax.swing.JLabel();
+        lblBairro1 = new javax.swing.JLabel();
+        lblCidade1 = new javax.swing.JLabel();
+        backgroudEquipe1 = new javax.swing.JLabel();
+        pnlEquipe2 = new javax.swing.JPanel();
+        lblNome_2 = new javax.swing.JLabel();
+        lblNome2 = new javax.swing.JLabel();
+        lblArenaID_2 = new javax.swing.JLabel();
+        lblArenaID2 = new javax.swing.JLabel();
+        lblEsporte_2 = new javax.swing.JLabel();
+        lblEsporte2 = new javax.swing.JLabel();
+        lblEndereco2 = new javax.swing.JLabel();
+        lblNum_2 = new javax.swing.JLabel();
+        lblNum2 = new javax.swing.JLabel();
+        lblRua2 = new javax.swing.JLabel();
+        lblBairro2 = new javax.swing.JLabel();
+        lblCidade2 = new javax.swing.JLabel();
+        backgroudEquipe2 = new javax.swing.JLabel();
+        pnlEquipe3 = new javax.swing.JPanel();
+        lblNome_3 = new javax.swing.JLabel();
+        lblNome3 = new javax.swing.JLabel();
+        lblArenaID_3 = new javax.swing.JLabel();
+        lblArenaID3 = new javax.swing.JLabel();
+        lblEsporte_3 = new javax.swing.JLabel();
+        lblEsporte3 = new javax.swing.JLabel();
+        lblEndereco3 = new javax.swing.JLabel();
+        lblNum_3 = new javax.swing.JLabel();
+        lblNum3 = new javax.swing.JLabel();
+        lblRua3 = new javax.swing.JLabel();
+        lblBairro3 = new javax.swing.JLabel();
+        lblCidade3 = new javax.swing.JLabel();
+        backgroudEquipe3 = new javax.swing.JLabel();
+        pnlEquipe4 = new javax.swing.JPanel();
+        lblNome_4 = new javax.swing.JLabel();
+        lblNome4 = new javax.swing.JLabel();
+        lblArenaID_4 = new javax.swing.JLabel();
+        lblArenaID4 = new javax.swing.JLabel();
+        lblEsporte_4 = new javax.swing.JLabel();
+        lblEsporte4 = new javax.swing.JLabel();
+        lblEndereco4 = new javax.swing.JLabel();
+        lblNum_4 = new javax.swing.JLabel();
+        lblNum4 = new javax.swing.JLabel();
+        lblRua4 = new javax.swing.JLabel();
+        lblBairro4 = new javax.swing.JLabel();
+        lblCidade4 = new javax.swing.JLabel();
+        backgroudEquipe4 = new javax.swing.JLabel();
+        pnlEquipe5 = new javax.swing.JPanel();
+        lblNome_5 = new javax.swing.JLabel();
+        lblNome5 = new javax.swing.JLabel();
+        lblArenaID_5 = new javax.swing.JLabel();
+        lblArenaID5 = new javax.swing.JLabel();
+        lblEsporte_5 = new javax.swing.JLabel();
+        lblEsporte5 = new javax.swing.JLabel();
+        lblEndereco5 = new javax.swing.JLabel();
+        lblNum_5 = new javax.swing.JLabel();
+        lblNum5 = new javax.swing.JLabel();
+        lblRua5 = new javax.swing.JLabel();
+        lblBairro5 = new javax.swing.JLabel();
+        lblCidade5 = new javax.swing.JLabel();
+        backgroudEquipe5 = new javax.swing.JLabel();
+        backgroud = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ArenaAPP");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/ArenaAPP-Logo.png")).getImage());
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAvançar.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAvançar.setText(">");
+        btnAvançar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAvançar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvançarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAvançar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, -1, 50));
+
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnVoltar.setText("<");
+        btnVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, -1, 50));
 
         menuTopo.setLayout(null);
 
@@ -124,7 +190,7 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
         Logo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Logo.setText("ArenaAPP");
         menuTopo.add(Logo);
-        Logo.setBounds(40, 10, 110, 30);
+        Logo.setBounds(40, 10, 90, 30);
 
         btnPesquisarPerfil.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         btnPesquisarPerfil.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,502 +234,727 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
         menuTopo.add(btnPesquisarEquipe);
         btnPesquisarEquipe.setBounds(680, 10, 140, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
-        menuTopo.add(jLabel4);
-        jLabel4.setBounds(0, 0, 960, 50);
+        backgroudMenuTopo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-menu-topo.png"))); // NOI18N
+        menuTopo.add(backgroudMenuTopo);
+        backgroudMenuTopo.setBounds(0, 0, 960, 50);
 
         getContentPane().add(menuTopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 50));
 
-        jPanel3.setLayout(null);
-        jPanel3.add(jTextField1);
-        jTextField1.setBounds(10, 10, 240, 30);
+        barraLateral.setLayout(null);
 
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("Pesquisar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
-        jButton1.setBounds(70, 50, 110, 23);
+        barraLateral.add(btnBuscar);
+        btnBuscar.setBounds(70, 80, 110, 23);
 
-        checkMasc.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc.setText("Basquete");
-        checkMasc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc.addActionListener(new java.awt.event.ActionListener() {
+        lblNome6.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNome6.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome6.setText("Buscar por:");
+        barraLateral.add(lblNome6);
+        lblNome6.setBounds(20, 50, 90, 14);
+
+        checkID.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkID.setForeground(new java.awt.Color(116, 116, 116));
+        checkID.setText("ArenaID");
+        checkID.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMascActionPerformed(evt);
+                checkIDActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc);
-        checkMasc.setBounds(10, 240, 120, 30);
+        barraLateral.add(checkID);
+        checkID.setBounds(170, 50, 80, 19);
 
-        checkMasc2.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc2.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc2.setText("Futebol");
-        checkMasc2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc2.addActionListener(new java.awt.event.ActionListener() {
+        checkNome.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkNome.setForeground(new java.awt.Color(116, 116, 116));
+        checkNome.setText("Nome");
+        checkNome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc2ActionPerformed(evt);
+                checkNomeActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc2);
-        checkMasc2.setBounds(10, 120, 120, 30);
+        barraLateral.add(checkNome);
+        checkNome.setBounds(100, 50, 70, 19);
+        barraLateral.add(txtPesquisa);
+        txtPesquisa.setBounds(10, 10, 240, 30);
 
-        checkMasc1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc1.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc1.setText("Futsal");
-        checkMasc1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc1.addActionListener(new java.awt.event.ActionListener() {
+        checkFutebol.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkFutebol.setForeground(new java.awt.Color(116, 116, 116));
+        checkFutebol.setText("Futebol");
+        checkFutebol.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkFutebol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc1ActionPerformed(evt);
+                checkFutebolActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc1);
-        checkMasc1.setBounds(10, 150, 120, 30);
+        barraLateral.add(checkFutebol);
+        checkFutebol.setBounds(10, 150, 120, 30);
 
-        checkMasc3.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc3.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc3.setText("FutVolei");
-        checkMasc3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc3.addActionListener(new java.awt.event.ActionListener() {
+        checkFutsal.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkFutsal.setForeground(new java.awt.Color(116, 116, 116));
+        checkFutsal.setText("Futsal");
+        checkFutsal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkFutsal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc3ActionPerformed(evt);
+                checkFutsalActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc3);
-        checkMasc3.setBounds(10, 180, 120, 30);
+        barraLateral.add(checkFutsal);
+        checkFutsal.setBounds(10, 180, 120, 30);
 
-        checkMasc4.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc4.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc4.setText("Volei");
-        checkMasc4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc4.addActionListener(new java.awt.event.ActionListener() {
+        checkFutVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkFutVolei.setForeground(new java.awt.Color(116, 116, 116));
+        checkFutVolei.setText("FutVolei");
+        checkFutVolei.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkFutVolei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc4ActionPerformed(evt);
+                checkFutVoleiActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc4);
-        checkMasc4.setBounds(10, 210, 120, 30);
+        barraLateral.add(checkFutVolei);
+        checkFutVolei.setBounds(10, 210, 120, 30);
 
-        lblNome1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNome1.setForeground(new java.awt.Color(116, 116, 116));
-        lblNome1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNome1.setText("Cidade");
-        jPanel3.add(lblNome1);
-        lblNome1.setBounds(10, 280, 140, 14);
-
-        checkMasc5.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc5.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc5.setText("Igaporã");
-        checkMasc5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc5.addActionListener(new java.awt.event.ActionListener() {
+        checkVolei.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkVolei.setForeground(new java.awt.Color(116, 116, 116));
+        checkVolei.setText("Volei");
+        checkVolei.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkVolei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc5ActionPerformed(evt);
+                checkVoleiActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc5);
-        checkMasc5.setBounds(10, 300, 120, 30);
+        barraLateral.add(checkVolei);
+        checkVolei.setBounds(10, 240, 120, 30);
 
-        checkMasc6.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc6.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc6.setText("Caetite");
-        checkMasc6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc6.addActionListener(new java.awt.event.ActionListener() {
+        checkBasquete.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkBasquete.setForeground(new java.awt.Color(116, 116, 116));
+        checkBasquete.setText("Basquete");
+        checkBasquete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkBasquete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc6ActionPerformed(evt);
+                checkBasqueteActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc6);
-        checkMasc6.setBounds(10, 330, 120, 30);
+        barraLateral.add(checkBasquete);
+        checkBasquete.setBounds(10, 270, 120, 30);
 
-        checkMasc7.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        checkMasc7.setForeground(new java.awt.Color(116, 116, 116));
-        checkMasc7.setText("Guanambi");
-        checkMasc7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkMasc7.addActionListener(new java.awt.event.ActionListener() {
+        lblFiltroCidade.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblFiltroCidade.setForeground(new java.awt.Color(116, 116, 116));
+        lblFiltroCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblFiltroCidade.setText("Cidade");
+        barraLateral.add(lblFiltroCidade);
+        lblFiltroCidade.setBounds(10, 310, 140, 14);
+
+        checkIgapora.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkIgapora.setForeground(new java.awt.Color(116, 116, 116));
+        checkIgapora.setText("Igaporã");
+        checkIgapora.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkIgapora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkMasc7ActionPerformed(evt);
+                checkIgaporaActionPerformed(evt);
             }
         });
-        jPanel3.add(checkMasc7);
-        checkMasc7.setBounds(10, 360, 120, 30);
+        barraLateral.add(checkIgapora);
+        checkIgapora.setBounds(10, 330, 120, 30);
 
-        lblNome2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNome2.setForeground(new java.awt.Color(116, 116, 116));
-        lblNome2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNome2.setText("Esportes");
-        jPanel3.add(lblNome2);
-        lblNome2.setBounds(10, 100, 140, 14);
+        checkCaetite.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkCaetite.setForeground(new java.awt.Color(116, 116, 116));
+        checkCaetite.setText("Caetite");
+        checkCaetite.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkCaetite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkCaetiteActionPerformed(evt);
+            }
+        });
+        barraLateral.add(checkCaetite);
+        checkCaetite.setBounds(10, 360, 120, 30);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundoFiltro.png"))); // NOI18N
-        jPanel3.add(jLabel3);
-        jLabel3.setBounds(0, 0, 260, 490);
+        checkGuanambi.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        checkGuanambi.setForeground(new java.awt.Color(116, 116, 116));
+        checkGuanambi.setText("Guanambi");
+        checkGuanambi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        checkGuanambi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkGuanambiActionPerformed(evt);
+            }
+        });
+        barraLateral.add(checkGuanambi);
+        checkGuanambi.setBounds(10, 390, 120, 30);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 260, 490));
+        lblFiltroEsporte.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblFiltroEsporte.setForeground(new java.awt.Color(116, 116, 116));
+        lblFiltroEsporte.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblFiltroEsporte.setText("Esportes");
+        barraLateral.add(lblFiltroEsporte);
+        lblFiltroEsporte.setBounds(10, 130, 140, 14);
 
-        pnlEquipe7.setLayout(null);
+        backgroundFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundoFiltro.png"))); // NOI18N
+        barraLateral.add(backgroundFiltro);
+        backgroundFiltro.setBounds(0, 0, 260, 490);
 
-        lblNJogadores6.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblNJogadores6.setForeground(new java.awt.Color(116, 116, 116));
-        lblNJogadores6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNJogadores6.setText("Nº de Jogadores: 12/21");
-        pnlEquipe7.add(lblNJogadores6);
-        lblNJogadores6.setBounds(10, 70, 290, 20);
-
-        lblEnderecoEquipe6.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEnderecoEquipe6.setForeground(new java.awt.Color(116, 116, 116));
-        lblEnderecoEquipe6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnderecoEquipe6.setText("Quadra, Rua abc 123, centro");
-        pnlEquipe7.add(lblEnderecoEquipe6);
-        lblEnderecoEquipe6.setBounds(10, 50, 290, 20);
-
-        lblNomeDaEquipe6.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNomeDaEquipe6.setForeground(new java.awt.Color(116, 116, 116));
-        lblNomeDaEquipe6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNomeDaEquipe6.setText("Nome da equipe");
-        pnlEquipe7.add(lblNomeDaEquipe6);
-        lblNomeDaEquipe6.setBounds(10, 10, 140, 14);
-
-        lblEsporteEquipe6.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEsporteEquipe6.setForeground(new java.awt.Color(116, 116, 116));
-        lblEsporteEquipe6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEsporteEquipe6.setText("Esporte");
-        pnlEquipe7.add(lblEsporteEquipe6);
-        lblEsporteEquipe6.setBounds(10, 30, 140, 14);
-
-        lblCidadeEquipe6.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblCidadeEquipe6.setForeground(new java.awt.Color(116, 116, 116));
-        lblCidadeEquipe6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCidadeEquipe6.setText("Cidade");
-        pnlEquipe7.add(lblCidadeEquipe6);
-        lblCidadeEquipe6.setBounds(160, 30, 140, 14);
-
-        fundo6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        pnlEquipe7.add(fundo6);
-        fundo6.setBounds(0, 0, 310, 100);
-
-        getContentPane().add(pnlEquipe7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 310, 100));
-
-        pnlEquipe6.setLayout(null);
-
-        lblNJogadores5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblNJogadores5.setForeground(new java.awt.Color(116, 116, 116));
-        lblNJogadores5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNJogadores5.setText("Nº de Jogadores: 12/21");
-        pnlEquipe6.add(lblNJogadores5);
-        lblNJogadores5.setBounds(10, 70, 290, 20);
-
-        lblEnderecoEquipe5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEnderecoEquipe5.setForeground(new java.awt.Color(116, 116, 116));
-        lblEnderecoEquipe5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnderecoEquipe5.setText("Quadra, Rua abc 123, centro");
-        pnlEquipe6.add(lblEnderecoEquipe5);
-        lblEnderecoEquipe5.setBounds(10, 50, 290, 20);
-
-        lblNomeDaEquipe5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNomeDaEquipe5.setForeground(new java.awt.Color(116, 116, 116));
-        lblNomeDaEquipe5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNomeDaEquipe5.setText("Nome da equipe");
-        pnlEquipe6.add(lblNomeDaEquipe5);
-        lblNomeDaEquipe5.setBounds(10, 10, 140, 14);
-
-        lblEsporteEquipe5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEsporteEquipe5.setForeground(new java.awt.Color(116, 116, 116));
-        lblEsporteEquipe5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEsporteEquipe5.setText("Esporte");
-        pnlEquipe6.add(lblEsporteEquipe5);
-        lblEsporteEquipe5.setBounds(10, 30, 140, 14);
-
-        lblCidadeEquipe5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblCidadeEquipe5.setForeground(new java.awt.Color(116, 116, 116));
-        lblCidadeEquipe5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCidadeEquipe5.setText("Cidade");
-        pnlEquipe6.add(lblCidadeEquipe5);
-        lblCidadeEquipe5.setBounds(160, 30, 140, 14);
-
-        fundo5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        pnlEquipe6.add(fundo5);
-        fundo5.setBounds(0, 0, 310, 100);
-
-        getContentPane().add(pnlEquipe6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 310, 100));
-
-        pnlEquipe5.setLayout(null);
-
-        lblNJogadores4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblNJogadores4.setForeground(new java.awt.Color(116, 116, 116));
-        lblNJogadores4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNJogadores4.setText("Nº de Jogadores: 12/21");
-        pnlEquipe5.add(lblNJogadores4);
-        lblNJogadores4.setBounds(10, 70, 290, 20);
-
-        lblEnderecoEquipe4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEnderecoEquipe4.setForeground(new java.awt.Color(116, 116, 116));
-        lblEnderecoEquipe4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnderecoEquipe4.setText("Quadra, Rua abc 123, centro");
-        pnlEquipe5.add(lblEnderecoEquipe4);
-        lblEnderecoEquipe4.setBounds(10, 50, 290, 20);
-
-        lblNomeDaEquipe4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNomeDaEquipe4.setForeground(new java.awt.Color(116, 116, 116));
-        lblNomeDaEquipe4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNomeDaEquipe4.setText("Nome da equipe");
-        pnlEquipe5.add(lblNomeDaEquipe4);
-        lblNomeDaEquipe4.setBounds(10, 10, 140, 14);
-
-        lblEsporteEquipe4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEsporteEquipe4.setForeground(new java.awt.Color(116, 116, 116));
-        lblEsporteEquipe4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEsporteEquipe4.setText("Esporte");
-        pnlEquipe5.add(lblEsporteEquipe4);
-        lblEsporteEquipe4.setBounds(10, 30, 140, 14);
-
-        lblCidadeEquipe4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblCidadeEquipe4.setForeground(new java.awt.Color(116, 116, 116));
-        lblCidadeEquipe4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCidadeEquipe4.setText("Cidade");
-        pnlEquipe5.add(lblCidadeEquipe4);
-        lblCidadeEquipe4.setBounds(160, 30, 140, 14);
-
-        fundo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        pnlEquipe5.add(fundo4);
-        fundo4.setBounds(0, 0, 310, 100);
-
-        getContentPane().add(pnlEquipe5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 310, 100));
-
-        pnlEquipe4.setLayout(null);
-
-        lblNJogadores2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblNJogadores2.setForeground(new java.awt.Color(116, 116, 116));
-        lblNJogadores2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNJogadores2.setText("Nº de Jogadores: 12/21");
-        pnlEquipe4.add(lblNJogadores2);
-        lblNJogadores2.setBounds(10, 70, 290, 20);
-
-        lblEnderecoEquipe2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEnderecoEquipe2.setForeground(new java.awt.Color(116, 116, 116));
-        lblEnderecoEquipe2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnderecoEquipe2.setText("Quadra, Rua abc 123, centro");
-        pnlEquipe4.add(lblEnderecoEquipe2);
-        lblEnderecoEquipe2.setBounds(10, 50, 290, 20);
-
-        lblNomeDaEquipe2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNomeDaEquipe2.setForeground(new java.awt.Color(116, 116, 116));
-        lblNomeDaEquipe2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNomeDaEquipe2.setText("Nome da equipe");
-        pnlEquipe4.add(lblNomeDaEquipe2);
-        lblNomeDaEquipe2.setBounds(10, 10, 140, 14);
-
-        lblEsporteEquipe2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEsporteEquipe2.setForeground(new java.awt.Color(116, 116, 116));
-        lblEsporteEquipe2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEsporteEquipe2.setText("Esporte");
-        pnlEquipe4.add(lblEsporteEquipe2);
-        lblEsporteEquipe2.setBounds(10, 30, 140, 14);
-
-        lblCidadeEquipe2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblCidadeEquipe2.setForeground(new java.awt.Color(116, 116, 116));
-        lblCidadeEquipe2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCidadeEquipe2.setText("Cidade");
-        pnlEquipe4.add(lblCidadeEquipe2);
-        lblCidadeEquipe2.setBounds(160, 30, 140, 14);
-
-        fundo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        pnlEquipe4.add(fundo2);
-        fundo2.setBounds(0, 0, 310, 100);
-
-        getContentPane().add(pnlEquipe4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 310, 100));
-
-        pnlEquipe3.setLayout(null);
-
-        lblNJogadores3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblNJogadores3.setForeground(new java.awt.Color(116, 116, 116));
-        lblNJogadores3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNJogadores3.setText("Nº de Jogadores: 12/21");
-        pnlEquipe3.add(lblNJogadores3);
-        lblNJogadores3.setBounds(10, 70, 290, 20);
-
-        lblEnderecoEquipe3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEnderecoEquipe3.setForeground(new java.awt.Color(116, 116, 116));
-        lblEnderecoEquipe3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnderecoEquipe3.setText("Quadra, Rua abc 123, centro");
-        pnlEquipe3.add(lblEnderecoEquipe3);
-        lblEnderecoEquipe3.setBounds(10, 50, 290, 20);
-
-        lblNomeDaEquipe3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNomeDaEquipe3.setForeground(new java.awt.Color(116, 116, 116));
-        lblNomeDaEquipe3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNomeDaEquipe3.setText("Nome da equipe");
-        pnlEquipe3.add(lblNomeDaEquipe3);
-        lblNomeDaEquipe3.setBounds(10, 10, 140, 14);
-
-        lblEsporteEquipe3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEsporteEquipe3.setForeground(new java.awt.Color(116, 116, 116));
-        lblEsporteEquipe3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEsporteEquipe3.setText("Esporte");
-        pnlEquipe3.add(lblEsporteEquipe3);
-        lblEsporteEquipe3.setBounds(10, 30, 140, 14);
-
-        lblCidadeEquipe3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblCidadeEquipe3.setForeground(new java.awt.Color(116, 116, 116));
-        lblCidadeEquipe3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCidadeEquipe3.setText("Cidade");
-        pnlEquipe3.add(lblCidadeEquipe3);
-        lblCidadeEquipe3.setBounds(160, 30, 140, 14);
-
-        fundo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        pnlEquipe3.add(fundo3);
-        fundo3.setBounds(0, 0, 310, 100);
-
-        getContentPane().add(pnlEquipe3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 310, 100));
-
-        pnlEquipe2.setLayout(null);
-
-        lblNJogadores1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblNJogadores1.setForeground(new java.awt.Color(116, 116, 116));
-        lblNJogadores1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNJogadores1.setText("Nº de Jogadores: 12/21");
-        pnlEquipe2.add(lblNJogadores1);
-        lblNJogadores1.setBounds(10, 70, 290, 20);
-
-        lblEnderecoEquipe1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEnderecoEquipe1.setForeground(new java.awt.Color(116, 116, 116));
-        lblEnderecoEquipe1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnderecoEquipe1.setText("Quadra, Rua abc 123, centro");
-        pnlEquipe2.add(lblEnderecoEquipe1);
-        lblEnderecoEquipe1.setBounds(10, 50, 290, 20);
-
-        lblNomeDaEquipe1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNomeDaEquipe1.setForeground(new java.awt.Color(116, 116, 116));
-        lblNomeDaEquipe1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNomeDaEquipe1.setText("Nome da equipe");
-        pnlEquipe2.add(lblNomeDaEquipe1);
-        lblNomeDaEquipe1.setBounds(10, 10, 140, 14);
-
-        lblEsporteEquipe1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEsporteEquipe1.setForeground(new java.awt.Color(116, 116, 116));
-        lblEsporteEquipe1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEsporteEquipe1.setText("Esporte");
-        pnlEquipe2.add(lblEsporteEquipe1);
-        lblEsporteEquipe1.setBounds(10, 30, 140, 14);
-
-        lblCidadeEquipe1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblCidadeEquipe1.setForeground(new java.awt.Color(116, 116, 116));
-        lblCidadeEquipe1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCidadeEquipe1.setText("Cidade");
-        pnlEquipe2.add(lblCidadeEquipe1);
-        lblCidadeEquipe1.setBounds(160, 30, 140, 14);
-
-        fundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        pnlEquipe2.add(fundo1);
-        fundo1.setBounds(0, 0, 310, 100);
-
-        getContentPane().add(pnlEquipe2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 310, 100));
+        getContentPane().add(barraLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 260, 490));
 
         pnlEquipe1.setLayout(null);
 
-        lblNJogadores.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblNJogadores.setForeground(new java.awt.Color(116, 116, 116));
-        lblNJogadores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNJogadores.setText("Nº de Jogadores: 12/21");
-        pnlEquipe1.add(lblNJogadores);
-        lblNJogadores.setBounds(10, 70, 290, 20);
+        lblNome_1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblNome_1.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome_1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome_1.setText("Nome:");
+        pnlEquipe1.add(lblNome_1);
+        lblNome_1.setBounds(10, 10, 60, 14);
 
-        lblEnderecoEquipe.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEnderecoEquipe.setForeground(new java.awt.Color(116, 116, 116));
-        lblEnderecoEquipe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnderecoEquipe.setText("Quadra, Rua abc 123, centro");
-        pnlEquipe1.add(lblEnderecoEquipe);
-        lblEnderecoEquipe.setBounds(10, 50, 290, 20);
+        lblNome1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNome1.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome1.setText("nome");
+        pnlEquipe1.add(lblNome1);
+        lblNome1.setBounds(70, 10, 230, 14);
 
-        lblNomeDaEquipe.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        lblNomeDaEquipe.setForeground(new java.awt.Color(116, 116, 116));
-        lblNomeDaEquipe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNomeDaEquipe.setText("Nome da equipe");
-        pnlEquipe1.add(lblNomeDaEquipe);
-        lblNomeDaEquipe.setBounds(10, 10, 140, 14);
+        lblArenaID_1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblArenaID_1.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID_1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID_1.setText("ArenaID: ");
+        pnlEquipe1.add(lblArenaID_1);
+        lblArenaID_1.setBounds(10, 30, 70, 20);
 
-        lblEsporteEquipe.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblEsporteEquipe.setForeground(new java.awt.Color(116, 116, 116));
-        lblEsporteEquipe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEsporteEquipe.setText("Esporte");
-        pnlEquipe1.add(lblEsporteEquipe);
-        lblEsporteEquipe.setBounds(10, 30, 140, 14);
+        lblArenaID1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblArenaID1.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID1.setText("0");
+        pnlEquipe1.add(lblArenaID1);
+        lblArenaID1.setBounds(80, 30, 40, 20);
 
-        lblCidadeEquipe.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        lblCidadeEquipe.setForeground(new java.awt.Color(116, 116, 116));
-        lblCidadeEquipe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCidadeEquipe.setText("Cidade");
-        pnlEquipe1.add(lblCidadeEquipe);
-        lblCidadeEquipe.setBounds(160, 30, 140, 14);
+        lblEsporte_1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEsporte_1.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte_1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte_1.setText("Esporte:");
+        pnlEquipe1.add(lblEsporte_1);
+        lblEsporte_1.setBounds(120, 30, 70, 20);
 
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-usuario.png"))); // NOI18N
-        pnlEquipe1.add(fundo);
-        fundo.setBounds(0, 0, 310, 100);
+        lblEsporte1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblEsporte1.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte1.setText("Esporte");
+        pnlEquipe1.add(lblEsporte1);
+        lblEsporte1.setBounds(190, 30, 110, 20);
 
-        getContentPane().add(pnlEquipe1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 310, 100));
+        lblEndereco1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEndereco1.setForeground(new java.awt.Color(116, 116, 116));
+        lblEndereco1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEndereco1.setText("Endereço");
+        pnlEquipe1.add(lblEndereco1);
+        lblEndereco1.setBounds(10, 50, 70, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-padrao.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblNum_1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum_1.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum_1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum_1.setText("N:");
+        pnlEquipe1.add(lblNum_1);
+        lblNum_1.setBounds(240, 90, 20, 20);
+
+        lblNum1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum1.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum1.setText("N");
+        pnlEquipe1.add(lblNum1);
+        lblNum1.setBounds(260, 90, 40, 20);
+
+        lblRua1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblRua1.setForeground(new java.awt.Color(116, 116, 116));
+        lblRua1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblRua1.setText("Rua");
+        pnlEquipe1.add(lblRua1);
+        lblRua1.setBounds(10, 70, 290, 20);
+
+        lblBairro1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblBairro1.setForeground(new java.awt.Color(116, 116, 116));
+        lblBairro1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBairro1.setText("Bairro");
+        pnlEquipe1.add(lblBairro1);
+        lblBairro1.setBounds(10, 90, 240, 20);
+
+        lblCidade1.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblCidade1.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade1.setText("Cidade");
+        pnlEquipe1.add(lblCidade1);
+        lblCidade1.setBounds(10, 110, 290, 20);
+
+        backgroudEquipe1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/fundo-dados-user.png"))); // NOI18N
+        pnlEquipe1.add(backgroudEquipe1);
+        backgroudEquipe1.setBounds(0, 0, 310, 140);
+
+        getContentPane().add(pnlEquipe1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 310, 140));
+
+        pnlEquipe2.setLayout(null);
+
+        lblNome_2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblNome_2.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome_2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome_2.setText("Nome:");
+        pnlEquipe2.add(lblNome_2);
+        lblNome_2.setBounds(10, 10, 60, 14);
+
+        lblNome2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNome2.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome2.setText("nome");
+        pnlEquipe2.add(lblNome2);
+        lblNome2.setBounds(70, 10, 230, 14);
+
+        lblArenaID_2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblArenaID_2.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID_2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID_2.setText("ArenaID: ");
+        pnlEquipe2.add(lblArenaID_2);
+        lblArenaID_2.setBounds(10, 30, 70, 20);
+
+        lblArenaID2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblArenaID2.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID2.setText("0");
+        pnlEquipe2.add(lblArenaID2);
+        lblArenaID2.setBounds(80, 30, 40, 20);
+
+        lblEsporte_2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEsporte_2.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte_2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte_2.setText("Esporte:");
+        pnlEquipe2.add(lblEsporte_2);
+        lblEsporte_2.setBounds(120, 30, 70, 20);
+
+        lblEsporte2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblEsporte2.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte2.setText("Esporte");
+        pnlEquipe2.add(lblEsporte2);
+        lblEsporte2.setBounds(190, 30, 110, 20);
+
+        lblEndereco2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEndereco2.setForeground(new java.awt.Color(116, 116, 116));
+        lblEndereco2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEndereco2.setText("Endereço");
+        pnlEquipe2.add(lblEndereco2);
+        lblEndereco2.setBounds(10, 50, 70, 20);
+
+        lblNum_2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum_2.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum_2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum_2.setText("N:");
+        pnlEquipe2.add(lblNum_2);
+        lblNum_2.setBounds(240, 90, 20, 20);
+
+        lblNum2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum2.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum2.setText("N");
+        pnlEquipe2.add(lblNum2);
+        lblNum2.setBounds(260, 90, 40, 20);
+
+        lblRua2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblRua2.setForeground(new java.awt.Color(116, 116, 116));
+        lblRua2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblRua2.setText("Rua");
+        pnlEquipe2.add(lblRua2);
+        lblRua2.setBounds(10, 70, 290, 20);
+
+        lblBairro2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblBairro2.setForeground(new java.awt.Color(116, 116, 116));
+        lblBairro2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBairro2.setText("Bairro");
+        pnlEquipe2.add(lblBairro2);
+        lblBairro2.setBounds(10, 90, 240, 20);
+
+        lblCidade2.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblCidade2.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade2.setText("Cidade");
+        pnlEquipe2.add(lblCidade2);
+        lblCidade2.setBounds(10, 110, 290, 20);
+
+        backgroudEquipe2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/fundo-dados-user.png"))); // NOI18N
+        pnlEquipe2.add(backgroudEquipe2);
+        backgroudEquipe2.setBounds(0, 0, 310, 140);
+
+        getContentPane().add(pnlEquipe2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 310, 140));
+
+        pnlEquipe3.setLayout(null);
+
+        lblNome_3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblNome_3.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome_3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome_3.setText("Nome:");
+        pnlEquipe3.add(lblNome_3);
+        lblNome_3.setBounds(10, 10, 60, 14);
+
+        lblNome3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNome3.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome3.setText("nome");
+        pnlEquipe3.add(lblNome3);
+        lblNome3.setBounds(70, 10, 230, 14);
+
+        lblArenaID_3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblArenaID_3.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID_3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID_3.setText("ArenaID: ");
+        pnlEquipe3.add(lblArenaID_3);
+        lblArenaID_3.setBounds(10, 30, 70, 20);
+
+        lblArenaID3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblArenaID3.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID3.setText("0");
+        pnlEquipe3.add(lblArenaID3);
+        lblArenaID3.setBounds(80, 30, 40, 20);
+
+        lblEsporte_3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEsporte_3.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte_3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte_3.setText("Esporte:");
+        pnlEquipe3.add(lblEsporte_3);
+        lblEsporte_3.setBounds(120, 30, 70, 20);
+
+        lblEsporte3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblEsporte3.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte3.setText("Esporte");
+        pnlEquipe3.add(lblEsporte3);
+        lblEsporte3.setBounds(190, 30, 110, 20);
+
+        lblEndereco3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEndereco3.setForeground(new java.awt.Color(116, 116, 116));
+        lblEndereco3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEndereco3.setText("Endereço");
+        pnlEquipe3.add(lblEndereco3);
+        lblEndereco3.setBounds(10, 50, 70, 20);
+
+        lblNum_3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum_3.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum_3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum_3.setText("N:");
+        pnlEquipe3.add(lblNum_3);
+        lblNum_3.setBounds(240, 90, 20, 20);
+
+        lblNum3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum3.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum3.setText("N");
+        pnlEquipe3.add(lblNum3);
+        lblNum3.setBounds(260, 90, 40, 20);
+
+        lblRua3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblRua3.setForeground(new java.awt.Color(116, 116, 116));
+        lblRua3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblRua3.setText("Rua");
+        pnlEquipe3.add(lblRua3);
+        lblRua3.setBounds(10, 70, 290, 20);
+
+        lblBairro3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblBairro3.setForeground(new java.awt.Color(116, 116, 116));
+        lblBairro3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBairro3.setText("Bairro");
+        pnlEquipe3.add(lblBairro3);
+        lblBairro3.setBounds(10, 90, 240, 20);
+
+        lblCidade3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblCidade3.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade3.setText("Cidade");
+        pnlEquipe3.add(lblCidade3);
+        lblCidade3.setBounds(10, 110, 290, 20);
+
+        backgroudEquipe3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/fundo-dados-user.png"))); // NOI18N
+        pnlEquipe3.add(backgroudEquipe3);
+        backgroudEquipe3.setBounds(0, 0, 310, 140);
+
+        getContentPane().add(pnlEquipe3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 310, 140));
+
+        pnlEquipe4.setLayout(null);
+
+        lblNome_4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblNome_4.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome_4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome_4.setText("Nome:");
+        pnlEquipe4.add(lblNome_4);
+        lblNome_4.setBounds(10, 10, 60, 14);
+
+        lblNome4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNome4.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome4.setText("nome");
+        pnlEquipe4.add(lblNome4);
+        lblNome4.setBounds(70, 10, 230, 14);
+
+        lblArenaID_4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblArenaID_4.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID_4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID_4.setText("ArenaID: ");
+        pnlEquipe4.add(lblArenaID_4);
+        lblArenaID_4.setBounds(10, 30, 70, 20);
+
+        lblArenaID4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblArenaID4.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID4.setText("0");
+        pnlEquipe4.add(lblArenaID4);
+        lblArenaID4.setBounds(80, 30, 40, 20);
+
+        lblEsporte_4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEsporte_4.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte_4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte_4.setText("Esporte:");
+        pnlEquipe4.add(lblEsporte_4);
+        lblEsporte_4.setBounds(120, 30, 70, 20);
+
+        lblEsporte4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblEsporte4.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte4.setText("Esporte");
+        pnlEquipe4.add(lblEsporte4);
+        lblEsporte4.setBounds(190, 30, 110, 20);
+
+        lblEndereco4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEndereco4.setForeground(new java.awt.Color(116, 116, 116));
+        lblEndereco4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEndereco4.setText("Endereço");
+        pnlEquipe4.add(lblEndereco4);
+        lblEndereco4.setBounds(10, 50, 70, 20);
+
+        lblNum_4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum_4.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum_4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum_4.setText("N:");
+        pnlEquipe4.add(lblNum_4);
+        lblNum_4.setBounds(240, 90, 20, 20);
+
+        lblNum4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum4.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum4.setText("N");
+        pnlEquipe4.add(lblNum4);
+        lblNum4.setBounds(260, 90, 40, 20);
+
+        lblRua4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblRua4.setForeground(new java.awt.Color(116, 116, 116));
+        lblRua4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblRua4.setText("Rua");
+        pnlEquipe4.add(lblRua4);
+        lblRua4.setBounds(10, 70, 290, 20);
+
+        lblBairro4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblBairro4.setForeground(new java.awt.Color(116, 116, 116));
+        lblBairro4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBairro4.setText("Bairro");
+        pnlEquipe4.add(lblBairro4);
+        lblBairro4.setBounds(10, 90, 240, 20);
+
+        lblCidade4.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblCidade4.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade4.setText("Cidade");
+        pnlEquipe4.add(lblCidade4);
+        lblCidade4.setBounds(10, 110, 290, 20);
+
+        backgroudEquipe4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/fundo-dados-user.png"))); // NOI18N
+        pnlEquipe4.add(backgroudEquipe4);
+        backgroudEquipe4.setBounds(0, 0, 310, 140);
+
+        getContentPane().add(pnlEquipe4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 310, 140));
+
+        pnlEquipe5.setLayout(null);
+
+        lblNome_5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblNome_5.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome_5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome_5.setText("Nome:");
+        pnlEquipe5.add(lblNome_5);
+        lblNome_5.setBounds(10, 10, 60, 14);
+
+        lblNome5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNome5.setForeground(new java.awt.Color(116, 116, 116));
+        lblNome5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNome5.setText("nome");
+        pnlEquipe5.add(lblNome5);
+        lblNome5.setBounds(70, 10, 230, 14);
+
+        lblArenaID_5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblArenaID_5.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID_5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID_5.setText("ArenaID: ");
+        pnlEquipe5.add(lblArenaID_5);
+        lblArenaID_5.setBounds(10, 30, 70, 20);
+
+        lblArenaID5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblArenaID5.setForeground(new java.awt.Color(116, 116, 116));
+        lblArenaID5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblArenaID5.setText("0");
+        pnlEquipe5.add(lblArenaID5);
+        lblArenaID5.setBounds(80, 30, 40, 20);
+
+        lblEsporte_5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEsporte_5.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte_5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte_5.setText("Esporte:");
+        pnlEquipe5.add(lblEsporte_5);
+        lblEsporte_5.setBounds(120, 30, 70, 20);
+
+        lblEsporte5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblEsporte5.setForeground(new java.awt.Color(116, 116, 116));
+        lblEsporte5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEsporte5.setText("Esporte");
+        pnlEquipe5.add(lblEsporte5);
+        lblEsporte5.setBounds(190, 30, 110, 20);
+
+        lblEndereco5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        lblEndereco5.setForeground(new java.awt.Color(116, 116, 116));
+        lblEndereco5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEndereco5.setText("Endereço");
+        pnlEquipe5.add(lblEndereco5);
+        lblEndereco5.setBounds(10, 50, 70, 20);
+
+        lblNum_5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum_5.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum_5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum_5.setText("N:");
+        pnlEquipe5.add(lblNum_5);
+        lblNum_5.setBounds(240, 90, 20, 20);
+
+        lblNum5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblNum5.setForeground(new java.awt.Color(116, 116, 116));
+        lblNum5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNum5.setText("N");
+        pnlEquipe5.add(lblNum5);
+        lblNum5.setBounds(260, 90, 40, 20);
+
+        lblRua5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblRua5.setForeground(new java.awt.Color(116, 116, 116));
+        lblRua5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblRua5.setText("Rua");
+        pnlEquipe5.add(lblRua5);
+        lblRua5.setBounds(10, 70, 290, 20);
+
+        lblBairro5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblBairro5.setForeground(new java.awt.Color(116, 116, 116));
+        lblBairro5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBairro5.setText("Bairro");
+        pnlEquipe5.add(lblBairro5);
+        lblBairro5.setBounds(10, 90, 240, 20);
+
+        lblCidade5.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        lblCidade5.setForeground(new java.awt.Color(116, 116, 116));
+        lblCidade5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCidade5.setText("Cidade");
+        pnlEquipe5.add(lblCidade5);
+        lblCidade5.setBounds(10, 110, 290, 20);
+
+        backgroudEquipe5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/fundo-dados-user.png"))); // NOI18N
+        pnlEquipe5.add(backgroudEquipe5);
+        backgroudEquipe5.setBounds(0, 0, 310, 140);
+
+        getContentPane().add(pnlEquipe5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 310, 140));
+
+        backgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fundo-padrao.png"))); // NOI18N
+        getContentPane().add(backgroud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void checkMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMascActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkMascActionPerformed
-
-    private void checkMasc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc2ActionPerformed
-
-    private void checkMasc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc1ActionPerformed
-
-    private void checkMasc3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc3ActionPerformed
-
-    private void checkMasc4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc4ActionPerformed
-
-    private void checkMasc5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc5ActionPerformed
-
-    private void checkMasc6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc6ActionPerformed
-
-    private void checkMasc7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMasc7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkMasc7ActionPerformed
-
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPerfilActionPerformed
-
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnCriarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarEquipeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCriarEquipeActionPerformed
 
-    private void btnPesquisarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPerfilActionPerformed
-        TelaPerfilVIEW j = new TelaPerfilVIEW();
-        this.dispose();
-        j.setVisible(true);
-    }//GEN-LAST:event_btnPesquisarPerfilActionPerformed
+    private void checkGuanambiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkGuanambiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkGuanambiActionPerformed
+
+    private void checkCaetiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCaetiteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkCaetiteActionPerformed
+
+    private void checkIgaporaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkIgaporaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkIgaporaActionPerformed
+
+    private void checkVoleiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVoleiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkVoleiActionPerformed
+
+    private void checkFutVoleiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFutVoleiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkFutVoleiActionPerformed
+
+    private void checkFutsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFutsalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkFutsalActionPerformed
+
+    private void checkFutebolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFutebolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkFutebolActionPerformed
+
+    private void checkBasqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBasqueteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBasqueteActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        if (pagina > 0)
+            pagina--;
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
+        pagina++;
+        pesquisar();
+    }//GEN-LAST:event_btnAvançarActionPerformed
+
+    private void checkIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkIDActionPerformed
+        checkNome.setSelected(false);
+    }//GEN-LAST:event_checkIDActionPerformed
+
+    private void checkNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkNomeActionPerformed
+        checkID.setSelected(false);
+    }//GEN-LAST:event_checkNomeActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (checkNome.isSelected()) {
+            texto = txtPesquisa.getText();
+            pesquisar();
+        } else {
+            pesquisarPorId();
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnPesquisarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarEquipeActionPerformed
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+                TelaEquipeVIEW j = new TelaEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            } else {
+                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            }
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
+    }//GEN-LAST:event_btnPesquisarEquipeActionPerformed
 
     private void btnPesquisarPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPesquisarActionPerformed
         TelaPesquisaVIEW j = new TelaPesquisaVIEW();
@@ -671,20 +962,29 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
         j.setVisible(true);
     }//GEN-LAST:event_btnPesquisarPesquisarActionPerformed
 
-    private void btnPesquisarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarEquipeActionPerformed
-        TelaEquipeVIEW j = new TelaEquipeVIEW();
-        this.dispose();
-        j.setVisible(true);
-    }//GEN-LAST:event_btnPesquisarEquipeActionPerformed
+    private void btnPesquisarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPerfilActionPerformed
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            TelaPerfilVIEW j = new TelaPerfilVIEW();
+            this.dispose();
+            j.setVisible(true);
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
+    }//GEN-LAST:event_btnPesquisarPerfilActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -749,75 +1049,247 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
+    private javax.swing.JLabel backgroud;
+    private javax.swing.JLabel backgroudEquipe1;
+    private javax.swing.JLabel backgroudEquipe2;
+    private javax.swing.JLabel backgroudEquipe3;
+    private javax.swing.JLabel backgroudEquipe4;
+    private javax.swing.JLabel backgroudEquipe5;
+    private javax.swing.JLabel backgroudMenuTopo;
+    private javax.swing.JLabel backgroundFiltro;
+    private javax.swing.JPanel barraLateral;
+    private javax.swing.JButton btnAvançar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPesquisarEquipe;
     private javax.swing.JButton btnPesquisarPerfil;
     private javax.swing.JButton btnPesquisarPesquisar;
-    private javax.swing.JCheckBox checkMasc;
-    private javax.swing.JCheckBox checkMasc1;
-    private javax.swing.JCheckBox checkMasc2;
-    private javax.swing.JCheckBox checkMasc3;
-    private javax.swing.JCheckBox checkMasc4;
-    private javax.swing.JCheckBox checkMasc5;
-    private javax.swing.JCheckBox checkMasc6;
-    private javax.swing.JCheckBox checkMasc7;
-    private javax.swing.JLabel fundo;
-    private javax.swing.JLabel fundo1;
-    private javax.swing.JLabel fundo2;
-    private javax.swing.JLabel fundo3;
-    private javax.swing.JLabel fundo4;
-    private javax.swing.JLabel fundo5;
-    private javax.swing.JLabel fundo6;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblCidadeEquipe;
-    private javax.swing.JLabel lblCidadeEquipe1;
-    private javax.swing.JLabel lblCidadeEquipe2;
-    private javax.swing.JLabel lblCidadeEquipe3;
-    private javax.swing.JLabel lblCidadeEquipe4;
-    private javax.swing.JLabel lblCidadeEquipe5;
-    private javax.swing.JLabel lblCidadeEquipe6;
-    private javax.swing.JLabel lblEnderecoEquipe;
-    private javax.swing.JLabel lblEnderecoEquipe1;
-    private javax.swing.JLabel lblEnderecoEquipe2;
-    private javax.swing.JLabel lblEnderecoEquipe3;
-    private javax.swing.JLabel lblEnderecoEquipe4;
-    private javax.swing.JLabel lblEnderecoEquipe5;
-    private javax.swing.JLabel lblEnderecoEquipe6;
-    private javax.swing.JLabel lblEsporteEquipe;
-    private javax.swing.JLabel lblEsporteEquipe1;
-    private javax.swing.JLabel lblEsporteEquipe2;
-    private javax.swing.JLabel lblEsporteEquipe3;
-    private javax.swing.JLabel lblEsporteEquipe4;
-    private javax.swing.JLabel lblEsporteEquipe5;
-    private javax.swing.JLabel lblEsporteEquipe6;
-    private javax.swing.JLabel lblNJogadores;
-    private javax.swing.JLabel lblNJogadores1;
-    private javax.swing.JLabel lblNJogadores2;
-    private javax.swing.JLabel lblNJogadores3;
-    private javax.swing.JLabel lblNJogadores4;
-    private javax.swing.JLabel lblNJogadores5;
-    private javax.swing.JLabel lblNJogadores6;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JCheckBox checkBasquete;
+    private javax.swing.JCheckBox checkCaetite;
+    private javax.swing.JCheckBox checkFutVolei;
+    private javax.swing.JCheckBox checkFutebol;
+    private javax.swing.JCheckBox checkFutsal;
+    private javax.swing.JCheckBox checkGuanambi;
+    private javax.swing.JCheckBox checkID;
+    private javax.swing.JCheckBox checkIgapora;
+    private javax.swing.JCheckBox checkNome;
+    private javax.swing.JCheckBox checkVolei;
+    private javax.swing.JLabel lblArenaID1;
+    private javax.swing.JLabel lblArenaID2;
+    private javax.swing.JLabel lblArenaID3;
+    private javax.swing.JLabel lblArenaID4;
+    private javax.swing.JLabel lblArenaID5;
+    private javax.swing.JLabel lblArenaID_1;
+    private javax.swing.JLabel lblArenaID_2;
+    private javax.swing.JLabel lblArenaID_3;
+    private javax.swing.JLabel lblArenaID_4;
+    private javax.swing.JLabel lblArenaID_5;
+    private javax.swing.JLabel lblBairro1;
+    private javax.swing.JLabel lblBairro2;
+    private javax.swing.JLabel lblBairro3;
+    private javax.swing.JLabel lblBairro4;
+    private javax.swing.JLabel lblBairro5;
+    private javax.swing.JLabel lblCidade1;
+    private javax.swing.JLabel lblCidade2;
+    private javax.swing.JLabel lblCidade3;
+    private javax.swing.JLabel lblCidade4;
+    private javax.swing.JLabel lblCidade5;
+    private javax.swing.JLabel lblEndereco1;
+    private javax.swing.JLabel lblEndereco2;
+    private javax.swing.JLabel lblEndereco3;
+    private javax.swing.JLabel lblEndereco4;
+    private javax.swing.JLabel lblEndereco5;
+    private javax.swing.JLabel lblEsporte1;
+    private javax.swing.JLabel lblEsporte2;
+    private javax.swing.JLabel lblEsporte3;
+    private javax.swing.JLabel lblEsporte4;
+    private javax.swing.JLabel lblEsporte5;
+    private javax.swing.JLabel lblEsporte_1;
+    private javax.swing.JLabel lblEsporte_2;
+    private javax.swing.JLabel lblEsporte_3;
+    private javax.swing.JLabel lblEsporte_4;
+    private javax.swing.JLabel lblEsporte_5;
+    private javax.swing.JLabel lblFiltroCidade;
+    private javax.swing.JLabel lblFiltroEsporte;
     private javax.swing.JLabel lblNome1;
     private javax.swing.JLabel lblNome2;
-    private javax.swing.JLabel lblNomeDaEquipe;
-    private javax.swing.JLabel lblNomeDaEquipe1;
-    private javax.swing.JLabel lblNomeDaEquipe2;
-    private javax.swing.JLabel lblNomeDaEquipe3;
-    private javax.swing.JLabel lblNomeDaEquipe4;
-    private javax.swing.JLabel lblNomeDaEquipe5;
-    private javax.swing.JLabel lblNomeDaEquipe6;
+    private javax.swing.JLabel lblNome3;
+    private javax.swing.JLabel lblNome4;
+    private javax.swing.JLabel lblNome5;
+    private javax.swing.JLabel lblNome6;
+    private javax.swing.JLabel lblNome_1;
+    private javax.swing.JLabel lblNome_2;
+    private javax.swing.JLabel lblNome_3;
+    private javax.swing.JLabel lblNome_4;
+    private javax.swing.JLabel lblNome_5;
+    private javax.swing.JLabel lblNum1;
+    private javax.swing.JLabel lblNum2;
+    private javax.swing.JLabel lblNum3;
+    private javax.swing.JLabel lblNum4;
+    private javax.swing.JLabel lblNum5;
+    private javax.swing.JLabel lblNum_1;
+    private javax.swing.JLabel lblNum_2;
+    private javax.swing.JLabel lblNum_3;
+    private javax.swing.JLabel lblNum_4;
+    private javax.swing.JLabel lblNum_5;
+    private javax.swing.JLabel lblRua1;
+    private javax.swing.JLabel lblRua2;
+    private javax.swing.JLabel lblRua3;
+    private javax.swing.JLabel lblRua4;
+    private javax.swing.JLabel lblRua5;
     private javax.swing.JPanel menuTopo;
     private javax.swing.JPanel pnlEquipe1;
     private javax.swing.JPanel pnlEquipe2;
     private javax.swing.JPanel pnlEquipe3;
     private javax.swing.JPanel pnlEquipe4;
     private javax.swing.JPanel pnlEquipe5;
-    private javax.swing.JPanel pnlEquipe6;
-    private javax.swing.JPanel pnlEquipe7;
+    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
+
+    public void pesquisar() {
+        if (!texto.equals("")) {
+            EquipeModel equipe, equipe1, equipe2, equipe3, equipe4, equipe5;
+            EnderecoModel endereco1, endereco2, endereco3, endereco4, endereco5;
+            EnderecoService serviceEnde = new EnderecoService();
+            equipe = new EquipeModel();
+            equipe1 = new EquipeModel();
+            equipe2 = new EquipeModel();
+            equipe3 = new EquipeModel();
+            equipe4 = new EquipeModel();
+            equipe5 = new EquipeModel();
+
+            ArrayList<EquipeModel> equipes = new ArrayList<>();
+            EquipeService service = new EquipeService();
+            EquipeRepository repository = new EquipeRepository();
+            // Passando equipe com texto para buscar no BD
+            equipe.setNome(texto);
+            if (repository.contarPaginas(equipe) > 0) {
+                btnAvançar.setVisible(true);
+                btnVoltar.setVisible(false);
+            } else if (repository.contarPaginas(equipe) > 0 && repository.contarPaginas(equipe) == pagina) {
+                btnAvançar.setVisible(false);
+                btnVoltar.setVisible(true);
+            } else if (repository.contarPaginas(equipe) > 0 && repository.contarPaginas(equipe) < pagina) {
+                btnAvançar.setVisible(true);
+                btnVoltar.setVisible(true);
+            } else {
+                btnAvançar.setVisible(false);
+                btnVoltar.setVisible(false);
+            }
+            equipes = service.readEquipePorNome(equipe, pagina);
+            int i = 0;
+            while (i < equipes.size()) {
+                // Usar o readEquipe para ler todos os dados das equipes
+                equipes.set(i, service.readEquipe(equipes.get(i)));
+
+                if (i == 0) {
+                    equipe1 = equipes.get(i);
+                    pnlEquipe1.setVisible(true);
+                }
+                if (i == 1) {
+                    equipe2 = equipes.get(i);
+                    if (i > equipes.size()) {
+                        pnlEquipe2.setVisible(false);
+                    } else {
+                        pnlEquipe2.setVisible(true);
+                    }
+                }
+                if (i == 2) {
+                    equipe3 = equipes.get(i);
+                    pnlEquipe3.setVisible(true);
+                    if (i > equipes.size()) {
+                        pnlEquipe3.setVisible(false);
+                    } else {
+                        pnlEquipe3.setVisible(true);
+                    }
+                }
+                if (i == 3) {
+                    equipe4 = equipes.get(i);
+                    pnlEquipe4.setVisible(true);
+                    if (i > equipes.size()) {
+                        pnlEquipe4.setVisible(false);
+                    } else {
+                        pnlEquipe4.setVisible(true);
+                    }
+                }
+                if (i == 4) {
+                    equipe5 = equipes.get(i);
+                    pnlEquipe5.setVisible(true);
+                    if (i > equipes.size()) {
+                        pnlEquipe5.setVisible(false);
+                    } else {
+                        pnlEquipe5.setVisible(true);
+                    }
+                }
+                i++;
+            }
+
+            endereco1 = serviceEnde.readEndereco(equipe1);
+            endereco2 = serviceEnde.readEndereco(equipe2);
+            endereco3 = serviceEnde.readEndereco(equipe3);
+            endereco4 = serviceEnde.readEndereco(equipe4);
+            endereco5 = serviceEnde.readEndereco(equipe5);
+
+            lblNome1.setText(equipe1.getNome());
+            lblArenaID1.setText(String.valueOf(equipe1.getIdEquipe()));
+            lblEsporte1.setText(equipe1.getEsporte());
+            lblRua1.setText(endereco1.getRua());
+            lblBairro1.setText(endereco1.getBairro());
+            lblNum1.setText(endereco1.getNum());
+            lblCidade1.setText(endereco1.getCidade());
+
+            lblNome2.setText(equipe2.getNome());
+            lblArenaID2.setText(String.valueOf((equipe2.getIdEquipe())));
+            lblEsporte2.setText(equipe2.getEsporte());
+            lblRua2.setText(endereco2.getRua());
+            lblBairro2.setText(endereco2.getBairro());
+            lblNum2.setText(endereco2.getNum());
+
+            lblNome3.setText(equipe3.getNome());
+            lblArenaID3.setText(String.valueOf((equipe3.getIdEquipe())));
+            lblEsporte3.setText(equipe3.getEsporte());
+            lblRua3.setText(endereco3.getRua());
+            lblBairro3.setText(endereco3.getBairro());
+            lblNum3.setText(endereco3.getNum());
+
+            lblNome4.setText(equipe4.getNome());
+            lblArenaID4.setText(String.valueOf((equipe4.getIdEquipe())));
+            lblEsporte4.setText(equipe4.getEsporte());
+            lblRua4.setText(endereco4.getRua());
+            lblBairro4.setText(endereco4.getBairro());
+            lblNum4.setText(endereco4.getNum());
+
+            lblNome5.setText(equipe5.getNome());
+            lblArenaID5.setText(String.valueOf((equipe5.getIdEquipe())));
+            lblEsporte5.setText(equipe5.getEsporte());
+            lblRua5.setText(endereco5.getRua());
+            lblBairro5.setText(endereco5.getBairro());
+            lblNum5.setText(endereco5.getNum());
+        }
+    }
+
+    public void pesquisarPorId() {
+        EquipeModel equipe = new EquipeModel();
+        EnderecoModel endereco = new EnderecoModel();
+        EnderecoService serviceEnde = new EnderecoService();
+        equipe.setIdEquipe(Integer.parseInt(txtPesquisa.getText()));
+
+        // equipe passando para buscar no BD e retornando para ela mesma
+        EquipeService service = new EquipeService();
+        equipe = service.readEquipe(equipe);
+        endereco = serviceEnde.readEndereco(equipe);
+        if (equipe.getIdEquipe() != 0) {
+            pnlEquipe1.setVisible(true);
+            lblNome1.setText(equipe.getNome());
+            lblArenaID1.setText(String.valueOf(equipe.getIdEquipe()));
+            lblEsporte1.setText(equipe.getEsporte());
+            lblRua1.setText(endereco.getRua());
+            lblBairro1.setText(endereco.getBairro());
+            lblNum1.setText(endereco.getNum());
+            lblCidade1.setText(endereco.getCidade());
+        } else {
+            pnlEquipe1.setVisible(false);
+        }
+    }
 }

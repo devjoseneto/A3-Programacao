@@ -388,9 +388,15 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_cbCidadeActionPerformed
 
     private void btnEditarPerfilPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilPerfilActionPerformed
-        TelaPerfilVIEW j = new TelaPerfilVIEW();
-        this.dispose();
-        j.setVisible(true);
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            TelaPerfilVIEW j = new TelaPerfilVIEW();
+            this.dispose();
+            j.setVisible(true);
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnEditarPerfilPerfilActionPerformed
 
     private void btnEditarPerfilPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilPesquisarActionPerformed
@@ -400,9 +406,21 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPerfilPesquisarActionPerformed
 
     private void btnEditarPerfilEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilEquipeActionPerformed
-        TelaEquipeVIEW j = new TelaEquipeVIEW();
-        this.dispose();
-        j.setVisible(true);
+        if (UsuarioRepository.usuarioLogado.isLogado()) {
+            if (UsuarioRepository.usuarioLogado.getId_equipe() != 0) {
+                TelaEquipeVIEW j = new TelaEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            } else {
+                FormEditarEquipeVIEW j = new FormEditarEquipeVIEW();
+                this.dispose();
+                j.setVisible(true);
+            }
+        } else {
+            FormLoginVIEW j = new FormLoginVIEW();
+            this.dispose();
+            j.setVisible(true);
+        }
     }//GEN-LAST:event_btnEditarPerfilEquipeActionPerformed
 
     private void checkMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMascActionPerformed
@@ -414,7 +432,9 @@ public class FormEditarPerfilVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_checkFemActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void txtNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascActionPerformed
