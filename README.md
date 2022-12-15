@@ -13,10 +13,11 @@ Feito o cadastro caso o usuário deseje ingressar em algum time a plataforma per
 ![](https://brandslogos.com/wp-content/uploads/images/mysql-logo-vector-1.svg)
 
 ## Diagrama de classes:
-![Diagrama Classes](https://user-images.githubusercontent.com/118183905/205456786-a1cde465-189c-442b-8ea8-8773f2851175.png)
+![Diagrama classes](https://user-images.githubusercontent.com/113992985/207970137-81a8526c-2b29-4ccf-8b8b-c88ba9042683.png)
+
 
 ## Diagrama ER:
-![Diagrama ER](https://user-images.githubusercontent.com/118183905/205456834-ed08f06e-b134-41a9-a8e3-5672ccd9da5e.png)
+![Diagrama ER](https://user-images.githubusercontent.com/113992985/207970351-9303e83a-ef4d-47f2-9f59-9bf792f7c49d.png)
 
 ## Wireframe
 [Acesse aqui](https://drive.google.com/drive/folders/1lFO3TxTJLOOASJMQXaNIH2A3CPB-6dPO?usp=sharing)
