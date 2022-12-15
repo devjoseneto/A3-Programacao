@@ -121,7 +121,7 @@ public class EquipeRepository {
     public int contarPaginas(EquipeModel equipe) {
         int quant = 0;
         try {
-            String sql = "select count(*) from equipe where nome = ?;";
+            String sql = "select count(*) from equipe where nome like concat('%', ?,'%');";
 
             conn = new ConexaoBD().conectaDB();
             pstm = conn.prepareStatement(sql);
@@ -136,7 +136,7 @@ public class EquipeRepository {
             Logger.getLogger(EnderecoRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
         new ConexaoBD().fecharDB(conn);
-        return quant / 5;
+        return (quant / 5);
     }
 
     public void updateEquipe(EquipeModel equipe) {

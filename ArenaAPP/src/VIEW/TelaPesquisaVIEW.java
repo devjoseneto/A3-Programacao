@@ -912,12 +912,12 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        if (pagina > 0)
-            pagina--;
+        pagina -= 5;
+        pesquisar();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
-        pagina++;
+        pagina += 5;
         pesquisar();
     }//GEN-LAST:event_btnAvançarActionPerformed
 
@@ -932,6 +932,7 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (checkNome.isSelected()) {
             texto = txtPesquisa.getText();
+            pagina = 0;
             pesquisar();
         } else {
             pesquisarPorId();
@@ -1164,16 +1165,17 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
             EquipeRepository repository = new EquipeRepository();
             // Passando equipe com texto para buscar no BD
             equipe.setNome(texto);
-            if (repository.contarPaginas(equipe) > 0) {
+            System.out.println(repository.contarPaginas(equipe));
+            if (pagina == 0) {
                 btnAvançar.setVisible(true);
                 btnVoltar.setVisible(false);
-            } else if (repository.contarPaginas(equipe) > 0 && repository.contarPaginas(equipe) == pagina) {
+            } else if (repository.contarPaginas(equipe) == pagina) {
                 btnAvançar.setVisible(false);
                 btnVoltar.setVisible(true);
-            } else if (repository.contarPaginas(equipe) > 0 && repository.contarPaginas(equipe) < pagina) {
+            } else if (pagina > 0 && repository.contarPaginas(equipe) < pagina) {
                 btnAvançar.setVisible(true);
                 btnVoltar.setVisible(true);
-            } else {
+            } else if (repository.contarPaginas(equipe) == 0){
                 btnAvançar.setVisible(false);
                 btnVoltar.setVisible(false);
             }
@@ -1189,38 +1191,19 @@ public class TelaPesquisaVIEW extends javax.swing.JFrame {
                 }
                 if (i == 1) {
                     equipe2 = equipes.get(i);
-                    if (i > equipes.size()) {
-                        pnlEquipe2.setVisible(false);
-                    } else {
-                        pnlEquipe2.setVisible(true);
-                    }
+                    pnlEquipe2.setVisible(true);
                 }
                 if (i == 2) {
                     equipe3 = equipes.get(i);
                     pnlEquipe3.setVisible(true);
-                    if (i > equipes.size()) {
-                        pnlEquipe3.setVisible(false);
-                    } else {
-                        pnlEquipe3.setVisible(true);
-                    }
                 }
                 if (i == 3) {
                     equipe4 = equipes.get(i);
                     pnlEquipe4.setVisible(true);
-                    if (i > equipes.size()) {
-                        pnlEquipe4.setVisible(false);
-                    } else {
-                        pnlEquipe4.setVisible(true);
-                    }
                 }
                 if (i == 4) {
                     equipe5 = equipes.get(i);
                     pnlEquipe5.setVisible(true);
-                    if (i > equipes.size()) {
-                        pnlEquipe5.setVisible(false);
-                    } else {
-                        pnlEquipe5.setVisible(true);
-                    }
                 }
                 i++;
             }

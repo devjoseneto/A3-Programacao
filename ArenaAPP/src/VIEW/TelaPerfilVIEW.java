@@ -346,6 +346,9 @@ public class TelaPerfilVIEW extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         UsuarioRepository.usuarioLogado = new UsuarioModel();
+        TelaInicialVIEW j = new TelaInicialVIEW();
+        j.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     /**

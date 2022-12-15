@@ -53,7 +53,6 @@ public class UsuarioRepository {
                 JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
                 Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
             new ConexaoBD().fecharDB(conn);
         }
     }
@@ -68,12 +67,10 @@ public class UsuarioRepository {
             pstm.setString(2, usuario.getSenha());
 
             ResultSet rs = pstm.executeQuery();
-            new ConexaoBD().fecharDB(conn);
             return rs;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
             Logger.getLogger(UsuarioRepository.class.getName()).log(Level.SEVERE, null, ex);
-            new ConexaoBD().fecharDB(conn);
             return null;
         }
     }
@@ -251,11 +248,9 @@ public class UsuarioRepository {
             pstm.setString(1, usuario.getEmail());
 
             ResultSet rs = pstm.executeQuery();
-            new ConexaoBD().fecharDB(conn);
             return rs;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UsuarioRepository: " + ex);
-            new ConexaoBD().fecharDB(conn);
             return null;
         }
     }
